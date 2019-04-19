@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lic">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Main.main.Login"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity android:name=".Main.main.Inventory_Secong" />
+        <activity android:name=".Main.InventoryList" />
+        <activity
+            android:name=".Main.main.Credit"
+            android:label="@string/title_activity_credit"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.Return"
+            android:label="@string/title_activity_return"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.DailySales"
+            android:label="@string/title_activity_daily_sales"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.Insights"
+            android:label="@string/title_activity_insights"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.Online"
+            android:label="@string/title_activity_online"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.Report"
+            android:label="@string/title_activity_report"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.Inventory"
+            android:label="@string/title_activity_inventory"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.Wholesale"
+            android:label="@string/title_activity_wholesale"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Main.main.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

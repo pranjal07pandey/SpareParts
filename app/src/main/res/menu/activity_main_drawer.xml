@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_wholesale"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Whole Sale" />
+        <item
+            android:id="@+id/nav_Inventory"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Inventory" />
+        <item
+            android:id="@+id/nav_Sales"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Daily Sales" />
+        <item
+            android:id="@+id/nav_Return"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Return" />
+
+        <item
+            android:id="@+id/nav_Credit"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Credit" />
+
+        <item
+            android:id="@+id/nav_Online"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Online" />
+    </group>
+
+    <item android:title="Visualize">
+        <menu>
+            <item
+                android:id="@+id/nav_Report"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Report" />
+            <item
+                android:id="@+id/nav_Insights"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Insights" />
+        </menu>
+    </item>
+
+</menu>

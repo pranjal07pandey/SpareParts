@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">LIC</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Logispark Inventory Control</string>
+    <string name="nav_header_subtitle">Anushka PVT.LTD</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Logout</string>
+    <string name="title_activity_wholesale">Wholesale</string>
+    <string name="title_activity_inventory">Inventory</string>
+    <string name="title_activity_report">Report</string>
+    <string name="title_activity_online">Online</string>
+    <string name="title_activity_insights">Insights</string>
+    <string name="title_activity_daily_sales">Daily Sales</string>
+    <string name="title_activity_return">Return</string>
+    <string name="title_activity_credit">Credit</string>
+    <string name="To">TO</string>
+    <string name="size">Size</string>
+    <string name="quantity">Quantity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Import Report</string>
+    <string name="sales">Sales</string>
+    <string name="profit">Profit</string>
+    <string name="inventory">Inventory</string>
+    <string name="imports">Import</string>
+</resources>
