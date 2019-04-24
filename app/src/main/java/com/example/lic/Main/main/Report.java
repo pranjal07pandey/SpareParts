@@ -12,11 +12,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextPaint;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.lic.Main.Fragments.Import_Report_Fragment;
@@ -30,13 +32,16 @@ import java.util.Calendar;
 public class Report extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Button button,button2,button3,button4,buttonstartdate,buttonenddate;
+    LinearLayout linerlayout;
 
     public static Bundle myBundle = new Bundle();
     String startdate,enddate;
+    String startbuttonvalue1,endbuttovalue2;
     Fragment fragment;
     Calendar calendar,calendar2;
     int year,year2;
     int month,month2;
+    int i = 0;
     int day,day2;
 
     @Override
@@ -45,25 +50,26 @@ public class Report extends AppCompatActivity
         setContentView(R.layout.activity_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         button = findViewById(R.id.inventorybutton);
         buttonenddate = findViewById(R.id.enddate);
+        linerlayout = findViewById(R.id.linearlayoutreport);
         buttonstartdate = findViewById(R.id.startdate);
         button2 = findViewById(R.id.salesbutton);
         button3 = findViewById(R.id.importbutton);
         button4 = findViewById(R.id.profitbutton);
+        startbuttonvalue1 = buttonstartdate.getText().toString();
+        endbuttovalue2 = buttonenddate.getText().toString();
+        linerlayout.setVisibility(View.GONE);
+
 
         buttonstartdate.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-
-               calendar = Calendar.getInstance();
+                calendar = Calendar.getInstance();
                year = calendar.get(Calendar.YEAR);
                month = calendar.get(Calendar.MONTH);
                day = calendar.get(Calendar.DAY_OF_MONTH);
-
-
-
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
 
@@ -74,6 +80,11 @@ public class Report extends AppCompatActivity
                             startdate = year+"-"+(month+1)+"-"+dayOfMonth;
 
                           buttonstartdate.setText(startdate);
+                          i = i+1;
+                          if (i >= 2){
+                              checkvisibility();
+                          }
+
 
                             myBundle.putString("Start",String.valueOf(startdate));
 
@@ -84,12 +95,10 @@ public class Report extends AppCompatActivity
                     },year,month,day);
                      datePickerDialog.show();
 
-
-
-
                 }
 
             }
+
         });
 
 
@@ -111,12 +120,20 @@ public class Report extends AppCompatActivity
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                             enddate =   year+"-"+(month+1)+"-"+dayOfMonth;
                             buttonenddate.setText(enddate);
+                            i = i +1 ;
+                            if (i>=2) {
+                                checkvisibility();
+                            }
 
                         }
                     },year,month,day2);
                     datePickerDialog.show();
 
+
                 }
+
+
+
 
             }
         });
@@ -159,8 +176,23 @@ public class Report extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    public void Changefragment(View view){
+    private void checkvisibility() {
 
+
+        if (!(startdate.equals(null)&& startdate.equals("START DATE"))) {
+
+            if (!(enddate.equals(null)&& enddate.equals("END DATE"))) {
+
+
+                linerlayout.setVisibility(View.VISIBLE);
+
+            }
+        }
+
+    }
+
+
+    public void Changefragment(View view){
 
 
         if (view == findViewById(R.id.profitbutton)){
@@ -215,8 +247,7 @@ public class Report extends AppCompatActivity
             myBundle.putString("Start",String.valueOf(startdate));
             fragment.setArguments(myBundle);
             fragmentTransaction.replace(R.id.fragmentplace,fragment);
-            Toast.makeText(Report.this,"Inventory",Toast.LENGTH_SHORT).show();
-            fragmentTransaction.commit();
+             fragmentTransaction.commit();
 
 
 

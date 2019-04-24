@@ -21,6 +21,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.POST;
 
 public class SalesReportFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -31,7 +32,7 @@ public class SalesReportFragment extends Fragment {
 
     private List<Reportdata> reportdata;
     private SalesReportAdapter salesreportdataadapter;
-    TextView textViewprofittotal,textViewsellingpricetotal,textViewcostpricetotal;
+    TextView textViewprofittotal,textViewsellingpricetotal,textViewcostpricetotal,textViewnodata;
     TextView textView1;
     RecyclerView recyclerView;
 
@@ -46,6 +47,7 @@ public class SalesReportFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_sales_report, container, false);
 
         recyclerView = v.findViewById(R.id.recyclefrag);
+        textViewnodata = v.findViewById(R.id.nodatafound);
 
         textViewcostpricetotal = (TextView)v.findViewById(R.id.totalcostprice);
         textViewsellingpricetotal = (TextView)v.findViewById(R.id.totalsellingprice);
@@ -60,11 +62,9 @@ public class SalesReportFragment extends Fragment {
             call.enqueue(new Callback<List<Reportdata>>() {
                 @Override
                 public void onResponse(Call<List<Reportdata>> call, Response<List<Reportdata>> response) {
-
+                    reportdata = response.body();
                     if (response.body() != null) {
 
-
-                        reportdata = response.body();
                         salesreportdataadapter = new SalesReportAdapter(reportdata, getContext());
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView.setAdapter(salesreportdataadapter);
@@ -73,7 +73,8 @@ public class SalesReportFragment extends Fragment {
 
                     else
                     {
-                        Toast.makeText(getActivity(),"Something Went Wrong",Toast.LENGTH_SHORT).show();
+                        recyclerView.setVisibility(View.GONE);
+                        textViewnodata.setVisibility(View.VISIBLE);
                     }
 
 
@@ -82,7 +83,7 @@ public class SalesReportFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
-                    Toast.makeText(getContext(),"Errpr"+t,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Error"+t,Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -92,12 +93,19 @@ public class SalesReportFragment extends Fragment {
             calltotal.enqueue(new Callback<Totaldata>() {
                 @Override
                 public void onResponse(Call<Totaldata> call, Response<Totaldata> response) {
-                    totalcp = response.body().getCostpricetotal();
-                    totalsp = response.body().getSellingpricetotal();
+
+                    if (response.body()!=null) {
+                        totalcp = response.body().getCostpricetotal();
+                        totalsp = response.body().getSellingpricetotal();
 
 
-                    textViewcostpricetotal.setText(String.valueOf(totalcp));
-                    textViewsellingpricetotal.setText(String.valueOf(totalsp));
+                        textViewcostpricetotal.setText(String.valueOf(totalcp));
+                        textViewsellingpricetotal.setText(String.valueOf(totalsp));
+                    }
+                    else {
+                        Toast.makeText(getContext(),"No Data To Calculate Total",Toast.LENGTH_LONG).show();
+                    }
+
 
 
                 }

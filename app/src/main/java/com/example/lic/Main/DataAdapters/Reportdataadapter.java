@@ -42,7 +42,7 @@ public class Reportdataadapter extends RecyclerView.Adapter<Reportdataadapter.My
         final Reportdata reportdata = reportdatalist.get(i);
         quantity = reportdatalist.get(i).getQuantity();
         quantitystring = String.valueOf(quantity);
-        totalprofit=0;
+        totalprofit = 0;
 
         profit = reportdatalist.get(i).getProfit();
         profitstring = String.valueOf(profit);
@@ -61,26 +61,8 @@ public class Reportdataadapter extends RecyclerView.Adapter<Reportdataadapter.My
         myreportviewholder.textViewprofit.setText(profitstring);
 
 
-
-//        if (i+1 == reportdatalist.size()){
-//
-//            for(int j = 0 ; j<reportdatalist.size();j++){
-//
-//                profit1 = reportdatalist.get(i).getProfit();
-//                totalprofit = profit+totalprofit;
-//                Toast.makeText(mcontext,String.valueOf(j),Toast.LENGTH_SHORT).show();
-//
-//
-//            }
-//
-//
-//
-//
-//        }
-
-
-
     }
+
 
     @Override
     public int getItemCount() {

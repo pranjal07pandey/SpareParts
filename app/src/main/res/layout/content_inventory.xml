@@ -13,6 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/navbar2"
+    android:id="@+id/relativeinventory"
     android:layout_marginTop="55dp"
     >
 
@@ -32,6 +33,19 @@
 
 
     </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Data Found"
+        android:id="@+id/inventory_nodata"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+        android:fontFamily="@font/robot"
+      />
 
 </RelativeLayout>
 </RelativeLayout>

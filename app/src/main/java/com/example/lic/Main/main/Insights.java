@@ -27,6 +27,7 @@ public class Insights extends AppCompatActivity
     public static Bundle myBundle = new Bundle();
     private String startdate,enddate;
     Button twomonthsbutton,sixmonthbutton;
+    FragmentTransaction fragmentTransaction;
 
 
     @Override
@@ -48,7 +49,10 @@ public class Insights extends AppCompatActivity
         sixmonthbutton = findViewById(R.id.twomonthsbutton);
         twomonthsbutton = findViewById(R.id.sixmonthsbutton);
 
-
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentcontainer,new twomonthsreportfragment());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
 
         sixmonthbutton.setOnClickListener(new View.OnClickListener() {
@@ -100,16 +104,11 @@ public class Insights extends AppCompatActivity
 
     public void Changefragment(View view){
 
-
-
         if (view == findViewById(R.id.twomonthsbutton)){
             fragment = new twomonthsreportfragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            myBundle.putString("End",String.valueOf(enddate));
-            myBundle.putString("Start",String.valueOf(startdate));
-            fragment.setArguments(myBundle);
-            fragmentTransaction.replace(R.id.fragmentinsightsplace,fragment);
+            fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.fragmentcontainer,fragment);
             fragmentTransaction.commit();
 
 
@@ -119,11 +118,9 @@ public class Insights extends AppCompatActivity
 
             fragment = new sixmonthsreportfragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            myBundle.putString("End",String.valueOf(enddate));
-            myBundle.putString("Start",String.valueOf(startdate));
-            fragment.setArguments(myBundle);
-            fragmentTransaction.replace(R.id.fragmentinsightsplace,fragment);
+            fragmentTransaction = fragmentManager.beginTransaction();
+
+            fragmentTransaction.replace(R.id.fragmentcontainer,fragment);
             fragmentTransaction.commit();
 
 

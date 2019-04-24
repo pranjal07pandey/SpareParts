@@ -4,7 +4,7 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="150dp"
-    android:layout_height="150dp"
+    android:layout_height="145dp"
     cardview:cardBackgroundColor="@color/navbar"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="10dp"
@@ -13,8 +13,9 @@
     cardview:cardCornerRadius="4dp">
 
 
-
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -159,6 +160,8 @@
 
 
     </RelativeLayout>
+</RelativeLayout>
+
 
 
 

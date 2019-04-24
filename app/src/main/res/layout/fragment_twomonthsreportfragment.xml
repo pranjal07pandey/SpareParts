@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".Main.Fragments.twomonthsreportfragment"
 
     android:fillViewport="true">
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Main.Fragments.twomonthsreportfragment">
+    android:layout_height="match_parent">
+
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -28,11 +30,11 @@
             android:id="@+id/textviewsales"/>
 
         <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/mylinegraph1"
             android:layout_width="match_parent"
-            android:layout_below="@+id/textviewsales"
             android:layout_height="500dp"
-            android:id="@+id/mylinegraph1">
-        </com.github.mikephil.charting.charts.LineChart>
+            android:layout_below="@+id/textviewsales"
+            android:layout_marginTop="0dp"></com.github.mikephil.charting.charts.LineChart>
 
     </RelativeLayout>
 
@@ -71,13 +73,15 @@
             android:layout_centerHorizontal="true"
             android:id="@+id/textviewbar"/>
 
-        <com.github.mikephil.charting.charts.LineChart
+
+        <com.github.mikephil.charting.charts.BarChart
             android:layout_width="match_parent"
             android:layout_height="500dp"
-            android:id="@+id/mylinegraph3">
-        </com.github.mikephil.charting.charts.LineChart>
+            android:id="@+id/chartinventory">
 
+        </com.github.mikephil.charting.charts.BarChart>
 
     </RelativeLayout>
 </RelativeLayout>
+
 </ScrollView>

@@ -29,7 +29,7 @@ public class Profitreportfragment extends Fragment {
     private  int totalprofit,totalcp,totalsp;
     private List<Reportdata> reportdata;
     private Reportdataadapter reportdataadapter;
-    TextView textViewprofittotal,textViewsellingpricetotal,textViewcostpricetotal;
+    TextView textViewprofittotal,textViewsellingpricetotal,textViewcostpricetotal,textViewnodata;
     TextView textView1;
     RecyclerView recyclerView;
 
@@ -53,6 +53,7 @@ public class Profitreportfragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_profitreportfragment, container, false);
 
         recyclerView = v.findViewById(R.id.recyclefrag);
+        textViewnodata = v.findViewById(R.id.nodatafound);
 
         textViewcostpricetotal = (TextView)v.findViewById(R.id.totalcostprice);
         textViewsellingpricetotal = (TextView)v.findViewById(R.id.totalsellingprice);
@@ -67,17 +68,27 @@ public class Profitreportfragment extends Fragment {
                 @Override
                 public void onResponse(Call<List<Reportdata>> call, Response<List<Reportdata>> response) {
                     reportdata = response.body();
+                    if (response.body()!=null){
 
-                reportdataadapter = new Reportdataadapter(reportdata,getContext());
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                recyclerView.setAdapter(reportdataadapter);
+                        reportdataadapter = new Reportdataadapter(reportdata,getContext());
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        recyclerView.setAdapter(reportdataadapter);
+
+                    }
+
+                    else {
+                        recyclerView.setVisibility(View.GONE);
+                        textViewnodata.setVisibility(View.VISIBLE);
+                    }
+
+
 
 
                 }
 
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
-                    Toast.makeText(getContext(),"Errpr"+t,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Error"+t,Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -88,14 +99,21 @@ public class Profitreportfragment extends Fragment {
             calltotal.enqueue(new Callback<Totaldata>() {
                 @Override
                 public void onResponse(Call<Totaldata> call, Response<Totaldata> response) {
-                    totalprofit = response.body().getProfittotal();
-                    totalcp = response.body().getCostpricetotal();
-                    totalsp = response.body().getSellingpricetotal();
+
+                    if(response.body()!=null){
+                        totalprofit = response.body().getProfittotal();
+                        totalcp = response.body().getCostpricetotal();
+                        totalsp = response.body().getSellingpricetotal();
 
 
-                    textViewcostpricetotal.setText(String.valueOf(totalcp));
-                    textViewsellingpricetotal.setText(String.valueOf(totalsp));
-                    textViewprofittotal.setText(String.valueOf(totalprofit));
+                        textViewcostpricetotal.setText(String.valueOf(totalcp));
+                        textViewsellingpricetotal.setText(String.valueOf(totalsp));
+                        textViewprofittotal.setText(String.valueOf(totalprofit));
+                    }
+
+                    else {
+                        Toast.makeText(getContext(),"No Data To Calculate Total",Toast.LENGTH_LONG).show();
+                    }
 
 
                 }
@@ -105,11 +123,6 @@ public class Profitreportfragment extends Fragment {
 
                 }
             });
-
-
-
-
-
 
         }
 

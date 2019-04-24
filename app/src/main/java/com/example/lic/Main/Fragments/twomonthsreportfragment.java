@@ -13,14 +13,19 @@ import android.widget.Toast;
 import com.example.lic.Main.Datamodel.Insightsdatamodel;
 import com.example.lic.Main.Utilities.RetrofitClient;
 import com.example.lic.R;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,12 +37,14 @@ import retrofit2.Response;
 
 public class twomonthsreportfragment extends Fragment {
     private String date;
-    String[] datesales,dateprofit;
+
+    String[] datesales,dateprofit,lablebar;
     private int i;
     LineChart lineChartsales,lineChartprofit;
+    BarChart barChart;
     ArrayList<Entry> yValuesprofit = new ArrayList<>();
     ArrayList<Entry> yValues2sales = new ArrayList<>();
-    ArrayList<Entry> yValuesinventory = new ArrayList<>();
+   ArrayList<Entry> yValuesinventory = new ArrayList<>();
 
 
 
@@ -49,6 +56,8 @@ public class twomonthsreportfragment extends Fragment {
 
         lineChartsales = v.findViewById(R.id.mylinegraph1);
         lineChartprofit = v.findViewById(R.id.mylinegraph2);
+        barChart = v.findViewById(R.id.chartinventory);
+
 
 //        linechart.setOnChartGestureListener(GraphExample.this);
 //        linechart.setOnChartValueSelectedListener(GraphExample.this);
@@ -69,7 +78,7 @@ public class twomonthsreportfragment extends Fragment {
                              String[] salessp = new String[list.size()];
                              dateprofit = new String[list.size()];
                              String[] profitsp = new String[list.size()];
-                             String[] lablebar = new String[list.size()];
+                             lablebar = new String[list.size()];
                              String[] spbar = new String[list.size()];
 
                              for (int i = 0;i< list.size();i++){
@@ -115,8 +124,15 @@ public class twomonthsreportfragment extends Fragment {
 //
 //                             Toast.makeText(getContext(),"Bar"+yValuesinventory,Toast.LENGTH_SHORT).show();
 
+
+
+
+
+
                              LineDataSet set1 = new LineDataSet(yValues2sales,"Sales Data");
                              LineDataSet set2 = new LineDataSet(yValuesprofit,"Profit Data");
+
+
 
                              set1.setFillAlpha(500);
                              set1.setColor(Color.parseColor("#1ea1e5"));
@@ -133,11 +149,18 @@ public class twomonthsreportfragment extends Fragment {
                              ArrayList<ILineDataSet> dataSets = new ArrayList<>();
                              dataSets.add(set1);
 
+
                              ArrayList<ILineDataSet> dataset2 = new ArrayList<>();
                              dataset2.add(set2);
 
+
+
+
+
+
                              LineData data = new LineData(dataSets);
                              lineChartsales.setData(data);
+                             lineChartsales.animateXY(3000, 3000);
                              lineChartsales.invalidate();
                              lineChartsales.setNoDataText("No Data Found");
                              lineChartsales.getAxisRight().setEnabled(false);
@@ -149,6 +172,7 @@ public class twomonthsreportfragment extends Fragment {
                              LineData data2 = new LineData(dataset2);
                              lineChartprofit.setData(data2);
                              lineChartprofit.invalidate();
+                             lineChartsales.animateXY(3000, 3000);
                              lineChartprofit.setNoDataText("No Profit Data");
                              lineChartprofit.getAxisRight().setEnabled(false);
                              XAxis xAxis1 = lineChartprofit.getXAxis();
@@ -172,14 +196,12 @@ public class twomonthsreportfragment extends Fragment {
 
                          }
 
-
             @Override
                 public void onFailure(Call<List<Insightsdatamodel>> call, Throwable t) {
 
                     }
                      }
         );
-
 
             return v;
     }

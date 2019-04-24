@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,7 @@ public class Inventory extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private Inventory_Adapter inventory_adapter;
-    private TextView txtnavname,txtuserdays;
+    private TextView txtnavname,txtuserdays,textViewnodata;
 
     private List<Inventory_Model> list;
     RecyclerView recyclerView;
@@ -53,6 +54,7 @@ public class Inventory extends AppCompatActivity
         progressDialog.show();
 
         recyclerView = findViewById(R.id.recyclerview);
+        textViewnodata = findViewById(R.id.inventory_nodata);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -72,10 +74,22 @@ public class Inventory extends AppCompatActivity
             public void onResponse(Call<List<Inventory_Model>> call, Response<List<Inventory_Model>> response) {
 
                 list = response.body();
+                if (list!=null){
+
                 inventory_adapter = new Inventory_Adapter(list,getApplicationContext());
                 recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
                 recyclerView.setAdapter(inventory_adapter);
                 progressDialog.dismiss();
+
+                }
+
+                else {
+                    recyclerView.setVisibility(View.GONE);
+                    textViewnodata.setVisibility(View.VISIBLE);
+
+                }
+
+
 
 
 
@@ -85,8 +99,11 @@ public class Inventory extends AppCompatActivity
             @Override
             public void onFailure(Call<List<Inventory_Model>> call, Throwable t) {
 
-                Toast.makeText(Inventory.this,"Error"+t,Toast.LENGTH_LONG).show();
+                Toast.makeText(Inventory.this,"No Internet ",Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
+                textViewnodata.setVisibility(View.VISIBLE);
+                textViewnodata.setText("Please Connect To Internet And Try Again");
+
 
 
             }

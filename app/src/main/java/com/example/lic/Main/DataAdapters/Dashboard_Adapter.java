@@ -91,15 +91,13 @@ public class Dashboard_Adapter extends RecyclerView.Adapter<Dashboard_Adapter.Da
 
                 else if (dashboardList.get(i).getTitle().toUpperCase().equals("DAILY SALES")){
 
-                    Intent intent = new Intent(mcontext, DailySales.class);
-                    mcontext.startActivity(intent);
+                    Toast.makeText(mcontext,"Upgrade to premium to use this feature",Toast.LENGTH_LONG).show();
 
                 }
 
                 else if (dashboardList.get(i).getTitle().toUpperCase().equals("RETURN")){
 
-                    Intent intent = new Intent(mcontext, Return.class);
-                    mcontext.startActivity(intent);
+                    Toast.makeText(mcontext,"Upgrade to premium to use this feature",Toast.LENGTH_LONG).show();
 
                 }
                 else if (dashboardList.get(i).getTitle().toUpperCase().equals("CREDIT")){
@@ -116,9 +114,6 @@ public class Dashboard_Adapter extends RecyclerView.Adapter<Dashboard_Adapter.Da
 
             }
         });
-
-
-
 
 
     }

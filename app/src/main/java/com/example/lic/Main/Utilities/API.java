@@ -37,6 +37,12 @@ public interface API {
     @GET("getProfitReport.php/")
     Call<List<Reportdata>> getprofitdata(@Query("start") String start,@Query("end") String end);
 
+    @GET("getInventoryReport.php/")
+    Call<List<Reportdata>> getinventoryreportdata(@Query("start") String start,@Query("end") String end);
+
+    @GET("getImportReport.php/")
+    Call<List<Reportdata>> getimportdata(@Query("start") String start,@Query("end") String end);
+
     @GET("getSalesReport.php/")
     Call<List<Reportdata>> getsalesdata(@Query("start") String start,@Query("end") String end);
 
@@ -45,6 +51,10 @@ public interface API {
 
     @GET("getInsights1.php/")
     Call<List<Insightsdatamodel>> getinsightsdata();
+
+    @GET("getInsights6.php/")
+    Call<List<Insightsdatamodel>> getinsightsdatalong();
+
 
 
 

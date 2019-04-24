@@ -106,7 +106,7 @@ public class Login extends AppCompatActivity {
 
                     editViewuserid.setError("Username or Password Incorrect");
                     editViewpassword.setError("Username or Password Incorrect");
-                    Toast.makeText(Login.this, "Username or Password Incorrect "+loginresponse.getError(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Username or Password Incorrect ",Toast.LENGTH_LONG).show();
                     return;
 
                 }
@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity {
 
                     editViewpassword.setError("Please Activate Your Account");
                     editViewuserid.setError("Account Expired");
-                    Toast.makeText(Login.this, "Account Expired "+loginresponse.getError(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Account Expired ",Toast.LENGTH_LONG).show();
 
 
                     return;
@@ -126,7 +126,7 @@ public class Login extends AppCompatActivity {
 
                     editViewpassword.setError("Incomplete Data");
                     editViewuserid.setError("Incomplete Data");
-                    Toast.makeText(Login.this, "Incomplete Data "+loginresponse.getError(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Incomplete Data ",Toast.LENGTH_LONG).show();
 
                     return;
 
@@ -137,7 +137,7 @@ public class Login extends AppCompatActivity {
 
                     editViewpassword.setError("Account Not Activated");
                     editViewuserid.setError("Check Your Email");
-                    Toast.makeText(Login.this, "Account not active "+loginresponse.getError(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Account not active ",Toast.LENGTH_LONG).show();
 
                     return;
 
@@ -157,7 +157,9 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(Login.this, "Error"+t, Toast.LENGTH_LONG).show();
+                Toast.makeText(Login.this, "Error No Internet Connection"+t, Toast.LENGTH_LONG).show();
+
+
 
 
             }

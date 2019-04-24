@@ -260,5 +260,17 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Data Found"
+        android:textSize="20dp"
+        android:id="@+id/nodatafound"
+        android:textAlignment="center"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rr1"/>
+
 
 </RelativeLayout>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/inshighrs"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Main.main.Insights"
@@ -38,15 +39,12 @@
 
     </LinearLayout>
 
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragmentcontainer"
+    android:layout_below="@+id/ll1"/>
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragmentinsightsplace"
-        android:layout_below="@+id/ll1"
-        android:name="com.example.lic.Main.Fragments.twomonthsreportfragment"
-
-        />
 
 
 </RelativeLayout>

@@ -1,15 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.Fragments.InventoryReportFrag">
+    tools:context=".Main.Fragments.Profitreportfragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rr1"
+        android:layout_below="@id/rr2"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:id="@+id/linearlatou"
+            android:background="@drawable/jjj"
+            android:weightSum="8">
+
+
+
+            <TextView
+                android:id="@+id/inventory_datereport"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="Date"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:id="@+id/inventory_report_code"
+                android:layout_margin="2dp"
+                android:textSize="15sp"
+                android:textColor="@color/background"
+                android:ellipsize="marquee"
+                android:textAlignment="center"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:layout_below="@+id/docscategory_title"
+                android:text="Code"
+                android:textStyle="normal"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:id="@+id/inventory_report_brand"
+                android:textSize="15sp"
+                android:layout_margin="2dp"
+                android:textColor="@color/background"
+                android:ellipsize="marquee"
+                android:maxLength="5"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:text="Brand"
+                android:textStyle="normal"/>
+
+
+
+            <TextView
+                android:id="@+id/inventory_report_type"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="Type"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/inventory_reportwholsale"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="Wholesale"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/inventory_report_color"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="Color"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/inventory_report_size"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="Size"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+            <TextView
+                android:id="@+id/inventory_report_quantity"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="Quantity"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-       />
+        android:layout_below="@id/rr1"
+        android:id="@+id/recyclefrag_inventoryreport">
 
-</FrameLayout>
+    </android.support.v7.widget.RecyclerView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/rr2"
+
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:orientation="horizontal"
+            android:id="@+id/linearlatou2"
+            android:background="@drawable/kk"
+            >
+
+
+            <TextView
+                android:id="@+id/totalheader"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Total"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/CPhead_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="CP:"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/totalcostprice_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Cost Price"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/sPhead_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="SP:"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/totalsellingprice_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Selling Price"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/qhead_inventory"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="Quantity"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/totalquantity"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text="500"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No Data Found"
+        android:textSize="20dp"
+        android:id="@+id/nodatafound"
+        android:textAlignment="center"
+        android:layout_margin="20dp"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rr1"/>
+
+
+</RelativeLayout>
