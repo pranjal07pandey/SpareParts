@@ -1,6 +1,7 @@
 package com.example.lic.Main.main;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -12,7 +13,7 @@ import androidx.annotation.Nullable;
 
 public class OnlinePopup extends Activity {
 
-    Button b1, b2;
+    Button delivered, undelivered;
 
 
     @Override
@@ -21,20 +22,26 @@ public class OnlinePopup extends Activity {
 
         setContentView(R.layout.online_popup);
 
-        b1 = (Button) findViewById(R.id.buttonOk1);
+        delivered = (Button) findViewById(R.id.buttonOk1);
 
-        b1.setOnClickListener(new View.OnClickListener() {
+        delivered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+
+                openActivity2();
+
             }
         });
 
-        b2 = (Button) findViewById(R.id.buttonOk2);
 
-        b2.setOnClickListener(new View.OnClickListener() {
+
+        undelivered = (Button) findViewById(R.id.buttonOk2);
+
+        undelivered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                finish();
 
             }
         });
@@ -42,11 +49,16 @@ public class OnlinePopup extends Activity {
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
         getWindow().setLayout((int) (width * 0.8), (int) (height * 0.5));
+
+    }
+
+    public void openActivity2(){
+        Intent intent = new Intent(this, Online_Delievered.class);
+        startActivity(intent);
 
     }
 }

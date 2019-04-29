@@ -8,4 +8,13 @@
     tools:context=".Main.main.Online_Delievered"
     tools:showIn="@layout/app_bar_main">
 
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recycleviewdelivered"
+        android:layout_marginTop="55dp">
+
+    </android.support.v7.widget.RecyclerView>
+
 </android.support.constraint.ConstraintLayout>

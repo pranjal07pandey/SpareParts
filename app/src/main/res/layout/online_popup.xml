@@ -14,7 +14,7 @@
         android:id="@+id/buttonOk1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK1"
+        android:text="Delivered"
         android:layout_centerVertical="true"
         android:layout_marginLeft="40dp"
         />
@@ -24,7 +24,7 @@
         android:id="@+id/buttonOk2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK2"
+        android:text="Undelivered"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/buttonOk1"
         android:layout_marginLeft="40dp"

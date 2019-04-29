@@ -3,6 +3,7 @@ package com.example.lic.Main.Utilities;
 
 
 import com.example.lic.Main.Datamodel.Credit_Datamodel;
+import com.example.lic.Main.Datamodel.Delivered_Datamodel;
 import com.example.lic.Main.Datamodel.Insightsdatamodel;
 import com.example.lic.Main.Datamodel.Inventory_Model;
 import com.example.lic.Main.Datamodel.Reportdata;
@@ -63,6 +64,10 @@ public interface API {
 
     @GET("getCredit.php/")
     Call<List<Credit_Datamodel>> getcreditmode();
+
+    @GET("getUndelivered.php/")
+    Call<List<Delivered_Datamodel>> getdeliveredmode();
+
 
 
 

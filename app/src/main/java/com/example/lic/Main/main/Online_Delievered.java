@@ -7,14 +7,32 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
+import com.example.lic.Main.DataAdapters.Delivered_Adapter;
+import com.example.lic.Main.Datamodel.Delivered_Datamodel;
+import com.example.lic.Main.Utilities.RetrofitClient;
 import com.example.lic.R;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Online_Delievered extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Delivered_Adapter delivered_adapter;
+    private List<Delivered_Datamodel> deliverdmodel;
+    RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +41,7 @@ public class Online_Delievered extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        recyclerView = findViewById(R.id.recycleviewdelivered);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -31,12 +49,41 @@ public class Online_Delievered extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
 
 
         //call api to display
+
+        Call<List<Delivered_Datamodel>> call = RetrofitClient.getmInstance().getApi().getdeliveredmode();
+        call.enqueue(new Callback<List<Delivered_Datamodel>>() {
+            @Override
+            public void onResponse(Call<List<Delivered_Datamodel>> call, Response<List<Delivered_Datamodel>> response) {
+                deliverdmodel = response.body();
+
+                if (deliverdmodel != null){
+
+                    delivered_adapter = new Delivered_Adapter(deliverdmodel, getApplicationContext());
+                    recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+                    recyclerView.setAdapter(delivered_adapter);
+
+                }
+
+                else{
+                    recyclerView.setVisibility(View.GONE);
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Delivered_Datamodel>> call, Throwable t) {
+
+                Toast.makeText(Online_Delievered.this, "Error"+ t, Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
     }
