@@ -15,7 +15,9 @@ import android.widget.Toast;
 import com.example.lic.Main.DataAdapters.Inventoryreport_Adapter;
 import com.example.lic.Main.Datamodel.Reportdata;
 import com.example.lic.Main.Datamodel.Totaldata;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
 import java.util.List;
@@ -27,7 +29,7 @@ import retrofit2.Response;
 
 public class Import_Report_Fragment extends Fragment {
 
-    private String startdate, enddate;
+    private String startdate, enddate,pan;
     private int totalquantity, totalcp, totalmp;
     private List<Reportdata> reportdata;
     private Inventoryreport_Adapter reportdataadapter;
@@ -41,6 +43,9 @@ public class Import_Report_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
+        pan = String.valueOf(user.getUserid());
+
 
         View v = inflater.inflate(R.layout.fragment_import__report_, container, false);
         recyclerView = v.findViewById(R.id.recyclefrag_inventoryreport);
@@ -53,7 +58,7 @@ public class Import_Report_Fragment extends Fragment {
             startdate = getArguments().getString("Start");
             enddate = getArguments().getString("End");
 
-            Call<List<Reportdata>> call = RetrofitClient.getmInstance().getApi().getimportdata(startdate, enddate);
+            Call<List<Reportdata>> call = RetrofitClient.getmInstance().getApi().getimportdata(startdate, enddate,pan);
             call.enqueue(new Callback<List<Reportdata>>() {
                 @Override
                 public void onResponse(Call<List<Reportdata>> call, Response<List<Reportdata>> response) {
@@ -84,7 +89,7 @@ public class Import_Report_Fragment extends Fragment {
             });
 
 
-            Call<Totaldata> calltotal = RetrofitClient.getmInstance().getApi().gettotaldata(startdate, enddate);
+            Call<Totaldata> calltotal = RetrofitClient.getmInstance().getApi().gettotaldata(startdate, enddate,pan);
 
             calltotal.enqueue(new Callback<Totaldata>() {
                 @Override
