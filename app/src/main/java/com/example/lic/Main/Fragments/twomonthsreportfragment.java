@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.lic.Main.Datamodel.Insightsdatamodel;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
@@ -36,7 +38,7 @@ import retrofit2.Response;
 
 
 public class twomonthsreportfragment extends Fragment {
-    private String date;
+    private String date,pan;
 
     String[] datesales,dateprofit,lablebar;
     private int i;
@@ -65,8 +67,11 @@ public class twomonthsreportfragment extends Fragment {
 //        lineChart.setDragEnabled(true);
 //        lineChart.setScaleEnabled(false);
 
+        User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
+        pan = String.valueOf(user.getUserid());
 
-        Call< List<Insightsdatamodel>> call = RetrofitClient.getmInstance().getApi().getinsightsdata();
+
+        Call< List<Insightsdatamodel>> call = RetrofitClient.getmInstance().getApi().getinsightsdata(pan);
         call.enqueue(new Callback<List<Insightsdatamodel>>() {
                          @Override
                          public void onResponse(Call<List<Insightsdatamodel>> call, Response<List<Insightsdatamodel>> response) {

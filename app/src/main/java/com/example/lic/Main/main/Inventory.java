@@ -35,6 +35,7 @@ public class Inventory extends AppCompatActivity
 
     private Inventory_Adapter inventory_adapter;
     private TextView txtnavname,txtuserdays,textViewnodata;
+    String Pan;
 
     private List<Inventory_Model> list;
     RecyclerView recyclerView;
@@ -56,6 +57,12 @@ public class Inventory extends AppCompatActivity
         recyclerView = findViewById(R.id.recyclerview);
         textViewnodata = findViewById(R.id.inventory_nodata);
 
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        Pan = String.valueOf(user.getUserid());
+
+
+
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -67,7 +74,7 @@ public class Inventory extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-        Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getInventoryitems();
+        Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getInventoryitems(Pan);
 
         call.enqueue(new Callback<List<Inventory_Model>>() {
             @Override
@@ -130,7 +137,7 @@ public class Inventory extends AppCompatActivity
         txtnavname = findViewById(R.id.txtcompanyname);
         txtuserdays = findViewById(R.id.textremainingdays);
         User user = SharedPreferenceManager.getmInstance(this).getUser();
-        txtnavname.setText(user.getCname());
+        txtnavname.setText(user.getUserid());
         txtuserdays.setText("Logispark Inventory Control");
 
         return true;

@@ -16,7 +16,9 @@ import com.example.lic.Main.DataAdapters.Inventory_Adapter;
 import com.example.lic.Main.DataAdapters.Inventoryreport_Adapter;
 import com.example.lic.Main.Datamodel.Reportdata;
 import com.example.lic.Main.Datamodel.Totaldata;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
 import java.util.List;
@@ -28,11 +30,11 @@ import retrofit2.Response;
 
 public class Import_Report_Fragment extends Fragment {
 
-    private String startdate, enddate;
-    private int totalprofit, totalcp, totalsp;
+    private String startdate, enddate,pan;
+    private int totalquantity, totalcp, totalmp;
     private List<Reportdata> reportdata;
     private Inventoryreport_Adapter reportdataadapter;
-    TextView textViewquantitytotal, textViewsellingpricetotal, textViewcostpricetotal,textViewnodata;
+    TextView textViewquantitytotal, textViewmarkedpricetotal, textViewcostpricetotal,textViewnodata;
     TextView textView1;
     RecyclerView recyclerView;
 
@@ -42,19 +44,22 @@ public class Import_Report_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
+        pan = String.valueOf(user.getUserid());
+
 
         View v = inflater.inflate(R.layout.fragment_import__report_, container, false);
         recyclerView = v.findViewById(R.id.recyclefrag_inventoryreport);
         textViewnodata = v.findViewById(R.id.nodatafound);
-        textViewcostpricetotal = (TextView) v.findViewById(R.id.totalcostprice_inventory);
-        textViewsellingpricetotal = (TextView) v.findViewById(R.id.totalsellingprice_inventory);
-        textViewquantitytotal = (TextView) v.findViewById(R.id.totalquantity);
+        textViewcostpricetotal = (TextView) v.findViewById(R.id.totalcostprice_import);
+        textViewmarkedpricetotal = (TextView) v.findViewById(R.id.totalmarkedprice_import);
+        textViewquantitytotal = (TextView) v.findViewById(R.id.totalquantity_import);
 
         if (getArguments() != null) {
             startdate = getArguments().getString("Start");
             enddate = getArguments().getString("End");
 
-            Call<List<Reportdata>> call = RetrofitClient.getmInstance().getApi().getimportdata(startdate, enddate);
+            Call<List<Reportdata>> call = RetrofitClient.getmInstance().getApi().getimportdata(startdate, enddate,pan);
             call.enqueue(new Callback<List<Reportdata>>() {
                 @Override
                 public void onResponse(Call<List<Reportdata>> call, Response<List<Reportdata>> response) {
@@ -85,19 +90,19 @@ public class Import_Report_Fragment extends Fragment {
             });
 
 
-            Call<Totaldata> calltotal = RetrofitClient.getmInstance().getApi().gettotaldata(startdate, enddate);
+            Call<Totaldata> calltotal = RetrofitClient.getmInstance().getApi().gettotaldata(startdate, enddate,pan);
 
             calltotal.enqueue(new Callback<Totaldata>() {
                 @Override
                 public void onResponse(Call<Totaldata> call, Response<Totaldata> response) {
                     if (response.body()!=null){
 
-//                        totalprofit = response.body().getProfittotal();
-//                        totalcp = response.body().getCostpricetotal();
-//                        totalsp = response.body().getSellingpricetotal();
-//                        textViewcostpricetotal.setText(String.valueOf(totalcp));
-//                        textViewsellingpricetotal.setText(String.valueOf(totalsp));
-//                        textViewquantitytotal.setText(String.valueOf(totalprofit));
+                         totalquantity = response.body().getImport_quantitytotal();
+                        totalcp = response.body().getImport_cp();
+                        totalmp = response.body().getImport_mp();
+                        textViewcostpricetotal.setText(String.valueOf(totalcp));
+                        textViewmarkedpricetotal.setText(String.valueOf(totalmp));
+                        textViewquantitytotal.setText(String.valueOf(totalquantity));
 
                     }
 

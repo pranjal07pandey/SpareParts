@@ -3,16 +3,16 @@ package com.example.lic.Main.Datamodel;
 public class User {
 
     private int id;
-    private String username;
+    private String userid;
     private String password;
     private String cname;
     private int error;
     private int expirein;
 
 
-    public User(int id, String username, String password, String cname, int error, int expirein) {
+    public User(int id, String userid, String password, String cname, int error, int expirein) {
         this.id = id;
-        this.username = username;
+        this.userid = userid;
         this.password = password;
         this.cname = cname;
         this.error = error;
@@ -24,7 +24,7 @@ public class User {
     }
 
     public String getUserid() {
-        return username;
+        return userid;
     }
 
     public String getPassword() {

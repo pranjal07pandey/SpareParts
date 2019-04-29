@@ -13,7 +13,9 @@ import android.widget.Toast;
 import com.example.lic.Main.Datamodel.Reportdata;
 import com.example.lic.Main.DataAdapters.SalesReportAdapter;
 import com.example.lic.Main.Datamodel.Totaldata;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
 import java.util.List;
@@ -27,7 +29,7 @@ public class SalesReportFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-    private String startdate,enddate;
+    private String startdate,enddate,pan;
     private  int totalprofit,totalcp,totalsp;
 
     private List<Reportdata> reportdata;
@@ -53,12 +55,16 @@ public class SalesReportFragment extends Fragment {
         textViewsellingpricetotal = (TextView)v.findViewById(R.id.totalsellingprice);
 
 
+        User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
+        pan = String.valueOf(user.getUserid());
+
+
 
         if (getArguments() != null) {
             startdate = getArguments().getString("Start");
             enddate = getArguments().getString("End");
 
-            Call<List<Reportdata>> call = RetrofitClient.getmInstance().getApi().getsalesdata(startdate,enddate);
+            Call<List<Reportdata>> call = RetrofitClient.getmInstance().getApi().getsalesdata(startdate,enddate,pan);
             call.enqueue(new Callback<List<Reportdata>>() {
                 @Override
                 public void onResponse(Call<List<Reportdata>> call, Response<List<Reportdata>> response) {
@@ -88,7 +94,7 @@ public class SalesReportFragment extends Fragment {
                 }
             });
 
-            Call<Totaldata> calltotal = RetrofitClient.getmInstance().getApi().gettotaldata(startdate,enddate);
+            Call<Totaldata> calltotal = RetrofitClient.getmInstance().getApi().gettotaldata(startdate,enddate,pan);
 
             calltotal.enqueue(new Callback<Totaldata>() {
                 @Override

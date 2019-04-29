@@ -145,6 +145,9 @@ public class Login extends AppCompatActivity {
 
                 else if(loginresponse != null || loginresponse.getError()==0){
                     SharedPreferenceManager.getmInstance(Login.this).saveuser(loginresponse);
+                    Toast.makeText(Login.this,loginresponse.getUserid()+loginresponse.getCname(),Toast.LENGTH_LONG).show();
+
+
                     Intent intent = new Intent(Login.this,MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
