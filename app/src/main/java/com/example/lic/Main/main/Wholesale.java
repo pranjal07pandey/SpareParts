@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -61,7 +62,7 @@ public class Wholesale extends AppCompatActivity
                 if (wholesalemodel!=null){
 
                     wholesaleadapeter = new Wholesale_Adapter(wholesalemodel,getApplicationContext());
-                    recyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setAdapter(wholesaleadapeter);
 
 

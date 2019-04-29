@@ -112,15 +112,12 @@
     </LinearLayout>
 
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentplace"
+        android:layout_below="@+id/linearlayoutreport"/>
 
-   <fragment
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/fragmentplace"
-       android:layout_below="@+id/linearlayoutreport"
-       android:name="com.example.lic.Main.Fragments.Import_Report_Fragment"
-
-       />
 
 
 </RelativeLayout>

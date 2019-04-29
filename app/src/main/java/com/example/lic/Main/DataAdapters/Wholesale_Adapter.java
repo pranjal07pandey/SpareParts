@@ -28,7 +28,7 @@ public class Wholesale_Adapter extends RecyclerView.Adapter<Wholesale_Adapter.Wh
     public Wholesale_Adapter.Wholesaleviewholder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v;
           LayoutInflater layoutInflater = LayoutInflater.from(context);
-          v = layoutInflater.inflate(R.layout.card_wholesale,viewGroup,false);
+          v = layoutInflater.inflate(R.layout.card_wholesalealternate,viewGroup,false);
         return new Wholesaleviewholder(v);
     }
 
@@ -53,10 +53,10 @@ public class Wholesale_Adapter extends RecyclerView.Adapter<Wholesale_Adapter.Wh
         CardView cardView;
         public Wholesaleviewholder(@NonNull View itemView) {
             super(itemView);
-            textViewname = itemView.findViewById(R.id.name_textviewwholesale);
-            textViewaddress = itemView.findViewById(R.id.address_textviewwholesale);
-            textViewcontact = itemView.findViewById(R.id.phone_textviewwholesale);
-            cardView = itemView.findViewById(R.id.cardviewwholesale_id);
+            textViewname = itemView.findViewById(R.id.wholesalename);
+            textViewaddress = itemView.findViewById(R.id.addresswholesale);
+            textViewcontact = itemView.findViewById(R.id.wholesalephone);
+            cardView = itemView.findViewById(R.id.cardviewwholesalealternate);
         }
     }
 }

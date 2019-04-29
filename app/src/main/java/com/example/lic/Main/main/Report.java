@@ -22,6 +22,7 @@ import android.widget.LinearLayout;
 import com.example.lic.Main.Fragments.Import_Report_Fragment;
 import com.example.lic.Main.Fragments.InventoryReportFrag;
 import com.example.lic.Main.Fragments.Profitreportfragment;
+import com.example.lic.Main.Fragments.twomonthsreportfragment;
 import com.example.lic.R;
 import com.example.lic.Main.Fragments.SalesReportFragment;
 
@@ -31,6 +32,7 @@ public class Report extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     Button button,button2,button3,button4,buttonstartdate,buttonenddate;
     LinearLayout linerlayout;
+    FragmentTransaction fragmentTransaction;
 
     public static Bundle myBundle = new Bundle();
     String startdate,enddate;
@@ -58,6 +60,12 @@ public class Report extends AppCompatActivity
         startbuttonvalue1 = buttonstartdate.getText().toString();
         endbuttovalue2 = buttonenddate.getText().toString();
         linerlayout.setVisibility(View.GONE);
+
+        fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.fragmentplace,new Profitreportfragment());
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
 
 
         buttonstartdate.setOnClickListener(new View.OnClickListener() {
@@ -196,7 +204,7 @@ public class Report extends AppCompatActivity
         if (view == findViewById(R.id.profitbutton)){
             fragment = new Profitreportfragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction = fragmentManager.beginTransaction();
             myBundle.putString("End",String.valueOf(enddate));
             myBundle.putString("Start",String.valueOf(startdate));
             fragment.setArguments(myBundle);
@@ -210,7 +218,7 @@ public class Report extends AppCompatActivity
 
             fragment = new SalesReportFragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction = fragmentManager.beginTransaction();
             myBundle.putString("End",String.valueOf(enddate));
             myBundle.putString("Start",String.valueOf(startdate));
             fragment.setArguments(myBundle);
@@ -225,7 +233,7 @@ public class Report extends AppCompatActivity
 
             fragment = new Import_Report_Fragment();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction = fragmentManager.beginTransaction();
             myBundle.putString("End",String.valueOf(enddate));
             myBundle.putString("Start",String.valueOf(startdate));
             fragment.setArguments(myBundle);
@@ -240,7 +248,7 @@ public class Report extends AppCompatActivity
 
             fragment = new InventoryReportFrag();
             FragmentManager fragmentManager = getSupportFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction = fragmentManager.beginTransaction();
             myBundle.putString("End",String.valueOf(enddate));
             myBundle.putString("Start",String.valueOf(startdate));
             fragment.setArguments(myBundle);

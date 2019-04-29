@@ -21,6 +21,7 @@ import retrofit2.Response;
 public class Inventory_Secong extends AppCompatActivity {
 
     int id;
+    String type,brand;
     RecyclerView recyclerView2;
     private List<Inventory_Model> inventoryModelList;
     private Inventory_Adapter_Second inventory_adapter_second;
@@ -34,7 +35,11 @@ public class Inventory_Secong extends AppCompatActivity {
         User user = SharedPreferenceManager.getmInstance(this).getUser();
        String Pan = String.valueOf(user.getUserid());
 
-        id = getIntent().getExtras().getInt("ID");
+
+        type = getIntent().getExtras().getString("Productname");
+        brand = getIntent().getExtras().getString("brand");
+
+        getSupportActionBar().setTitle(brand+" "+"("+type+")" + id);
 
         Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getspecificdata(id,Pan);
 
