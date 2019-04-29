@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.lic.Main.Datamodel.Dashboard;
 import com.example.lic.R;
 
 public class DailySales extends AppCompatActivity
@@ -97,7 +96,7 @@ public class DailySales extends AppCompatActivity
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(DailySales.this,Online.class);
+                Intent intent3 = new Intent(DailySales.this, Online_Delievered.class);
                 startActivity(intent3);
                 break;
 

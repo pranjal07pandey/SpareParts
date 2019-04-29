@@ -7,15 +7,30 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
-import com.example.lic.Main.Datamodel.Dashboard;
+import com.example.lic.Main.DataAdapters.Credit_Adapter;
+import com.example.lic.Main.Datamodel.Credit_Datamodel;
+import com.example.lic.Main.Utilities.RetrofitClient;
 import com.example.lic.R;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Credit extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Credit_Adapter creditadapter;
+    private List<Credit_Datamodel> creditmodel;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +38,8 @@ public class Credit extends AppCompatActivity
         setContentView(R.layout.activity_credit);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        recyclerView = findViewById(R.id.recycleviewcredit);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -33,6 +50,37 @@ public class Credit extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        //Api call
+
+       Call<List<Credit_Datamodel>> call = RetrofitClient.getmInstance().getApi().getcreditmode();
+       call.enqueue(new Callback<List<Credit_Datamodel>>() {
+           @Override
+           public void onResponse(Call<List<Credit_Datamodel>> call, Response<List<Credit_Datamodel>> response) {
+
+
+                  creditmodel = response.body();
+                   if (creditmodel!=null){
+
+                       creditadapter = new Credit_Adapter(creditmodel,getApplicationContext());
+                       recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                       recyclerView.setAdapter(creditadapter);
+
+
+                   }
+
+           }
+
+           @Override
+           public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
+
+               Toast.makeText(getApplicationContext(),"Error"+t,Toast.LENGTH_LONG).show();
+
+           }
+       });
+
+
     }
 
     @Override
@@ -97,7 +145,7 @@ public class Credit extends AppCompatActivity
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(Credit.this,Online.class);
+                Intent intent3 = new Intent(Credit.this, Online_Delievered.class);
                 startActivity(intent3);
                 break;
 

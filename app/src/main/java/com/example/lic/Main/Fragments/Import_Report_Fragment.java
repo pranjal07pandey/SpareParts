@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lic.Main.DataAdapters.Inventory_Adapter;
 import com.example.lic.Main.DataAdapters.Inventoryreport_Adapter;
 import com.example.lic.Main.Datamodel.Reportdata;
 import com.example.lic.Main.Datamodel.Totaldata;

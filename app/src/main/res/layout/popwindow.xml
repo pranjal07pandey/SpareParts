@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bluelight"
+    >
+
+    <!--<TextView-->
+        <!--android:id="@+id/advance"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Advance: 1000 "-->
+        <!--android:textSize="20dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+
+
+        <!--/>-->
+
+
+    <!--<TextView-->
+        <!--android:id="@+id/sp"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Selling price: 5000"-->
+        <!--android:layout_below="@+id/advance"-->
+        <!--android:textSize="20dp"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+
+
+        <!--/>-->
+
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/Relative1"
+    android:id="@+id/Relative2">
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/linear3">
+
+    <TextView
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:textColor="#ffff"
+    android:layout_marginTop="15dp"
+    android:textSize="15sp"
+    android:text="Advance: "
+    android:layout_marginLeft="10dp"
+     />
+
+    <TextView
+    android:id="@+id/advance"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="15dp"
+    android:text="0"
+    android:textAlignment="center"
+    android:maxLength="7"
+    android:ellipsize="marquee"
+    android:textColor="#ffff"
+    android:textSize="15sp"
+     />
+
+
+    </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/Relative2"
+    android:id="@+id/Relative3">
+
+    <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/linear4">
+
+    <TextView
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAlignment="center"
+    android:textColor="#ffff"
+    android:layout_marginTop="15dp"
+    android:textSize="15sp"
+    android:text="Sp: "
+    android:layout_marginLeft="10dp"
+     />
+
+    <TextView
+    android:id="@+id/sp"
+
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="15dp"
+    android:text="2000"
+    android:textAlignment="center"
+    android:maxLength="7"
+    android:ellipsize="marquee"
+    android:textColor="#ffff"
+    android:textSize="15sp"
+    />
+
+
+    </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+
+</RelativeLayout>
+

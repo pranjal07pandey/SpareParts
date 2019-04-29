@@ -11,10 +11,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.lic.Main.Datamodel.Dashboard;
 import com.example.lic.R;
 
-public class Online extends AppCompatActivity
+public class Online_Delievered extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
@@ -34,6 +33,12 @@ public class Online extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+        //call api to display
+
+
     }
 
     @Override
@@ -76,48 +81,48 @@ public class Online extends AppCompatActivity
         switch (id) {
 
             case R.id.nav_dashboard:
-                Intent intentz = new Intent(Online.this,MainActivity.class);
+                Intent intentz = new Intent(Online_Delievered.this,MainActivity.class);
                 startActivity(intentz);
                 break;
 
             case R.id.nav_wholesale:
-                Intent intent = new Intent(Online.this, Wholesale.class);
+                Intent intent = new Intent(Online_Delievered.this, Wholesale.class);
                 startActivity(intent);
                 break;
 
             case R.id.nav_Inventory:
-                Intent intent1 = new Intent(Online.this, Inventory.class);
+                Intent intent1 = new Intent(Online_Delievered.this, Inventory.class);
                 startActivity(intent1);
                 break;
 
             case R.id.nav_Report:
-                Intent intent2 = new Intent(Online.this, Report.class);
+                Intent intent2 = new Intent(Online_Delievered.this, Report.class);
                 startActivity(intent2);
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(Online.this, Online.class);
+                Intent intent3 = new Intent(Online_Delievered.this, Online_Delievered.class);
                 startActivity(intent3);
                 break;
 
             case R.id.nav_Insights:
-                Intent intent4 = new Intent(Online.this, Insights.class);
+                Intent intent4 = new Intent(Online_Delievered.this, Insights.class);
                 startActivity(intent4);
                 break;
 
             case R.id.nav_Sales:
-                Intent intent5 = new Intent(Online.this, DailySales.class);
+                Intent intent5 = new Intent(Online_Delievered.this, DailySales.class);
                 startActivity(intent5);
                 break;
 
             case R.id.nav_Return:
-                Intent intent6 = new Intent(Online.this, Return.class);
+                Intent intent6 = new Intent(Online_Delievered.this, Return.class);
                 startActivity(intent6);
                 break;
 
 
             case R.id.nav_Credit:
-                Intent intent7 = new Intent(Online.this, Credit.class);
+                Intent intent7 = new Intent(Online_Delievered.this, Credit.class);
                 startActivity(intent7);
                 break;
 

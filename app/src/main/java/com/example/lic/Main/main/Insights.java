@@ -159,7 +159,7 @@ public class Insights extends AppCompatActivity
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(Insights.this,Online.class);
+                Intent intent3 = new Intent(Insights.this, Online_Delievered.class);
                 startActivity(intent3);
                 break;
 

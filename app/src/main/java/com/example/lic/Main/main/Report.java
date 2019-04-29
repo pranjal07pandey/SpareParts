@@ -12,14 +12,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.TextPaint;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.example.lic.Main.Fragments.Import_Report_Fragment;
 import com.example.lic.Main.Fragments.InventoryReportFrag;
@@ -314,7 +312,7 @@ public class Report extends AppCompatActivity
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(Report.this, Online.class);
+                Intent intent3 = new Intent(Report.this, Online_Delievered.class);
                 startActivity(intent3);
                 break;
 

@@ -2,11 +2,14 @@ package com.example.lic.Main.Utilities;
 
 
 
+import com.example.lic.Main.Datamodel.Credit_Datamodel;
 import com.example.lic.Main.Datamodel.Insightsdatamodel;
 import com.example.lic.Main.Datamodel.Inventory_Model;
 import com.example.lic.Main.Datamodel.Reportdata;
 import com.example.lic.Main.Datamodel.Totaldata;
 import com.example.lic.Main.Datamodel.User;
+import com.example.lic.Main.Datamodel.Wholesale_Datamodel;
+import com.example.lic.Main.main.Credit;
 import com.example.lic.Main.main.Inventory;
 import com.example.lic.Main.main.Report;
 
@@ -54,6 +57,13 @@ public interface API {
 
     @GET("getInsights6.php/")
     Call<List<Insightsdatamodel>> getinsightsdatalong();
+
+    @GET("getWholeseller.php/")
+    Call<List<Wholesale_Datamodel>> getwholesalemode();
+
+    @GET("getCredit.php/")
+    Call<List<Credit_Datamodel>> getcreditmode();
+
 
 
 
