@@ -190,7 +190,7 @@
                 android:id="@+id/totalcostprice"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="Cost Price"
+
                 android:layout_margin="2dp"
                 android:ellipsize="marquee"
                 android:maxLength="10"
@@ -218,7 +218,7 @@
                 android:id="@+id/totalsellingprice"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="Selling Price"
+
                 android:layout_margin="2dp"
                 android:ellipsize="marquee"
                 android:maxLength="10"
@@ -246,7 +246,7 @@
                 android:id="@+id/totalprofit"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:text="Profit"
+
                 android:layout_margin="2dp"
                 android:ellipsize="marquee"
                 android:maxLength="10"

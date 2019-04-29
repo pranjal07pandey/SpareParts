@@ -49,6 +49,8 @@ public class Inventory_Adapter extends RecyclerView.Adapter<Inventory_Adapter.My
 
                 Intent intent = new Intent(mContext, Inventory_Secong.class);
                 intent.putExtra("ID",inventory_model.getId());
+                intent.putExtra("Productname",inventory_model.getType());
+                intent.putExtra("brand",inventory_model.getBrand());
                 mContext.startActivity(intent);
 
             }
