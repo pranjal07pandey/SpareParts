@@ -7,7 +7,9 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.lic.Main.Datamodel.Inventory_Model;
 import com.example.lic.Main.DataAdapters.Inventory_Adapter_Second;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
 import java.util.List;
@@ -29,9 +31,12 @@ public class Inventory_Secong extends AppCompatActivity {
 
        recyclerView2 = findViewById(R.id.recyclerviewsecondinventory);
 
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+       String Pan = String.valueOf(user.getUserid());
+
         id = getIntent().getExtras().getInt("ID");
 
-        Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getspecificdata(id);
+        Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getspecificdata(id,Pan);
 
         call.enqueue(new Callback<List<Inventory_Model>>() {
             @Override

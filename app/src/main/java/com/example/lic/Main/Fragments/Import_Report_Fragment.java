@@ -28,10 +28,10 @@ import retrofit2.Response;
 public class Import_Report_Fragment extends Fragment {
 
     private String startdate, enddate;
-    private int totalprofit, totalcp, totalsp;
+    private int totalquantity, totalcp, totalmp;
     private List<Reportdata> reportdata;
     private Inventoryreport_Adapter reportdataadapter;
-    TextView textViewquantitytotal, textViewsellingpricetotal, textViewcostpricetotal,textViewnodata;
+    TextView textViewquantitytotal, textViewmarkedpricetotal, textViewcostpricetotal,textViewnodata;
     TextView textView1;
     RecyclerView recyclerView;
 
@@ -45,9 +45,9 @@ public class Import_Report_Fragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_import__report_, container, false);
         recyclerView = v.findViewById(R.id.recyclefrag_inventoryreport);
         textViewnodata = v.findViewById(R.id.nodatafound);
-        textViewcostpricetotal = (TextView) v.findViewById(R.id.totalcostprice_inventory);
-        textViewsellingpricetotal = (TextView) v.findViewById(R.id.totalsellingprice_inventory);
-        textViewquantitytotal = (TextView) v.findViewById(R.id.totalquantity);
+        textViewcostpricetotal = (TextView) v.findViewById(R.id.totalcostprice_import);
+        textViewmarkedpricetotal = (TextView) v.findViewById(R.id.totalmarkedprice_import);
+        textViewquantitytotal = (TextView) v.findViewById(R.id.totalquantity_import);
 
         if (getArguments() != null) {
             startdate = getArguments().getString("Start");
@@ -91,12 +91,12 @@ public class Import_Report_Fragment extends Fragment {
                 public void onResponse(Call<Totaldata> call, Response<Totaldata> response) {
                     if (response.body()!=null){
 
-//                        totalprofit = response.body().getProfittotal();
-//                        totalcp = response.body().getCostpricetotal();
-//                        totalsp = response.body().getSellingpricetotal();
-//                        textViewcostpricetotal.setText(String.valueOf(totalcp));
-//                        textViewsellingpricetotal.setText(String.valueOf(totalsp));
-//                        textViewquantitytotal.setText(String.valueOf(totalprofit));
+                         totalquantity = response.body().getImport_quantitytotal();
+                        totalcp = response.body().getImport_cp();
+                        totalmp = response.body().getImport_mp();
+                        textViewcostpricetotal.setText(String.valueOf(totalcp));
+                        textViewmarkedpricetotal.setText(String.valueOf(totalmp));
+                        textViewquantitytotal.setText(String.valueOf(totalquantity));
 
                     }
 

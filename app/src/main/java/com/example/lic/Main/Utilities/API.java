@@ -22,10 +22,10 @@ import retrofit2.http.Query;
 public interface API {
 
     @GET("getDistinctProducts")
-    Call<List<Inventory_Model>> getInventoryitems();
+    Call<List<Inventory_Model>> getInventoryitems(@Query("PAN") String pan);
 
     @GET("getAllInventory.php/")
-    Call<List<Inventory_Model>> getspecificdata(@Query("id") int id);
+    Call<List<Inventory_Model>> getspecificdata(@Query("id") int id,@Query("PAN") String pan);
 
     @FormUrlEncoded
     @POST("userLogin.php/")
@@ -35,25 +35,25 @@ public interface API {
     );
 
     @GET("getProfitReport.php/")
-    Call<List<Reportdata>> getprofitdata(@Query("start") String start,@Query("end") String end);
+    Call<List<Reportdata>> getprofitdata(@Query("start") String start,@Query("end") String end,@Query("PAN") String pan);
 
     @GET("getInventoryReport.php/")
-    Call<List<Reportdata>> getinventoryreportdata(@Query("start") String start,@Query("end") String end);
+    Call<List<Reportdata>> getinventoryreportdata(@Query("start") String start,@Query("end") String end,@Query("PAN") String pan);
 
     @GET("getImportReport.php/")
-    Call<List<Reportdata>> getimportdata(@Query("start") String start,@Query("end") String end);
+    Call<List<Reportdata>> getimportdata(@Query("start") String start,@Query("end") String end,@Query("PAN") String pan);
 
     @GET("getSalesReport.php/")
-    Call<List<Reportdata>> getsalesdata(@Query("start") String start,@Query("end") String end);
+    Call<List<Reportdata>> getsalesdata(@Query("start") String start,@Query("end") String end, @Query("PAN") String pan);
 
     @GET("getTotal.php/")
-    Call<Totaldata> gettotaldata(@Query("start") String start,@Query("end") String end);
+    Call<Totaldata> gettotaldata(@Query("start") String start,@Query("end") String end,@Query("PAN") String pan);
 
     @GET("getInsights1.php/")
-    Call<List<Insightsdatamodel>> getinsightsdata();
+    Call<List<Insightsdatamodel>> getinsightsdata(@Query("PAN") String pan);
 
     @GET("getInsights6.php/")
-    Call<List<Insightsdatamodel>> getinsightsdatalong();
+    Call<List<Insightsdatamodel>> getinsightsdatalong(@Query("PAN") String pan);
 
 
 
