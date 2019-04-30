@@ -16,14 +16,14 @@
             android:id="@+id/nav_Inventory"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Inventory" />
-        <item
-            android:id="@+id/nav_Sales"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Daily Sales" />
-        <item
-            android:id="@+id/nav_Return"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Return" />
+        <!--<item-->
+            <!--android:id="@+id/nav_Sales"-->
+            <!--android:icon="@drawable/ic_menu_slideshow"-->
+            <!--android:title="Daily Sales" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_Return"-->
+            <!--android:icon="@drawable/ic_menu_manage"-->
+            <!--android:title="Return" />-->
 
         <item
             android:id="@+id/nav_Credit"

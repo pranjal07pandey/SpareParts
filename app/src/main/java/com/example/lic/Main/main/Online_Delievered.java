@@ -110,15 +110,15 @@ public class Online_Delievered extends AppCompatActivity
                 startActivity(intent4);
                 break;
 
-            case R.id.nav_Sales:
-                Intent intent5 = new Intent(Online_Delievered.this, DailySales.class);
-                startActivity(intent5);
-                break;
-
-            case R.id.nav_Return:
-                Intent intent6 = new Intent(Online_Delievered.this, Return.class);
-                startActivity(intent6);
-                break;
+//            case R.id.nav_Sales:
+//                Intent intent5 = new Intent(Online_Delievered.this, DailySales.class);
+//                startActivity(intent5);
+//                break;
+//
+//            case R.id.nav_Return:
+//                Intent intent6 = new Intent(Online_Delievered.this, Return.class);
+//                startActivity(intent6);
+//                break;
 
 
             case R.id.nav_Credit:

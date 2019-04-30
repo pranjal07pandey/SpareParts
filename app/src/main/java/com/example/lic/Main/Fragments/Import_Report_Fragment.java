@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class Import_Report_Fragment extends Fragment {
 
     private String startdate, enddate,pan;
+    ProgressBar progressBar;
     private int totalquantity, totalcp, totalmp;
     private List<Reportdata> reportdata;
     private Inventoryreport_Adapter reportdataadapter;
@@ -47,8 +49,9 @@ public class Import_Report_Fragment extends Fragment {
         User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
         pan = String.valueOf(user.getUserid());
 
-
-        View v = inflater.inflate(R.layout.fragment_import__report_, container, false);
+         View v = inflater.inflate(R.layout.fragment_import__report_, container, false);
+        progressBar = v.findViewById(R.id.progress_circularimportreport);
+         progressBar.setVisibility(View.VISIBLE);
         recyclerView = v.findViewById(R.id.recyclefrag_inventoryreport);
         textViewnodata = v.findViewById(R.id.nodatafound);
         textViewcostpricetotal = (TextView) v.findViewById(R.id.totalcostprice_import);
@@ -70,11 +73,15 @@ public class Import_Report_Fragment extends Fragment {
                         reportdataadapter = new Inventoryreport_Adapter(reportdata, getContext());
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView.setAdapter(reportdataadapter);
+                        progressBar.setVisibility(View.GONE);
+
 
 
                     } else {
                         recyclerView.setVisibility(View.GONE);
                         textViewnodata.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.GONE);
+
 
 
                     }
@@ -85,6 +92,8 @@ public class Import_Report_Fragment extends Fragment {
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
                     Toast.makeText(getContext(), "Error" + t, Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+
 
                 }
             });

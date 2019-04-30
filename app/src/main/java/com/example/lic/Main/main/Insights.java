@@ -78,6 +78,7 @@ public class Insights extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+        finish();
     }
 
     @Override
@@ -168,15 +169,15 @@ public class Insights extends AppCompatActivity
                 startActivity(intent4);
                 break;
 
-            case R.id.nav_Sales:
-                Intent intent5 = new Intent(Insights.this,DailySales.class);
-                startActivity(intent5);
-                break;
-
-            case R.id.nav_Return:
-                Intent intent6 = new Intent(Insights.this,Return.class);
-                startActivity(intent6);
-                break;
+//            case R.id.nav_Sales:
+//                Intent intent5 = new Intent(Insights.this,DailySales.class);
+//                startActivity(intent5);
+//                break;
+//
+//            case R.id.nav_Return:
+//                Intent intent6 = new Intent(Insights.this,Return.class);
+//                startActivity(intent6);
+//                break;
 
 
             case R.id.nav_Credit:

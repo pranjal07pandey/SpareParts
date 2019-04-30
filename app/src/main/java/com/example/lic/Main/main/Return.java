@@ -103,16 +103,16 @@ public class Return extends AppCompatActivity
                 Intent intent4 = new Intent(Return.this, Insights.class);
                 startActivity(intent4);
                 break;
-
-            case R.id.nav_Sales:
-                Intent intent5 = new Intent(Return.this, DailySales.class);
-                startActivity(intent5);
-                break;
-
-            case R.id.nav_Return:
-                Intent intent6 = new Intent(Return.this, Return.class);
-                startActivity(intent6);
-                break;
+//
+//            case R.id.nav_Sales:
+//                Intent intent5 = new Intent(Return.this, DailySales.class);
+//                startActivity(intent5);
+//                break;
+//
+//            case R.id.nav_Return:
+//                Intent intent6 = new Intent(Return.this, Return.class);
+//                startActivity(intent6);
+//                break;
 
 
             case R.id.nav_Credit:

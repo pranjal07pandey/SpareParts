@@ -59,7 +59,7 @@ public interface API {
     Call<List<Insightsdatamodel>> getinsightsdatalong(@Query("PAN") String pan);
 
     @GET("getWholeseller.php/")
-    Call<List<Wholesale_Datamodel>> getwholesalemode();
+    Call<List<Wholesale_Datamodel>> getwholesalemode(@Query("PAN") String pan);
 
     @GET("getCredit.php/")
     Call<List<Credit_Datamodel>> getcreditmode();
