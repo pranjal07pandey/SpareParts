@@ -2,44 +2,36 @@ package com.example.lic.Main.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.example.lic.Main.DataAdapters.Credit_Adapter;
-import com.example.lic.Main.Datamodel.Credit_Datamodel;
-import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Datamodel.User;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class Credit extends AppCompatActivity
+public class Online_Undelievered extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Credit_Adapter creditadapter;
-    private List<Credit_Datamodel> creditmodel;
-    RecyclerView recyclerView;
+    private TextView txtnavname,txtuserdays,textViewnodata;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_credit);
+        setContentView(R.layout.activity_online__undelievered);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        recyclerView = findViewById(R.id.recycleviewcredit);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -50,37 +42,6 @@ public class Credit extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-        //Api call
-
-       Call<List<Credit_Datamodel>> call = RetrofitClient.getmInstance().getApi().getcreditmode();
-       call.enqueue(new Callback<List<Credit_Datamodel>>() {
-           @Override
-           public void onResponse(Call<List<Credit_Datamodel>> call, Response<List<Credit_Datamodel>> response) {
-
-
-                  creditmodel = response.body();
-                   if (creditmodel!=null){
-
-                       creditadapter = new Credit_Adapter(creditmodel,getApplicationContext());
-                       recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                       recyclerView.setAdapter(creditadapter);
-
-
-                   }
-
-           }
-
-           @Override
-           public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
-
-               Toast.makeText(getApplicationContext(),"Error"+t,Toast.LENGTH_LONG).show();
-
-           }
-       });
-
-
     }
 
     @Override
@@ -96,7 +57,14 @@ public class Credit extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
+
         getMenuInflater().inflate(R.menu.main, menu);
+        txtnavname = findViewById(R.id.txtcompanyname);
+        txtuserdays = findViewById(R.id.textremainingdays);
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        txtnavname.setText(user.getUserid());
+        txtuserdays.setText("Logispark Inventory Control");
+
         return true;
     }
 
@@ -120,58 +88,55 @@ public class Credit extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         switch (id){
 
             case R.id.nav_dashboard:
-                Intent intentz = new Intent(Credit.this,MainActivity.class);
+                Intent intentz = new Intent(Online_Undelievered.this,MainActivity.class);
                 startActivity(intentz);
                 break;
 
-
             case R.id.nav_wholesale:
-                Intent intent = new Intent(Credit.this,Wholesale.class);
+                Intent intent = new Intent(Online_Undelievered.this,Wholesale.class);
                 startActivity(intent);
                 break;
 
             case R.id.nav_Inventory:
-                Intent intent1 = new Intent(Credit.this,Inventory.class);
+                Intent intent1 = new Intent(Online_Undelievered.this,Inventory.class);
                 startActivity(intent1);
                 break;
 
             case R.id.nav_Report:
-                Intent intent2 = new Intent(Credit.this,Report.class);
+                Intent intent2 = new Intent(Online_Undelievered.this,Report.class);
                 startActivity(intent2);
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(Credit.this, Online_Delievered.class);
+                Intent intent3 = new Intent(Online_Undelievered.this, Online_Delievered.class);
                 startActivity(intent3);
                 break;
 
             case R.id.nav_Insights:
-                Intent intent4 = new Intent(Credit.this,Insights.class);
+                Intent intent4 = new Intent(Online_Undelievered.this,Insights.class);
                 startActivity(intent4);
                 break;
-//
+
 //            case R.id.nav_Sales:
-//                Intent intent5 = new Intent(Credit.this,DailySales.class);
+//                Intent intent5 = new Intent(Inventory.this,DailySales.class);
 //                startActivity(intent5);
 //                break;
 //
 //            case R.id.nav_Return:
-//                Intent intent6 = new Intent(Credit.this,Return.class);
+//                Intent intent6 = new Intent(Inventory.this,Return.class);
 //                startActivity(intent6);
 //                break;
 
 
             case R.id.nav_Credit:
-                Intent intent7 = new Intent(Credit.this,Credit.class);
+                Intent intent7 = new Intent(Online_Undelievered.this,Credit.class);
                 startActivity(intent7);
                 break;
 
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

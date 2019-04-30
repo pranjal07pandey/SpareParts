@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class SalesReportFragment extends Fragment {
 
     private String startdate,enddate,pan;
     private  int totalprofit,totalcp,totalsp;
+    ProgressBar progressBar;
 
     private List<Reportdata> reportdata;
     private SalesReportAdapter salesreportdataadapter;
@@ -47,6 +49,9 @@ public class SalesReportFragment extends Fragment {
 
 
         View v = inflater.inflate(R.layout.fragment_sales_report, container, false);
+
+        progressBar = v.findViewById(R.id.progress_circularsalesreport);
+        progressBar.setVisibility(View.VISIBLE);
 
         recyclerView = v.findViewById(R.id.recyclefrag);
         textViewnodata = v.findViewById(R.id.nodatafound);
@@ -74,6 +79,8 @@ public class SalesReportFragment extends Fragment {
                         salesreportdataadapter = new SalesReportAdapter(reportdata, getContext());
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView.setAdapter(salesreportdataadapter);
+                        progressBar.setVisibility(View.GONE);
+
 
                     }
 
@@ -81,6 +88,8 @@ public class SalesReportFragment extends Fragment {
                     {
                         recyclerView.setVisibility(View.GONE);
                         textViewnodata.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.GONE);
+
                     }
 
 
@@ -90,6 +99,8 @@ public class SalesReportFragment extends Fragment {
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
                     Toast.makeText(getContext(),"Error"+t,Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+
 
                 }
             });

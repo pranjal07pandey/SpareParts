@@ -1,11 +1,13 @@
 package com.example.lic.Main.main;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -15,6 +17,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,17 +35,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Inventory extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
+    SwipeRefreshLayout swipeRefreshLayout;
     private Inventory_Adapter inventory_adapter;
+    ProgressBar progressBar;
     private TextView txtnavname,txtuserdays,textViewnodata;
     String Pan;
 
     private List<Inventory_Model> list;
     RecyclerView recyclerView;
-    ProgressDialog progressDialog;
 
 
+
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +56,13 @@ public class Inventory extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        progressDialog = new ProgressDialog(Inventory.this);
-        progressDialog.setTitle("Fetching Data");
-        progressDialog.setMessage("Please wait while we fetch the data");
-        progressDialog.show();
+        progressBar = findViewById(R.id.progressbarinventory);
+        progressBar.setVisibility(View.VISIBLE);
+
+        swipeRefreshLayout = findViewById(R.id.swipetoreferesh);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeColors(R.color.bluelight);
+
 
         recyclerView = findViewById(R.id.recyclerview);
         textViewnodata = findViewById(R.id.inventory_nodata);
@@ -74,6 +83,13 @@ public class Inventory extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        callapi(Pan);
+
+
+
+    }
+
+    private void callapi(String pan) {
 
         Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getInventoryitems(Pan);
 
@@ -84,19 +100,21 @@ public class Inventory extends AppCompatActivity
                 list = response.body();
                 if (list!=null){
 
-                inventory_adapter = new Inventory_Adapter(list,getApplicationContext());
-                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                recyclerView.setAdapter(inventory_adapter);
-                progressDialog.dismiss();
+                    inventory_adapter = new Inventory_Adapter(list,getApplicationContext());
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    recyclerView.setAdapter(inventory_adapter);
+                    swipeRefreshLayout.setRefreshing(false);
+                    progressBar.setVisibility(View.GONE);
 
                 }
 
                 else {
                     recyclerView.setVisibility(View.GONE);
                     textViewnodata.setVisibility(View.VISIBLE);
+                    swipeRefreshLayout.setRefreshing(false);
+                    progressBar.setVisibility(View.GONE);
 
                 }
-
 
 
 
@@ -108,14 +126,18 @@ public class Inventory extends AppCompatActivity
             public void onFailure(Call<List<Inventory_Model>> call, Throwable t) {
 
                 Toast.makeText(Inventory.this,"No Internet ",Toast.LENGTH_LONG).show();
-                progressDialog.dismiss();
+                progressBar.setVisibility(View.GONE);
                 textViewnodata.setVisibility(View.VISIBLE);
                 textViewnodata.setText("Please Connect To Internet And Try Again");
+                swipeRefreshLayout.setRefreshing(false);
 
 
 
             }
         });
+
+
+
     }
 
     @Override
@@ -196,15 +218,15 @@ public class Inventory extends AppCompatActivity
                 startActivity(intent4);
                 break;
 
-            case R.id.nav_Sales:
-                Intent intent5 = new Intent(Inventory.this,DailySales.class);
-                startActivity(intent5);
-                break;
-
-            case R.id.nav_Return:
-                Intent intent6 = new Intent(Inventory.this,Return.class);
-                startActivity(intent6);
-                break;
+//            case R.id.nav_Sales:
+//                Intent intent5 = new Intent(Inventory.this,DailySales.class);
+//                startActivity(intent5);
+//                break;
+//
+//            case R.id.nav_Return:
+//                Intent intent6 = new Intent(Inventory.this,Return.class);
+//                startActivity(intent6);
+//                break;
 
 
             case R.id.nav_Credit:
@@ -217,5 +239,12 @@ public class Inventory extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onRefresh() {
+
+        callapi(Pan);
+
     }
 }

@@ -273,6 +273,13 @@ tools:context=".Main.Fragments.Import_Report_Fragment">
 
 </RelativeLayout>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_circularimportreport"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="90dp"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

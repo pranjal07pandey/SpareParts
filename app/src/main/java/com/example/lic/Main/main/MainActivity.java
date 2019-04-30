@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity
         dashboardList.add(new Dashboard("Report",R.drawable.doc));
         dashboardList.add(new Dashboard("Online",R.drawable.globe));
         dashboardList.add(new Dashboard("Insights",R.drawable.graph));
-        dashboardList.add(new Dashboard("Daily Sales",R.drawable.cash));
-        dashboardList.add(new Dashboard("Return",R.drawable.ret));
+//        dashboardList.add(new Dashboard("Daily Sales",R.drawable.cash));
+//        dashboardList.add(new Dashboard("Return",R.drawable.ret));
         dashboardList.add(new Dashboard("Credit",R.drawable.credit));
 
         RecyclerView myhrv = (RecyclerView) findViewById(R.id.recyclerviewhome);
@@ -161,16 +161,16 @@ public class MainActivity extends AppCompatActivity
                 Intent intent4 = new Intent(MainActivity.this,Insights.class);
                 startActivity(intent4);
                 break;
-
-            case R.id.nav_Sales:
-                Intent intent5 = new Intent(MainActivity.this,DailySales.class);
-                startActivity(intent5);
-                break;
-
-            case R.id.nav_Return:
-                Intent intent6 = new Intent(MainActivity.this,Return.class);
-                startActivity(intent6);
-                break;
+//
+//            case R.id.nav_Sales:
+//                Intent intent5 = new Intent(MainActivity.this,DailySales.class);
+//                startActivity(intent5);
+//                break;
+//
+//            case R.id.nav_Return:
+//                Intent intent6 = new Intent(MainActivity.this,Return.class);
+//                startActivity(intent6);
+//                break;
 
 
             case R.id.nav_Credit:

@@ -68,12 +68,26 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressbarinventory"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/linearlatou"
+        android:id="@+id/swipetoreferesh"
+        android:layout_height="match_parent">
+
+
+
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_below="@+id/linearlatou"
         android:layout_height="match_parent"
         >
 
@@ -92,6 +106,9 @@
         android:visibility="gone"
         android:fontFamily="@font/robot"
       />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 
 </RelativeLayout>
 

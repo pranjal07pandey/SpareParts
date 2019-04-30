@@ -1,10 +1,13 @@
 package com.example.lic.Main.main;
 
+import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,11 +17,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.lic.Main.DataAdapters.Wholesale_Adapter;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Datamodel.Wholesale_Datamodel;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
 import java.util.List;
@@ -28,19 +34,35 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Wholesale extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener{
+    SwipeRefreshLayout swipeRefreshLayout;
+
     private Wholesale_Adapter wholesaleadapeter;
+    ProgressBar progressBar;
     private List<Wholesale_Datamodel> wholesalemodel;
+    private String Pan;
     RecyclerView recyclerView;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wholesale);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        progressBar = findViewById(R.id.progress_circular);
+        progressBar.setVisibility(View.VISIBLE);
 
         recyclerView = findViewById(R.id.recycleviewwholesale);
+        swipeRefreshLayout = findViewById(R.id.swipetorefereshwholesale);
+
+        swipeRefreshLayout.setColorSchemeColors(R.color.bluelight);
+        swipeRefreshLayout.setOnRefreshListener(this);
+
+
+        User user = SharedPreferenceManager.getmInstance(getApplicationContext()).getUser();
+        Pan  = user.getUserid();
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -54,7 +76,16 @@ public class Wholesale extends AppCompatActivity
 
         //API call
 
-        Call<List<Wholesale_Datamodel>> call = RetrofitClient.getmInstance().getApi().getwholesalemode();
+
+        callapi(Pan);
+
+
+
+    }
+
+    private void callapi(String pan) {
+
+        Call<List<Wholesale_Datamodel>> call = RetrofitClient.getmInstance().getApi().getwholesalemode(Pan);
         call.enqueue(new Callback<List<Wholesale_Datamodel>>() {
             @Override
             public void onResponse(Call<List<Wholesale_Datamodel>> call, Response<List<Wholesale_Datamodel>> response) {
@@ -64,12 +95,17 @@ public class Wholesale extends AppCompatActivity
                     wholesaleadapeter = new Wholesale_Adapter(wholesalemodel,getApplicationContext());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setAdapter(wholesaleadapeter);
+                    swipeRefreshLayout.setRefreshing(false);
+                    progressBar.setVisibility(View.GONE);
 
 
                 }
 
                 else {
                     recyclerView.setVisibility(View.GONE);
+                    swipeRefreshLayout.setRefreshing(false);
+                    progressBar.setVisibility(View.GONE);
+
 
 
                 }
@@ -79,8 +115,12 @@ public class Wholesale extends AppCompatActivity
             public void onFailure(Call<List<Wholesale_Datamodel>> call, Throwable t) {
 
                 Toast.makeText(Wholesale.this,"Error"+t,Toast.LENGTH_LONG).show();
+                swipeRefreshLayout.setRefreshing(false);
+                progressBar.setVisibility(View.GONE);
+
             }
         });
+
 
 
     }
@@ -156,15 +196,15 @@ public class Wholesale extends AppCompatActivity
                 startActivity(intent4);
                 break;
 
-            case R.id.nav_Sales:
-                Intent intent5 = new Intent(Wholesale.this, DailySales.class);
-                startActivity(intent5);
-                break;
-
-            case R.id.nav_Return:
-                Intent intent6 = new Intent(Wholesale.this, Return.class);
-                startActivity(intent6);
-                break;
+//            case R.id.nav_Sales:
+//                Intent intent5 = new Intent(Wholesale.this, DailySales.class);
+//                startActivity(intent5);
+//                break;
+//
+//            case R.id.nav_Return:
+//                Intent intent6 = new Intent(Wholesale.this, Return.class);
+//                startActivity(intent6);
+//                break;
 
 
             case R.id.nav_Credit:
@@ -179,5 +219,13 @@ public class Wholesale extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+    @Override
+    public void onRefresh() {
+        callapi(Pan);
+
     }
 }

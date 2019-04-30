@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class InventoryReportFrag extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
     private String startdate,enddate,pan;
+    ProgressBar progressBar;
     private  int totalquantity,totalcp,totalmp;
     private List<Reportdata> reportdata;
     private Inventoryreport_Adapter reportdataadapter;
@@ -50,6 +52,9 @@ public class InventoryReportFrag extends Fragment {
 
         recyclerView = v.findViewById(R.id.recyclefrag_inventoryreport);
         textViewnodata = v.findViewById(R.id.nodatafound);
+
+        progressBar = v.findViewById(R.id.progress_circularinventoryfrag);
+        progressBar.setVisibility(View.VISIBLE);
 
 
         User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
@@ -74,6 +79,8 @@ public class InventoryReportFrag extends Fragment {
                         reportdataadapter = new Inventoryreport_Adapter(reportdata,getContext());
                         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                         recyclerView.setAdapter(reportdataadapter);
+                        progressBar.setVisibility(View.GONE);
+
 
 
                     }
@@ -82,6 +89,8 @@ public class InventoryReportFrag extends Fragment {
                     {
                         recyclerView.setVisibility(View.GONE);
                         textViewnodata.setVisibility(View.VISIBLE);
+                        progressBar.setVisibility(View.GONE);
+
 
                     }
 
@@ -92,6 +101,8 @@ public class InventoryReportFrag extends Fragment {
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
                     Toast.makeText(getContext(),"Error"+t,Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+
 
                 }
             });

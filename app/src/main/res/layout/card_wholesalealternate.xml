@@ -5,7 +5,7 @@
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:contextClickable="true"
+    android:contextClickable="false"
     android:layout_marginTop="2dp"
     cardview:cardBackgroundColor="@color/Titlehome"
     xmlns:cardview="http://schemas.android.com/apk/res-auto"
