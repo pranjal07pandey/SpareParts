@@ -65,13 +65,13 @@ public class Delivered_Adapter extends RecyclerView.Adapter<Delivered_Adapter.De
         public Deliveredviewholder(View itemView) {
             super(itemView);
 
-            textViewname = itemView.findViewById(R.id.name_textviewdelivered);
-            textViewaddress = itemView.findViewById(R.id.address_textviewdelivered);
-            textViewcode = itemView.findViewById(R.id.code_textviewdelivered);
-            textViewqunatity = itemView.findViewById(R.id.quantity_textviewdelivered);
-            textViewprice = itemView.findViewById(R.id.price_textviewdelivered);
+            textViewname = itemView.findViewById(R.id.deliveredname);
+            textViewaddress = itemView.findViewById(R.id.deliveredaddress);
+            textViewcode = itemView.findViewById(R.id.deliveredcode);
+            textViewqunatity = itemView.findViewById(R.id.deliveredquantity);
+            textViewprice = itemView.findViewById(R.id.deliveredprice);
 
-            cardView = itemView.findViewById(R.id.cardviewdelivered_id);
+            cardView = itemView.findViewById(R.id.cardviewdelivered);
 
         }
     }

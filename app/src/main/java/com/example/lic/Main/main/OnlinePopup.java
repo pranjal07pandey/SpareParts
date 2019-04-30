@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.lic.R;
 
@@ -13,7 +14,7 @@ import androidx.annotation.Nullable;
 
 public class OnlinePopup extends Activity {
 
-    Button delivered, undelivered;
+    Button delivered, undelivered, exit;
 
 
     @Override
@@ -22,7 +23,7 @@ public class OnlinePopup extends Activity {
 
         setContentView(R.layout.online_popup);
 
-        delivered = (Button) findViewById(R.id.buttonOk1);
+        delivered = findViewById(R.id.buttonOk1);
 
         delivered.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,7 +36,7 @@ public class OnlinePopup extends Activity {
 
 
 
-        undelivered = (Button) findViewById(R.id.buttonOk2);
+        undelivered = findViewById(R.id.buttonOk2);
 
         undelivered.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +46,14 @@ public class OnlinePopup extends Activity {
 
             }
         });
+
+//        exit = findViewById(R.id.buttonOk3);
+//        exit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
 
 
         DisplayMetrics dm = new DisplayMetrics();
