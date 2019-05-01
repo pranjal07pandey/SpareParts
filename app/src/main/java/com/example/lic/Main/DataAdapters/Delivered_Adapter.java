@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.lic.Main.Datamodel.Delivered_Datamodel;
+import com.example.lic.Main.Datamodel.Undelivered_Datamodel;
 import com.example.lic.R;
 
-import java.text.BreakIterator;
 import java.util.List;
 
 public class Delivered_Adapter extends RecyclerView.Adapter<Delivered_Adapter.Deliveredviewholder> {

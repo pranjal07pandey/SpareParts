@@ -42,18 +42,18 @@ public class OnlinePopup extends Activity {
             @Override
             public void onClick(View v) {
 
-                finish();
+                openActivity3();
 
             }
         });
 
-//        exit = findViewById(R.id.buttonOk3);
-//        exit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
+        exit = findViewById(R.id.buttonOk3);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -63,6 +63,11 @@ public class OnlinePopup extends Activity {
 
         getWindow().setLayout((int) (width * 0.8), (int) (height * 0.5));
 
+    }
+
+    private void openActivity3() {
+        Intent intent = new Intent(this, Online_Undelievered.class);
+        startActivity(intent);
     }
 
     public void openActivity2(){

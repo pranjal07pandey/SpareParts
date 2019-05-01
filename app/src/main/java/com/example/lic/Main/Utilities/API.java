@@ -8,6 +8,7 @@ import com.example.lic.Main.Datamodel.Insightsdatamodel;
 import com.example.lic.Main.Datamodel.Inventory_Model;
 import com.example.lic.Main.Datamodel.Reportdata;
 import com.example.lic.Main.Datamodel.Totaldata;
+import com.example.lic.Main.Datamodel.Undelivered_Datamodel;
 import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Datamodel.Wholesale_Datamodel;
 import com.example.lic.Main.main.Credit;
@@ -67,6 +68,12 @@ public interface API {
 
     @GET("getUndelivered.php/")
     Call<List<Delivered_Datamodel>> getdeliveredmode();
+
+
+    @GET("getUndelivered.php/")
+    Call<List<Undelivered_Datamodel>> getundeliveredmode();
+
+
 
 
 

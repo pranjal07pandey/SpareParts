@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,13 +16,29 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.lic.Main.DataAdapters.Delivered_Adapter;
+import com.example.lic.Main.DataAdapters.Undelivered_Adapter;
+import com.example.lic.Main.Datamodel.Delivered_Datamodel;
+import com.example.lic.Main.Datamodel.Undelivered_Datamodel;
 import com.example.lic.Main.Datamodel.User;
+import com.example.lic.Main.Utilities.RetrofitClient;
 import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class Online_Undelievered extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private Undelivered_Adapter undelivered_adapter;
+    private List<Undelivered_Datamodel> undeliverdmodel;
+    RecyclerView recyclerView;
 
     private TextView txtnavname,txtuserdays,textViewnodata;
 
@@ -32,6 +50,7 @@ public class Online_Undelievered extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        recyclerView = findViewById(R.id.recycleviewUndelivered);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -42,7 +61,46 @@ public class Online_Undelievered extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
+        //call api to display
+
+        Call<List<Undelivered_Datamodel>> call = RetrofitClient.getmInstance().getApi().getundeliveredmode();
+        call.enqueue(new Callback<List<Undelivered_Datamodel>>() {
+            @Override
+            public void onResponse(Call<List<Undelivered_Datamodel>> call, Response<List<Undelivered_Datamodel>> response) {
+                undeliverdmodel = response.body();
+
+                if (undeliverdmodel != null){
+
+                    undelivered_adapter = new Undelivered_Adapter(undeliverdmodel, getApplicationContext());
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    recyclerView.setAdapter(undelivered_adapter);
+
+                }
+
+                else{
+                    recyclerView.setVisibility(View.GONE);
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Undelivered_Datamodel>> call, Throwable t) {
+
+                Toast.makeText(Online_Undelievered.this, "Error"+ t, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
     }
+
+
+
 
     @Override
     public void onBackPressed() {

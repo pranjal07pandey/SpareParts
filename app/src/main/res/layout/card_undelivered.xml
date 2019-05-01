@@ -1,30 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardviewUndelivered"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Main.main.Online_Undelievered">
+    android:layout_height="wrap_content"
+    android:contextClickable="true"
+    android:layout_marginTop="2dp"
+    cardview:cardBackgroundColor="@color/Titlehome"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    cardview:cardCornerRadius="4dp">
+
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25dp"
         android:orientation="horizontal"
         android:id="@+id/linearlatou"
-        android:layout_marginTop="55dp"
-        android:background="@drawable/kk"
         android:weightSum="5"
+        android:background="@drawable/kk"
         >
-
-
 
         <TextView
             android:id="@+id/undeliveredname"
             android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:text="Name"
+            android:layout_height="20dp"
+            android:text="Pranjal"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
             android:maxLength="20"
@@ -32,29 +34,29 @@
             android:textAlignment="center"
 
             android:textColor="@color/background"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="15sp"
+            android:textStyle="normal" />
 
         <TextView
             android:layout_width="150dp"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:id="@+id/undeliveredcode"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:layout_margin="2dp"
             android:textColor="@color/background"
             android:ellipsize="marquee"
             android:maxLength="10"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:text="P.Code"
-            android:textStyle="bold"/>
+            android:text="123"
+            android:textStyle="normal"/>
 
         <TextView
             android:layout_width="150dp"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:id="@+id/undeliveredaddress"
             android:layout_margin="2dp"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textColor="@color/background"
             android:ellipsize="marquee"
             android:textAlignment="center"
@@ -62,16 +64,16 @@
             android:maxLength="10"
             android:layout_weight="1"
             android:layout_below="@+id/docscategory_title"
-            android:text="Address"
-            android:textStyle="bold"/>
+            android:text="Nepal"
+            android:textStyle="normal"/>
 
 
         <TextView
             android:layout_width="150dp"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:id="@+id/undeliveredquantity"
             android:layout_margin="2dp"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textColor="@color/background"
             android:ellipsize="marquee"
             android:textAlignment="center"
@@ -79,16 +81,16 @@
             android:maxLength="10"
             android:layout_weight="1"
             android:layout_below="@+id/docscategory_title"
-            android:text="Quantity"
-            android:textStyle="bold"/>
+            android:text="123"
+            android:textStyle="normal"/>
 
 
         <TextView
             android:layout_width="150dp"
-            android:layout_height="30dp"
+            android:layout_height="20dp"
             android:id="@+id/undeliveredprice"
             android:layout_margin="2dp"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textColor="@color/background"
             android:ellipsize="marquee"
             android:textAlignment="center"
@@ -96,26 +98,13 @@
             android:maxLength="10"
             android:layout_weight="1"
             android:layout_below="@+id/docscategory_title"
-            android:text="Price"
-            android:textStyle="bold"/>
-
-
-
-
-
+            android:text="123"
+            android:textStyle="normal"/>
 
 
     </LinearLayout>
 
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recycleviewUndelivered"
-        android:layout_below="@+id/linearlatou"
-        >
-
-    </android.support.v7.widget.RecyclerView>
 
 
-    </RelativeLayout>
+</android.support.v7.widget.CardView>
