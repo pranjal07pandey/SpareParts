@@ -2,6 +2,7 @@ package com.example.lic.Main.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -14,7 +15,7 @@ import androidx.annotation.Nullable;
 
 public class OnlinePopup extends Activity {
 
-    Button delivered, undelivered, exit;
+    ImageButton delivered, undelivered, exit;
 
 
     @Override
@@ -61,7 +62,7 @@ public class OnlinePopup extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.5));
+        getWindow().setLayout((int) (width), (int) (height));
 
     }
 
