@@ -1,47 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-
-
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="200dp"
     android:background="@drawable/bglogin"
+    android:padding="5dp"
+    android:layout_gravity="center">
 
-
-    >
-
-    <!--<TextView-->
-        <!--android:id="@+id/advance"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Advance: 1000 "-->
-        <!--android:textSize="20dp"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:layout_centerVertical="true"-->
-
-
-        <!--/>-->
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/sp"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Selling price: 5000"-->
-        <!--android:layout_below="@+id/advance"-->
-        <!--android:textSize="20dp"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_centerHorizontal="true"-->
-
-
-        <!--/>-->
-
-
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        android:layout_below="@id/linearlatou"
-        android:id="@+id/Relative2">
 
     <LinearLayout
     android:layout_width="wrap_content"
@@ -56,15 +22,13 @@
     android:textAlignment="center"
     android:textColor="#ffff"
     android:layout_marginTop="15dp"
-    android:textSize="15sp"
+    android:textSize="20sp"
     android:text="Advance: "
-
-    android:layout_marginLeft="10dp"
-     />
+    android:layout_marginLeft="20dp"
+    />
 
     <TextView
     android:id="@+id/advance"
-
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
@@ -74,61 +38,49 @@
     android:maxLength="7"
     android:ellipsize="marquee"
     android:textColor="#ffff"
-    android:textSize="15sp"
-     />
-
-
-    </LinearLayout>
-
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/Relative2"
-    android:id="@+id/Relative3">
-
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:id="@+id/linear4">
-
-    <TextView
-
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAlignment="center"
-    android:textColor="#ffff"
-    android:layout_marginTop="15dp"
-    android:textSize="15sp"
-    android:text="Sp: "
-    android:layout_marginLeft="10dp"
-     />
-
-    <TextView
-    android:id="@+id/sp"
-
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginTop="15dp"
-    android:text="2000"
-    android:textAlignment="center"
-    android:maxLength="7"
-    android:ellipsize="marquee"
-    android:textColor="#ffff"
-    android:textSize="15sp"
+    android:textSize="20sp"
     />
 
-
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linear4">
 
-    </RelativeLayout>
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#ffff"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:text="Sp: "
+            android:layout_marginLeft="20dp"
+            />
+
+        <TextView
+            android:id="@+id/sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:maxLength="7"
+            android:ellipsize="marquee"
+            android:textColor="#ffff"
+            android:textSize="20sp"
+            />
+
+    </LinearLayout>
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <Button
         android:id="@+id/buttonOk"
@@ -143,4 +95,126 @@
 
 
 </RelativeLayout>
+
+
+</LinearLayout>
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@drawable/bglogin"-->
+    <!---->
+    <!--&gt;-->
+
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/Relative2">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:id="@+id/linear3">-->
+
+    <!--<TextView-->
+
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textColor="#ffff"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:textSize="15sp"-->
+    <!--android:text="Advance: "-->
+
+    <!--android:layout_marginLeft="10dp"-->
+     <!--/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/advance"-->
+
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:text="0"-->
+    <!--android:textAlignment="center"-->
+    <!--android:maxLength="7"-->
+    <!--android:ellipsize="marquee"-->
+    <!--android:textColor="#ffff"-->
+    <!--android:textSize="15sp"-->
+     <!--/>-->
+
+
+    <!--</LinearLayout>-->
+
+
+
+    <!--</RelativeLayout>-->
+
+    <!--<RelativeLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_below="@id/Relative2"-->
+    <!--android:id="@+id/Relative3">-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:id="@+id/linear4">-->
+
+    <!--<TextView-->
+
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:textAlignment="center"-->
+    <!--android:textColor="#ffff"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:textSize="15sp"-->
+    <!--android:text="Sp: "-->
+    <!--android:layout_marginLeft="10dp"-->
+     <!--/>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/sp"-->
+
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginLeft="10dp"-->
+    <!--android:layout_marginTop="15dp"-->
+    <!--android:text="2000"-->
+    <!--android:textAlignment="center"-->
+    <!--android:maxLength="7"-->
+    <!--android:ellipsize="marquee"-->
+    <!--android:textColor="#ffff"-->
+    <!--android:textSize="15sp"-->
+    <!--/>-->
+
+
+    <!--</LinearLayout>-->
+
+
+
+    <!--</RelativeLayout>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/buttonOk"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="OK"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginTop="350dp"-->
+
+        <!--/>-->
+
+
+<!--</RelativeLayout>-->
 
