@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+//        setContentView(R.layout.activity_online);
+
+
     }
 
 
@@ -153,7 +158,7 @@ public class MainActivity extends AppCompatActivity
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(MainActivity.this, Online_Delievered.class);
+                Intent intent3 = new Intent(MainActivity.this, TransparentActivity.class);
                 startActivity(intent3);
                 break;
 

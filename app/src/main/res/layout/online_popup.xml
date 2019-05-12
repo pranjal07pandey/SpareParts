@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="350dp"
-    android:layout_height="400dp"
+    android:layout_height="240dp"
     android:background="@drawable/bglogin"
     android:padding="5dp"
     android:layout_gravity="center">
@@ -14,14 +14,14 @@
         android:layout_gravity="end"
         android:background="@drawable/close"
         android:gravity="center"
-        android:text="X"
         android:textColor="@color/Titlehome"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginRight="10dp"/>
 
 
 
     <LinearLayout
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
 
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -72,7 +72,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="0dp"
         android:orientation="horizontal"
         android:id="@+id/pricelist"
         android:layout_width="match_parent"
@@ -81,11 +81,11 @@
         <LinearLayout
 
 
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="80dp">
+            android:layout_height="40dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,11 +100,11 @@
         <LinearLayout
 
 
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="80dp">
+            android:layout_height="40dp">
 
             <TextView
                 android:layout_width="wrap_content"

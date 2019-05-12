@@ -169,7 +169,7 @@ public class Online_Undelievered extends AppCompatActivity
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(Online_Undelievered.this, Online_Delievered.class);
+                Intent intent3 = new Intent(Online_Undelievered.this, TransparentActivity.class);
                 startActivity(intent3);
                 break;
 

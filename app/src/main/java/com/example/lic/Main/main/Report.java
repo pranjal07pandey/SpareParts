@@ -322,7 +322,7 @@ public class Report extends AppCompatActivity
                 break;
 
             case R.id.nav_Online:
-                Intent intent3 = new Intent(Report.this, Online_Delievered.class);
+                Intent intent3 = new Intent(Report.this, TransparentActivity.class);
                 startActivity(intent3);
                 break;
 

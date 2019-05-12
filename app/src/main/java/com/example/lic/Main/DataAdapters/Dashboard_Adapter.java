@@ -18,6 +18,7 @@ import com.example.lic.Main.main.Insights;
 import com.example.lic.Main.main.Inventory;
 import com.example.lic.Main.main.OnlinePopup;
 import com.example.lic.Main.main.Report;
+import com.example.lic.Main.main.TransparentActivity;
 import com.example.lic.Main.main.Wholesale;
 import com.example.lic.R;
 
@@ -75,7 +76,7 @@ public class Dashboard_Adapter extends RecyclerView.Adapter<Dashboard_Adapter.Da
 
                 else if (dashboardList.get(i).getTitle().toUpperCase().equals("ONLINE")){
 
-                    Intent intent = new Intent(mcontext, OnlinePopup.class);
+                    Intent intent = new Intent(mcontext, TransparentActivity.class);
                     mcontext.startActivity(intent);
 
                 }

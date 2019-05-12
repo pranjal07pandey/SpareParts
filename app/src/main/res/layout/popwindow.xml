@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="200dp"
-    android:background="@drawable/bglogin"
+    android:background="@color/second"
     android:padding="5dp"
     android:layout_gravity="center">
 
@@ -13,31 +13,36 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:id="@+id/linear3">
+    android:id="@+id/linear3"
+
+        android:layout_gravity="center"
+
+        >
 
     <TextView
 
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAlignment="center"
-    android:textColor="#ffff"
+    android:textColor="#0c0b0c"
     android:layout_marginTop="15dp"
     android:textSize="20sp"
     android:text="Advance: "
-    android:layout_marginLeft="20dp"
+
+
     />
 
     <TextView
     android:id="@+id/advance"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
+    android:layout_marginLeft="2dp"
     android:layout_marginTop="15dp"
     android:text="0"
     android:textAlignment="center"
-    android:maxLength="7"
+    android:maxLength="10"
     android:ellipsize="marquee"
-    android:textColor="#ffff"
+    android:textColor="#0c0b0c"
     android:textSize="20sp"
     />
 
@@ -48,31 +53,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/linear4">
+        android:id="@+id/linear4"
+        android:layout_gravity="center">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#ffff"
+            android:textColor="#0c0b0c"
             android:layout_marginTop="15dp"
             android:textSize="20sp"
             android:text="Sp: "
-            android:layout_marginLeft="20dp"
+
+
             />
 
         <TextView
             android:id="@+id/sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="2dp"
             android:layout_marginTop="15dp"
             android:text="0"
             android:textAlignment="center"
-            android:maxLength="7"
+            android:maxLength="10"
             android:ellipsize="marquee"
-            android:textColor="#ffff"
+            android:textColor="#0c0b0c"
             android:textSize="20sp"
             />
 

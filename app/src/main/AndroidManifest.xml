@@ -66,10 +66,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Main.main.Pop"
-            android:theme="@style/AppTheme.CustomTheme"></activity>
+            android:theme="@style/AppTheme.CustomTheme1"></activity>
         <activity
             android:name=".Main.main.OnlinePopup"
-            android:theme="@style/AppTheme.CustomTheme" />
+            android:theme="@style/AppTheme.CustomTheme2"></activity>
+
+        <activity android:name=".Main.main.TransparentActivity"
+            android:theme="@style/Theme.AppCompat.Translucent"/>
     </application>
 
 </manifest>
