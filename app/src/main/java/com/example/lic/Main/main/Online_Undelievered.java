@@ -58,7 +58,8 @@ public class Online_Undelievered extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.recycleviewUndelivered);
-
+        textViewnodata = findViewById(R.id.nodataundelievered);
+        textViewnodata.setVisibility(View.GONE);
         User user = SharedPreferenceManager.getmInstance(this).getUser();
         pan = user.getUserid();
         swipeRefreshLayoutonlineundelievered  = findViewById(R.id.swipetorefereshonlineundelievered);
@@ -109,6 +110,8 @@ public class Online_Undelievered extends AppCompatActivity
                 else{
                     swipeRefreshLayoutonlineundelievered.setRefreshing(false);
                     recyclerView.setVisibility(View.GONE);
+                    textViewnodata.setVisibility(View.VISIBLE);
+                    Toast.makeText(Online_Undelievered.this, "No data found", Toast.LENGTH_SHORT).show();
                 }
 
 

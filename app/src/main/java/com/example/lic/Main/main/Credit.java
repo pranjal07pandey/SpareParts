@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lic.Main.DataAdapters.Credit_Adapter;
@@ -37,6 +38,7 @@ public class Credit extends AppCompatActivity
     private Credit_Adapter creditadapter;
     ProgressBar progressBarcredit;
     SwipeRefreshLayout swipeRefreshLayoutcredit;
+    TextView textViewnodata;
     String pan;
     private List<Credit_Datamodel> creditmodel;
     RecyclerView recyclerView;
@@ -53,6 +55,8 @@ public class Credit extends AppCompatActivity
         pan = user.getUserid();
 
         recyclerView = findViewById(R.id.recycleviewcredit);
+        textViewnodata = findViewById(R.id.nodatacredit);
+        textViewnodata.setVisibility(View.GONE);
 
         progressBarcredit = findViewById(R.id.pbarcredit);
         progressBarcredit.setVisibility(View.VISIBLE);
@@ -99,7 +103,14 @@ public class Credit extends AppCompatActivity
 
 
                 }
+                    else {
 
+                        swipeRefreshLayoutcredit.setRefreshing(false);
+                        progressBarcredit.setVisibility(View.GONE);
+                        textViewnodata.setVisibility(View.VISIBLE);
+
+                    Toast.makeText(Credit.this, "No data Found", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override

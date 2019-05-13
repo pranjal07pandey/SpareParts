@@ -105,6 +105,7 @@ public class Wholesale extends AppCompatActivity
                     recyclerView.setVisibility(View.GONE);
                     swipeRefreshLayout.setRefreshing(false);
                     progressBar.setVisibility(View.GONE);
+                    Toast.makeText(Wholesale.this, "No data found", Toast.LENGTH_SHORT).show();
 
 
 
@@ -114,9 +115,10 @@ public class Wholesale extends AppCompatActivity
             @Override
             public void onFailure(Call<List<Wholesale_Datamodel>> call, Throwable t) {
 
-                Toast.makeText(Wholesale.this,"Please Check Your Internet Connection and Try Again",Toast.LENGTH_LONG).show();
+
                 swipeRefreshLayout.setRefreshing(false);
                 progressBar.setVisibility(View.GONE);
+                Toast.makeText(Wholesale.this,"Please Check Your Internet Connection and Try Again",Toast.LENGTH_LONG).show();
 
             }
         });

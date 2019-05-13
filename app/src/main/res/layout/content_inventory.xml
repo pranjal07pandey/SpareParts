@@ -103,8 +103,8 @@
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
         android:textSize="20dp"
-        android:layout_margin="20dp"
-        android:visibility="gone"
+        android:layout_marginTop="50dp"
+        android:visibility="visible"
         android:fontFamily="@font/robot"
       />
 

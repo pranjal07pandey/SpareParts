@@ -105,6 +105,7 @@ public class Online_Delievered extends AppCompatActivity
                 else{
                     swipeRefreshLayoutonlinedelievered.setRefreshing(false);
                     recyclerView.setVisibility(View.GONE);
+                    Toast.makeText(Online_Delievered.this, "No data found", Toast.LENGTH_SHORT).show();
                 }
 
 

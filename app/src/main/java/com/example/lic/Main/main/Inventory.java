@@ -113,6 +113,7 @@ public class Inventory extends AppCompatActivity
                     textViewnodata.setVisibility(View.VISIBLE);
                     swipeRefreshLayout.setRefreshing(false);
                     progressBar.setVisibility(View.GONE);
+                    Toast.makeText(Inventory.this, "No data found", Toast.LENGTH_SHORT).show();
 
                 }
 
