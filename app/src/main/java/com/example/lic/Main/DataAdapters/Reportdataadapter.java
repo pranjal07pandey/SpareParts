@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lic.Main.Datamodel.Reportdata;
 import com.example.lic.R;
@@ -18,7 +19,7 @@ public class Reportdataadapter extends RecyclerView.Adapter<Reportdataadapter.My
     private List<Reportdata> reportdatalist;
     private Context mcontext;
     Integer quantity,tid,sp,profit1,profit,totalprofit;
-    String quantitystring,tidstring,pidstring,spstring,profitstring;
+    String quantitystring,tidstring,pidstring,spstring,profitstring,date,date2;
 
     public Reportdataadapter(List<Reportdata> reportdatalist, Context mcontext) {
         this.reportdatalist = reportdatalist;
@@ -52,7 +53,10 @@ public class Reportdataadapter extends RecyclerView.Adapter<Reportdataadapter.My
         sp = reportdatalist.get(i).getSp();
         spstring = String.valueOf(sp);
 
-        myreportviewholder.textViewdate.setText(reportdata.getDate());
+        date = reportdata.getDate();
+        date2 = date.substring(date.length()-8);
+
+        myreportviewholder.textViewdate.setText(date2);
         myreportviewholder.textViewtransaction.setText(tidstring);
         myreportviewholder.textViewquantity.setText(quantitystring);
         myreportviewholder.textViewcode.setText(pidstring);

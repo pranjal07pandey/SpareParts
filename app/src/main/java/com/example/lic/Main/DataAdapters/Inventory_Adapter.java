@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lic.Main.Datamodel.Inventory_Model;
 import com.example.lic.Main.main.Inventory_Secong;
@@ -48,6 +49,7 @@ public class Inventory_Adapter extends RecyclerView.Adapter<Inventory_Adapter.My
             public void onClick(View v) {
 
                 Intent intent = new Intent(mContext, Inventory_Secong.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("ID",inventory_model.getId());
                 intent.putExtra("Productname",inventory_model.getType());
                 intent.putExtra("brand",inventory_model.getBrand());

@@ -7,6 +7,7 @@ public class RetrofitClient {
 
     private static final String BaseURL = "http://afs.com.np/afs_billing/api/";
     private static final String BaseURLlocal = "http://192.168.20.6/antique_fashion_store/api/";
+    private static final String BaseUrlfinal = "https://logisparktech.com/lic/api/";
 
 
     private static RetrofitClient mInstance;
@@ -15,7 +16,7 @@ public class RetrofitClient {
 
     private RetrofitClient(){
 
-            retrofit = new Retrofit.Builder().baseUrl(BaseURL)
+            retrofit = new Retrofit.Builder().baseUrl(BaseUrlfinal)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
 

@@ -20,6 +20,8 @@
 
 
 
+
+
         <TextView
             android:id="@+id/undeliveredname"
             android:layout_width="150dp"
@@ -107,15 +109,27 @@
 
     </LinearLayout>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_circularundelievered"
+        android:layout_below="@id/linearlatou"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
 
+<android.support.v4.widget.SwipeRefreshLayout
+    android:layout_width="match_parent"
+    android:id="@+id/swipetorefereshonlineundelievered"
+    android:layout_below="@+id/linearlatou"
+    android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycleviewUndelivered"
-        android:layout_below="@+id/linearlatou"
+        android:layout_below="@+id/swipetorefereshonlineundelievered"
         >
 
     </android.support.v7.widget.RecyclerView>
-
+</android.support.v4.widget.SwipeRefreshLayout>
 
     </RelativeLayout>

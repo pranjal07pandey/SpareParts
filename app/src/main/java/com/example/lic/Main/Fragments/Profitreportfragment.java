@@ -60,7 +60,7 @@ public class Profitreportfragment extends Fragment {
         textViewnodata = v.findViewById(R.id.nodatafound);
 
         progressBar = v.findViewById(R.id.progress_circularprofitfrag);
-        progressBar.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
 
 
         User user = SharedPreferenceManager.getmInstance(getContext()).getUser();

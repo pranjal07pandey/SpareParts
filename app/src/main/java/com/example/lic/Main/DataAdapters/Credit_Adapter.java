@@ -49,15 +49,13 @@ public class Credit_Adapter extends RecyclerView.Adapter<Credit_Adapter.Creditvi
         advance = String.valueOf(listcredit.get(i).getAdvance());
         sp = String.valueOf(listcredit.get(i).getSp());
 
-//        creditviewholder.textViewadvance.setText(listcredit.get(i).getAdvance());
-//        creditviewholder.textViewsp.setText(listcredit.get(i).getSp());
-
+//
         creditviewholder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(context,Pop.class);
-//                Toast.makeText(context, "hello there", Toast.LENGTH_SHORT).show();
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("Advance",advance);
                 intent.putExtra("Sp",sp);
                 context.startActivity(intent);

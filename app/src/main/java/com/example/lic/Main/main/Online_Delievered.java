@@ -1,10 +1,12 @@
 package com.example.lic.Main.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,11 +16,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.lic.Main.DataAdapters.Delivered_Adapter;
 import com.example.lic.Main.Datamodel.Delivered_Datamodel;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
 import java.util.List;
@@ -28,13 +33,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Online_Delievered extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener {
 
     private Delivered_Adapter delivered_adapter;
+    ProgressBar progressBar;
+    SwipeRefreshLayout swipeRefreshLayoutonlinedelievered;
+    String pan;
     private List<Delivered_Datamodel> deliverdmodel;
     RecyclerView recyclerView;
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +51,17 @@ public class Online_Delievered extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        progressBar = findViewById(R.id.progress_circularonline);
+        progressBar.setVisibility(View.VISIBLE);
+        getSupportActionBar().setTitle("Delivered Items");
         recyclerView = findViewById(R.id.recycleviewdelivered);
+
+        swipeRefreshLayoutonlinedelievered = findViewById(R.id.swipetorefereshonlinedelievered);
+        swipeRefreshLayoutonlinedelievered.setColorSchemeColors(R.color.bluelight);
+        swipeRefreshLayoutonlinedelievered.setOnRefreshListener(this);
+
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        pan = user.getUserid();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -56,22 +75,35 @@ public class Online_Delievered extends AppCompatActivity
 
 
         //call api to display
+        callapionlinedelievered(pan);
 
-        Call<List<Delivered_Datamodel>> call = RetrofitClient.getmInstance().getApi().getdeliveredmode();
+
+
+    }
+
+    private void callapionlinedelievered(String pan) {
+
+        Call<List<Delivered_Datamodel>> call = RetrofitClient.getmInstance().getApi().getdeliveredmode(pan);
         call.enqueue(new Callback<List<Delivered_Datamodel>>() {
             @Override
             public void onResponse(Call<List<Delivered_Datamodel>> call, Response<List<Delivered_Datamodel>> response) {
+                progressBar.setVisibility(View.GONE);
+
                 deliverdmodel = response.body();
 
                 if (deliverdmodel != null){
 
+
                     delivered_adapter = new Delivered_Adapter(deliverdmodel, getApplicationContext());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setAdapter(delivered_adapter);
+                    swipeRefreshLayoutonlinedelievered.setRefreshing(false);
+
 
                 }
 
                 else{
+                    swipeRefreshLayoutonlinedelievered.setRefreshing(false);
                     recyclerView.setVisibility(View.GONE);
                 }
 
@@ -81,11 +113,12 @@ public class Online_Delievered extends AppCompatActivity
             @Override
             public void onFailure(Call<List<Delivered_Datamodel>> call, Throwable t) {
 
+                progressBar.setVisibility(View.GONE);
+                swipeRefreshLayoutonlinedelievered.setRefreshing(false);
                 Toast.makeText(Online_Delievered.this, "Error"+ t, Toast.LENGTH_SHORT).show();
 
             }
         });
-
 
     }
 
@@ -179,5 +212,12 @@ public class Online_Delievered extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
             return true;
         }
+
+    @Override
+    public void onRefresh() {
+
+        callapionlinedelievered(pan);
+
     }
+}
 

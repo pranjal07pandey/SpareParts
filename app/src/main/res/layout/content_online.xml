@@ -103,21 +103,30 @@
             android:textStyle="bold"/>
 
 
-
-
-
-
-
     </LinearLayout>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progress_circularonline"
+        android:layout_below="@+id/linearlatou"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
+
+<android.support.v4.widget.SwipeRefreshLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@id/linearlatou"
+    android:id="@+id/swipetorefereshonlinedelievered">
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycleviewdelivered"
-        android:layout_below="@+id/linearlatou"
+        android:layout_below="@id/swipetorefereshonlinedelievered"
         >
 
     </android.support.v7.widget.RecyclerView>
+</android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

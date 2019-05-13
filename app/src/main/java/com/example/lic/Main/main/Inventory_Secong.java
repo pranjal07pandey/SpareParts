@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.example.lic.Main.Datamodel.Inventory_Model;
 import com.example.lic.Main.DataAdapters.Inventory_Adapter_Second;
@@ -38,6 +39,7 @@ public class Inventory_Secong extends AppCompatActivity {
 
         type = getIntent().getExtras().getString("Productname");
         brand = getIntent().getExtras().getString("brand");
+        id = getIntent().getExtras().getInt("ID");
 
         getSupportActionBar().setTitle(brand+" "+"("+type+")" + id);
 
@@ -46,11 +48,19 @@ public class Inventory_Secong extends AppCompatActivity {
         call.enqueue(new Callback<List<Inventory_Model>>() {
             @Override
             public void onResponse(Call<List<Inventory_Model>> call, Response<List<Inventory_Model>> response) {
+                
+                
 
                 inventoryModelList = response.body();
-                inventory_adapter_second = new Inventory_Adapter_Second(inventoryModelList,getApplicationContext());
-                recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                recyclerView2.setAdapter(inventory_adapter_second);
+                if (inventoryModelList!=null){
+                    inventory_adapter_second = new Inventory_Adapter_Second(inventoryModelList,getApplicationContext());
+                    recyclerView2.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    recyclerView2.setAdapter(inventory_adapter_second);
+                }
+
+                else {
+                    Toast.makeText(Inventory_Secong.this, "No data", Toast.LENGTH_SHORT).show();
+                }
 
             }
 

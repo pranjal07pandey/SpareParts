@@ -64,14 +64,14 @@ public interface API {
     Call<List<Wholesale_Datamodel>> getwholesalemode(@Query("PAN") String pan);
 
     @GET("getCredit.php/")
-    Call<List<Credit_Datamodel>> getcreditmode();
+    Call<List<Credit_Datamodel>> getcreditmode(@Query("PAN") String pan);
+
+    @GET("getDelivered.php/")
+    Call<List<Delivered_Datamodel>> getdeliveredmode(@Query("PAN") String pan);
+
 
     @GET("getUndelivered.php/")
-    Call<List<Delivered_Datamodel>> getdeliveredmode();
-
-
-    @GET("getUndelivered.php/")
-    Call<List<Undelivered_Datamodel>> getundeliveredmode();
+    Call<List<Undelivered_Datamodel>> getundeliveredmode(@Query("PAN") String pan);
 
 
 

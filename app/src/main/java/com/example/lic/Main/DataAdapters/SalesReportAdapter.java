@@ -19,7 +19,7 @@ public class SalesReportAdapter extends RecyclerView.Adapter<SalesReportAdapter.
     private List<Reportdata> reportdatalist;
     private Context mcontext;
     Integer quantity,tid,sp,profit;
-    String quantitystring,tidstring,pidstring,spstring,profitstring;
+    String quantitystring,tidstring,pidstring,spstring,profitstring,date,date2;
 
     public SalesReportAdapter(List<Reportdata> reportdatalist, Context mcontext) {
         this.reportdatalist = reportdatalist;
@@ -54,7 +54,9 @@ public class SalesReportAdapter extends RecyclerView.Adapter<SalesReportAdapter.
         sp = reportdatalist.get(i).getSp();
         spstring = String.valueOf(sp);
 
-        myreportviewholder.textViewdate.setText(reportdata.getDate());
+        date = reportdata.getDate();
+        date2 = date.substring(date.length()-8);
+        myreportviewholder.textViewdate.setText(date2);
         myreportviewholder.textViewtransaction.setText(tidstring);
         myreportviewholder.textViewquantity.setText(quantitystring);
         myreportviewholder.textViewcode.setText(pidstring);

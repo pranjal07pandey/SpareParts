@@ -1,10 +1,12 @@
 package com.example.lic.Main.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,11 +14,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.lic.Main.DataAdapters.Credit_Adapter;
 import com.example.lic.Main.Datamodel.Credit_Datamodel;
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Utilities.RetrofitClient;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 
 import java.util.List;
@@ -26,12 +32,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Credit extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener {
 
     private Credit_Adapter creditadapter;
+    ProgressBar progressBarcredit;
+    SwipeRefreshLayout swipeRefreshLayoutcredit;
+    String pan;
     private List<Credit_Datamodel> creditmodel;
     RecyclerView recyclerView;
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +49,18 @@ public class Credit extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        pan = user.getUserid();
+
         recyclerView = findViewById(R.id.recycleviewcredit);
+
+        progressBarcredit = findViewById(R.id.pbarcredit);
+        progressBarcredit.setVisibility(View.VISIBLE);
+
+        swipeRefreshLayoutcredit = findViewById(R.id.swipetorefereshcredit);
+        swipeRefreshLayoutcredit.setColorSchemeColors(R.color.bluelight);
+        swipeRefreshLayoutcredit.setOnRefreshListener(this);
+
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -54,33 +75,41 @@ public class Credit extends AppCompatActivity
 
         //Api call
 
-       Call<List<Credit_Datamodel>> call = RetrofitClient.getmInstance().getApi().getcreditmode();
-       call.enqueue(new Callback<List<Credit_Datamodel>>() {
-           @Override
-           public void onResponse(Call<List<Credit_Datamodel>> call, Response<List<Credit_Datamodel>> response) {
+        callapicredit(pan);
 
 
-                  creditmodel = response.body();
-                   if (creditmodel!=null){
-
-                       creditadapter = new Credit_Adapter(creditmodel,getApplicationContext());
-                       recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                       recyclerView.setAdapter(creditadapter);
 
 
-                   }
+    }
 
-           }
+    private void callapicredit(String pan) {
+        Call<List<Credit_Datamodel>> call = RetrofitClient.getmInstance().getApi().getcreditmode(pan);
+        call.enqueue(new Callback<List<Credit_Datamodel>>() {
+            @Override
+            public void onResponse(Call<List<Credit_Datamodel>> call, Response<List<Credit_Datamodel>> response) {
 
-           @Override
-           public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
+                progressBarcredit.setVisibility(View.GONE);
+                creditmodel = response.body();
+                if (creditmodel!=null){
 
-               Toast.makeText(getApplicationContext(),"Error"+t,Toast.LENGTH_LONG).show();
+                    creditadapter = new Credit_Adapter(creditmodel,getApplicationContext());
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    recyclerView.setAdapter(creditadapter);
+                    swipeRefreshLayoutcredit.setRefreshing(false);
 
-           }
-       });
 
+                }
 
+            }
+
+            @Override
+            public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
+                progressBarcredit.setVisibility(View.GONE);
+                swipeRefreshLayoutcredit.setRefreshing(false);
+                Toast.makeText(getApplicationContext(),"Error"+t,Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 
     @Override
@@ -176,5 +205,12 @@ public class Credit extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onRefresh() {
+
+        callapicredit(pan);
+
     }
 }

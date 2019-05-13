@@ -1,9 +1,11 @@
 package com.example.lic.Main.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,15 +37,19 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Online_Undelievered extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener {
 
     private Undelivered_Adapter undelivered_adapter;
     private List<Undelivered_Datamodel> undeliverdmodel;
+    ProgressBar progressBarundelievered;
+    String pan;
     RecyclerView recyclerView;
+    SwipeRefreshLayout swipeRefreshLayoutonlineundelievered;
 
     private TextView txtnavname,txtuserdays,textViewnodata;
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,17 @@ public class Online_Undelievered extends AppCompatActivity
 
         recyclerView = findViewById(R.id.recycleviewUndelivered);
 
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        pan = user.getUserid();
+        swipeRefreshLayoutonlineundelievered  = findViewById(R.id.swipetorefereshonlineundelievered);
+        swipeRefreshLayoutonlineundelievered.setColorSchemeColors(R.color.bluelight);
+        swipeRefreshLayoutonlineundelievered.setOnRefreshListener(this);
+
+
+        getSupportActionBar().setTitle("Undelivered Items");
+
+        progressBarundelievered = findViewById(R.id.progress_circularundelievered);
+        progressBarundelievered.setVisibility(View.VISIBLE);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -64,24 +82,32 @@ public class Online_Undelievered extends AppCompatActivity
 
 
 
+        callundelievereditems(pan);
 
         //call api to display
 
-        Call<List<Undelivered_Datamodel>> call = RetrofitClient.getmInstance().getApi().getundeliveredmode();
+     }
+
+    private void callundelievereditems(String pan) {
+
+        Call<List<Undelivered_Datamodel>> call = RetrofitClient.getmInstance().getApi().getundeliveredmode(pan);
         call.enqueue(new Callback<List<Undelivered_Datamodel>>() {
             @Override
             public void onResponse(Call<List<Undelivered_Datamodel>> call, Response<List<Undelivered_Datamodel>> response) {
                 undeliverdmodel = response.body();
 
+                progressBarundelievered.setVisibility(View.GONE);
                 if (undeliverdmodel != null){
 
                     undelivered_adapter = new Undelivered_Adapter(undeliverdmodel, getApplicationContext());
                     recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerView.setAdapter(undelivered_adapter);
+                    swipeRefreshLayoutonlineundelievered.setRefreshing(false);
 
                 }
 
                 else{
+                    swipeRefreshLayoutonlineundelievered.setRefreshing(false);
                     recyclerView.setVisibility(View.GONE);
                 }
 
@@ -90,16 +116,14 @@ public class Online_Undelievered extends AppCompatActivity
 
             @Override
             public void onFailure(Call<List<Undelivered_Datamodel>> call, Throwable t) {
+                progressBarundelievered.setVisibility(View.GONE);
+                swipeRefreshLayoutonlineundelievered.setRefreshing(false);
 
                 Toast.makeText(Online_Undelievered.this, "Error"+ t, Toast.LENGTH_SHORT).show();
 
             }
         });
-
-
     }
-
-
 
 
     @Override
@@ -199,5 +223,12 @@ public class Online_Undelievered extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onRefresh() {
+
+        callundelievereditems(pan);
+
     }
 }
