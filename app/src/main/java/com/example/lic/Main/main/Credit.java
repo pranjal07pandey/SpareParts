@@ -106,7 +106,7 @@ public class Credit extends AppCompatActivity
             public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
                 progressBarcredit.setVisibility(View.GONE);
                 swipeRefreshLayoutcredit.setRefreshing(false);
-                Toast.makeText(getApplicationContext(),"Error"+t,Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"Please Connect To Internet And Try Again",Toast.LENGTH_LONG).show();
 
             }
         });

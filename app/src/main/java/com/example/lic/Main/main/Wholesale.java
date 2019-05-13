@@ -114,7 +114,7 @@ public class Wholesale extends AppCompatActivity
             @Override
             public void onFailure(Call<List<Wholesale_Datamodel>> call, Throwable t) {
 
-                Toast.makeText(Wholesale.this,"Error"+t,Toast.LENGTH_LONG).show();
+                Toast.makeText(Wholesale.this,"Please Check Your Internet Connection and Try Again",Toast.LENGTH_LONG).show();
                 swipeRefreshLayout.setRefreshing(false);
                 progressBar.setVisibility(View.GONE);
 

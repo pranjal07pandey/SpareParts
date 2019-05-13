@@ -27,7 +27,7 @@
 
             <TextView
                 android:id="@+id/inventory_datereport"
-                android:layout_width="100dp"
+                android:layout_width="120dp"
                 android:layout_height="20dp"
                 android:text="@string/date"
                 android:layout_margin="2dp"
@@ -131,7 +131,7 @@
                 android:id="@+id/inventory_report_quantity"
                 android:layout_width="100dp"
                 android:layout_height="20dp"
-                android:text="@string/quantity"
+                android:text="Qty"
                 android:layout_margin="2dp"
                 android:ellipsize="marquee"
                 android:maxLength="10"

@@ -100,7 +100,7 @@ public class InventoryReportFrag extends Fragment {
 
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
-                    Toast.makeText(getContext(),"Error"+t,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Please Connect To Internet And Try Again",Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
 
 
@@ -137,7 +137,7 @@ public class InventoryReportFrag extends Fragment {
                 @Override
                 public void onFailure(Call<Totaldata> call, Throwable t) {
 
-                    Toast.makeText(getContext(),"No data found",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(),"Please Connect To Internet And Try Again",Toast.LENGTH_LONG).show();
 
                 }
             });

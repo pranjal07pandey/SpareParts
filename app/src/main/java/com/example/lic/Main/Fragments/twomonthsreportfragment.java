@@ -61,12 +61,6 @@ public class twomonthsreportfragment extends Fragment {
         barChart = v.findViewById(R.id.chartinventory);
 
 
-//        linechart.setOnChartGestureListener(GraphExample.this);
-//        linechart.setOnChartValueSelectedListener(GraphExample.this);
-//
-//        lineChart.setDragEnabled(true);
-//        lineChart.setScaleEnabled(false);
-
         User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
         pan = String.valueOf(user.getUserid());
 
@@ -203,6 +197,7 @@ public class twomonthsreportfragment extends Fragment {
 
             @Override
                 public void onFailure(Call<List<Insightsdatamodel>> call, Throwable t) {
+                Toast.makeText(getContext(),"Please Connect To Internet And Try Again",Toast.LENGTH_LONG).show();
 
                     }
                      }

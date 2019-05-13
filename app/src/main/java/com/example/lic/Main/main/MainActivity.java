@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
-//        setContentView(R.layout.activity_online);
-
 
     }
 

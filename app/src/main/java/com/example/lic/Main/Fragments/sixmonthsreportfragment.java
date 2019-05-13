@@ -49,7 +49,6 @@ public class sixmonthsreportfragment extends Fragment {
 
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this
         View v = inflater.inflate(R.layout.fragment_sixmonthsreportfragment, container, false);
 
 
@@ -60,13 +59,6 @@ public class sixmonthsreportfragment extends Fragment {
 
         User user = SharedPreferenceManager.getmInstance(getContext()).getUser();
         pan = String.valueOf(user.getUserid());
-
-
-//        linechart.setOnChartGestureListener(GraphExample.this);
-//        linechart.setOnChartValueSelectedListener(GraphExample.this);
-//
-//        lineChart.setDragEnabled(true);
-//        lineChart.setScaleEnabled(false);
 
 //
         Call< List<Insightsdatamodel>> call = RetrofitClient.getmInstance().getApi().getinsightsdatalong(pan);
@@ -95,7 +87,6 @@ public class sixmonthsreportfragment extends Fragment {
                                      salessp[i] = String.valueOf(list.get(i).getSp());
 
                                      yValues2salessixmonths.add(new Entry(i,Float.parseFloat(salessp[i])));
-//                                    Toast.makeText(getContext(),"Sales"+yValues,Toast.LENGTH_SHORT).show();
 
 
                                  }
@@ -107,7 +98,6 @@ public class sixmonthsreportfragment extends Fragment {
                                      profitsp[i] = String.valueOf(list.get(i).getSp());
                                      yValuesprofitsixmonths.add(new Entry(i,Float.parseFloat(profitsp[i])));
 
-//                                     Toast.makeText(getContext(),"Profit"+dateprofit[i]+" "+profitsp[i],Toast.LENGTH_SHORT).show();
                                  }
 
                                  else if(datacomingfrommoedl[i].equals("bar")){
@@ -115,26 +105,16 @@ public class sixmonthsreportfragment extends Fragment {
                                      lablebar[i] = list.get(i).getLabel();
                                      spbar[i] = String.valueOf(list.get(i).getSp());
                                      yValuesinventorysixmonths.add(new Entry(i,Float.parseFloat(spbar[i])));
-//                                     Toast.makeText(getContext(),"Bar"+lablebar[i]+" "+spbar[i],Toast.LENGTH_SHORT).show();
 
 
                                  }
 
 
                              }
-//
-//
 
-
-//
-//
-//
-//
-//
                              LineDataSet set1 = new LineDataSet(yValues2salessixmonths,"Sales Data");
                              LineDataSet set2 = new LineDataSet(yValuesprofitsixmonths,"Profit Data");
-//
-//
+
 
                              set1.setFillAlpha(500);
                              set1.setColor(Color.parseColor("#1ea1e5"));
@@ -196,6 +176,9 @@ public class sixmonthsreportfragment extends Fragment {
 
                          @Override
                          public void onFailure(Call<List<Insightsdatamodel>> call, Throwable t) {
+
+                             Toast.makeText(getContext(),"Please Connect To Internet And Try Again",Toast.LENGTH_LONG).show();
+
 
                          }
                      }
