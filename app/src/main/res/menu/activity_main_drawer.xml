@@ -10,11 +10,11 @@
             android:title="Home" />
         <item
             android:id="@+id/nav_wholesale"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/baseline_shop_black_36dp"
             android:title="Whole Sale" />
         <item
             android:id="@+id/nav_Inventory"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/baseline_inventory"
             android:title="Inventory" />
         <!--<item-->
             <!--android:id="@+id/nav_Sales"-->
@@ -27,12 +27,12 @@
 
         <item
             android:id="@+id/nav_Credit"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/credit1"
             android:title="Credit" />
 
         <item
             android:id="@+id/nav_Online"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/baseline_public"
             android:title="Online" />
     </group>
 
@@ -40,11 +40,11 @@
         <menu>
             <item
                 android:id="@+id/nav_Report"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/baseline_report"
                 android:title="Report" />
             <item
                 android:id="@+id/nav_Insights"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/baseline_insights"
                 android:title="Insights" />
         </menu>
     </item>

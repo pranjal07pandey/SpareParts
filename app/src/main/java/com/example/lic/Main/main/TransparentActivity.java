@@ -73,10 +73,6 @@ public class TransparentActivity  extends AppCompatActivity {
         });
 
 
-
-
-
-
     }
 
     public void openActivity1(){
