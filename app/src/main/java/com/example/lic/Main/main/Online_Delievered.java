@@ -115,7 +115,7 @@ public class Online_Delievered extends AppCompatActivity
 
                 progressBar.setVisibility(View.GONE);
                 swipeRefreshLayoutonlinedelievered.setRefreshing(false);
-                Toast.makeText(Online_Delievered.this, "Error"+ t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Online_Delievered.this, "Please Connect To Internet And Try Again", Toast.LENGTH_SHORT).show();
 
             }
         });

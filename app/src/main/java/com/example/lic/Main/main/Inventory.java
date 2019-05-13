@@ -125,8 +125,9 @@ public class Inventory extends AppCompatActivity
             @Override
             public void onFailure(Call<List<Inventory_Model>> call, Throwable t) {
 
-                Toast.makeText(Inventory.this,"No Internet ",Toast.LENGTH_LONG).show();
+                Toast.makeText(Inventory.this,"Please Connect To Internet And Try Again",Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.GONE);
                 textViewnodata.setVisibility(View.VISIBLE);
                 textViewnodata.setText("Please Connect To Internet And Try Again");
                 swipeRefreshLayout.setRefreshing(false);
@@ -160,7 +161,7 @@ public class Inventory extends AppCompatActivity
         txtnavname = findViewById(R.id.txtcompanyname);
         txtuserdays = findViewById(R.id.textremainingdays);
         User user = SharedPreferenceManager.getmInstance(this).getUser();
-        txtnavname.setText(user.getUserid());
+        txtnavname.setText(user.getCname());
         txtuserdays.setText("Logispark Inventory Control");
 
         return true;

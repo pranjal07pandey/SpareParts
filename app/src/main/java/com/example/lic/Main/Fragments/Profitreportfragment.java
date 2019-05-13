@@ -102,7 +102,7 @@ public class Profitreportfragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
-                    Toast.makeText(getContext(),"Error"+t,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Please Connect To Internet And Try Again",Toast.LENGTH_SHORT).show();
 
                 }
             });

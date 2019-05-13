@@ -130,6 +130,9 @@ public class SalesReportFragment extends Fragment {
                 @Override
                 public void onFailure(Call<Totaldata> call, Throwable t) {
 
+                    Toast.makeText(getContext(),"Please Connect To Internet And Try Again",Toast.LENGTH_LONG).show();
+
+
                 }
             });
 

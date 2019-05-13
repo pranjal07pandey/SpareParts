@@ -119,7 +119,7 @@ public class Online_Undelievered extends AppCompatActivity
                 progressBarundelievered.setVisibility(View.GONE);
                 swipeRefreshLayoutonlineundelievered.setRefreshing(false);
 
-                Toast.makeText(Online_Undelievered.this, "Error"+ t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Online_Undelievered.this, "Please Connect To Internet And Try Again", Toast.LENGTH_SHORT).show();
 
             }
         });

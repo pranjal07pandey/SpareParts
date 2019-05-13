@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,12 +44,19 @@ public class Login extends AppCompatActivity {
 
 
 
-
      editViewuserid = findViewById(R.id.editTextuname);
         editViewpassword = findViewById(R.id.editTextpassword);
 
         button = findViewById(R.id.buttonLogin);
         textViewregister = findViewById(R.id.textviewegister);
+
+        textViewregister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserintent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://logisparktech.com/lic/register"));
+                startActivity(browserintent);
+            }
+        });
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
