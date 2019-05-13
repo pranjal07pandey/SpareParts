@@ -18,6 +18,7 @@ import java.util.List;
 public class Inventoryreport_Adapter extends RecyclerView.Adapter<Inventoryreport_Adapter.Myinventoryviewholder> {
     private List<Reportdata> reportdatalist;
     private Context mcontext;
+    String date,date2;
     Integer quantity,sp,profit1,profit,totalprofit;
 
 
@@ -42,8 +43,10 @@ public class Inventoryreport_Adapter extends RecyclerView.Adapter<Inventoryrepor
 
 
 
+        date = reportdatalist.get(i).getDate();
+        date2 = date.substring(date.length()-8);
 
-        myinventoryviewholder.textViewdate.setText(reportdatalist.get(i).getDate());
+        myinventoryviewholder.textViewdate.setText(date2);
         myinventoryviewholder.textViewcode.setText(reportdatalist.get(i).getPid());
         myinventoryviewholder.textViewquantity.setText(String.valueOf(reportdatalist.get(i).getQuantity()));
         myinventoryviewholder.textViewcode.setText(reportdatalist.get(i).getPid());
