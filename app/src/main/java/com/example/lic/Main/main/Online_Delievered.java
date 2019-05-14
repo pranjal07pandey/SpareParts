@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lic.Main.DataAdapters.Delivered_Adapter;
@@ -37,6 +38,7 @@ public class Online_Delievered extends AppCompatActivity
 
     private Delivered_Adapter delivered_adapter;
     ProgressBar progressBar;
+    TextView textViewnodata;
     SwipeRefreshLayout swipeRefreshLayoutonlinedelievered;
     String pan;
     private List<Delivered_Datamodel> deliverdmodel;
@@ -62,6 +64,8 @@ public class Online_Delievered extends AppCompatActivity
 
         User user = SharedPreferenceManager.getmInstance(this).getUser();
         pan = user.getUserid();
+        textViewnodata = findViewById(R.id.nodataonline);
+        textViewnodata.setVisibility(View.GONE);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -105,6 +109,7 @@ public class Online_Delievered extends AppCompatActivity
                 else{
                     swipeRefreshLayoutonlinedelievered.setRefreshing(false);
                     recyclerView.setVisibility(View.GONE);
+                    textViewnodata.setVisibility(View.VISIBLE);
                     Toast.makeText(Online_Delievered.this, "No data found", Toast.LENGTH_SHORT).show();
                 }
 
@@ -149,7 +154,13 @@ public class Online_Delievered extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+            Intent t= new Intent(Online_Delievered.this,Login.class);
+            Toast.makeText(Online_Delievered.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+            startActivity(t);
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);

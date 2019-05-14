@@ -2,7 +2,10 @@ package com.example.lic.Main.main;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,7 +69,8 @@ public class Inventory extends AppCompatActivity
 
 
         recyclerView = findViewById(R.id.recyclerview);
-        textViewnodata = findViewById(R.id.inventory_nodata);
+        textViewnodata = findViewById(R.id.nodatainventory);
+        textViewnodata.setVisibility(View.GONE);
 
         User user = SharedPreferenceManager.getmInstance(this).getUser();
         Pan = String.valueOf(user.getUserid());
@@ -165,7 +170,10 @@ public class Inventory extends AppCompatActivity
         txtnavname.setText(user.getCname());
         txtuserdays.setText("Logispark Inventory Control");
 
+
         return true;
+
+
     }
 
     @Override
@@ -179,6 +187,13 @@ public class Inventory extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+
+        if (id == R.id.action_search){
+            Intent intent = new Intent(this,SearchActivityInventory.class);
+            startActivity(intent);
+        }
+
+
 
         return super.onOptionsItemSelected(item);
     }

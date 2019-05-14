@@ -117,6 +117,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            //run dialog ko code
+            //if yes
             SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
             Intent t= new Intent(MainActivity.this,Login.class);
             Toast.makeText(MainActivity.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();

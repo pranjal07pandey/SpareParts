@@ -70,114 +70,112 @@ public class twomonthsreportfragment extends Fragment {
                          @Override
                          public void onResponse(Call<List<Insightsdatamodel>> call, Response<List<Insightsdatamodel>> response) {
 
-                             List<Insightsdatamodel> list = response.body();
+                             if (response!=null){
 
-                             String[] datacomingfrommoedl = new String[list.size()];
-                             datesales = new String[list.size()];
-                             String[] salessp = new String[list.size()];
-                             dateprofit = new String[list.size()];
-                             String[] profitsp = new String[list.size()];
-                             lablebar = new String[list.size()];
-                             String[] spbar = new String[list.size()];
+                                 List<Insightsdatamodel> list = response.body();
 
-                             for (int i = 0;i< list.size();i++){
-                                 datacomingfrommoedl[i] = list.get(i).getName();
+                                 String[] datacomingfrommoedl = new String[list.size()];
+                                 datesales = new String[list.size()];
+                                 String[] salessp = new String[list.size()];
+                                 dateprofit = new String[list.size()];
+                                 String[] profitsp = new String[list.size()];
+                                 lablebar = new String[list.size()];
+                                 String[] spbar = new String[list.size()];
 
-                                 if (datacomingfrommoedl[i].equals("sales")){
+                                 for (int i = 0;i< list.size();i++){
+                                     datacomingfrommoedl[i] = list.get(i).getName();
 
-                                     datesales[i] = list.get(i).getDate();
-                                     salessp[i] = String.valueOf(list.get(i).getSp());
+                                     if (datacomingfrommoedl[i].equals("sales")){
 
-                                     yValues2sales.add(new Entry(i,Float.parseFloat(salessp[i])));
+                                         datesales[i] = list.get(i).getDate();
+                                         salessp[i] = String.valueOf(list.get(i).getSp());
+
+                                         yValues2sales.add(new Entry(i,Float.parseFloat(salessp[i])));
 //                                    Toast.makeText(getContext(),"Sales"+yValues,Toast.LENGTH_SHORT).show();
 
 
-                                 }
+                                     }
 
-                                 else if (datacomingfrommoedl[i].equals("profit"))
-                                 {
+                                     else if (datacomingfrommoedl[i].equals("profit"))
+                                     {
 
-                                     dateprofit[i] = list.get(i).getDate();
-                                     profitsp[i] = String.valueOf(list.get(i).getSp());
-                                     yValuesprofit.add(new Entry(i,Float.parseFloat(profitsp[i])));
+                                         dateprofit[i] = list.get(i).getDate();
+                                         profitsp[i] = String.valueOf(list.get(i).getSp());
+                                         yValuesprofit.add(new Entry(i,Float.parseFloat(profitsp[i])));
 
 //                                     Toast.makeText(getContext(),"Profit"+dateprofit[i]+" "+profitsp[i],Toast.LENGTH_SHORT).show();
-                                 }
+                                     }
 
-                                 else if(datacomingfrommoedl[i].equals("bar")){
+                                     else if(datacomingfrommoedl[i].equals("bar")){
 
-                                     lablebar[i] = list.get(i).getLabel();
-                                     spbar[i] = String.valueOf(list.get(i).getSp());
-                                     yValuesinventory.add(new Entry(i,Float.parseFloat(spbar[i])));
+                                         lablebar[i] = list.get(i).getLabel();
+                                         spbar[i] = String.valueOf(list.get(i).getSp());
+                                         yValuesinventory.add(new Entry(i,Float.parseFloat(spbar[i])));
 //                                     Toast.makeText(getContext(),"Bar"+lablebar[i]+" "+spbar[i],Toast.LENGTH_SHORT).show();
 
 
+                                     }
+
+
                                  }
+
+                                   LineDataSet set1 = new LineDataSet(yValues2sales,"Sales Data");
+                                 LineDataSet set2 = new LineDataSet(yValuesprofit,"Profit Data");
+
+
+
+                                 set1.setFillAlpha(500);
+                                 set1.setColor(Color.parseColor("#1ea1e5"));
+                                 set1.setLineWidth(3);
+                                 set1.setValueTextSize(10);
+
+                                 set2.setFillAlpha(500);
+                                 set2.setColor(Color.parseColor("#2a86ab"));
+                                 set2.setLineWidth(3);
+                                 set2.setValueTextSize(10);
+
+
+
+                                 ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+                                 dataSets.add(set1);
+
+
+                                 ArrayList<ILineDataSet> dataset2 = new ArrayList<>();
+                                 dataset2.add(set2);
+
+
+
+
+
+
+                                 LineData data = new LineData(dataSets);
+                                 lineChartsales.setData(data);
+                                 lineChartsales.animateXY(3000, 3000);
+                                 lineChartsales.invalidate();
+                                 lineChartsales.setNoDataText("No Data Found");
+                                 lineChartsales.getAxisRight().setEnabled(false);
+                                 XAxis xAxis = lineChartsales.getXAxis();
+                                 xAxis.setValueFormatter(new Myaxisvalueformatter(datesales));
+                                 xAxis.setGranularity(1);
+                                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+                                 LineData data2 = new LineData(dataset2);
+                                 lineChartprofit.setData(data2);
+                                 lineChartprofit.invalidate();
+                                 lineChartsales.animateXY(3000, 3000);
+                                 lineChartprofit.setNoDataText("No Profit Data");
+                                 lineChartprofit.getAxisRight().setEnabled(false);
+                                 XAxis xAxis1 = lineChartprofit.getXAxis();
+                                 xAxis1.setValueFormatter(new Myaxisvalueformatter(dateprofit));
+                                 xAxis1.setGranularity(1);
+                                 xAxis1.setPosition(XAxis.XAxisPosition.BOTTOM);
 
 
                              }
 
-
-//
-//                             Toast.makeText(getContext(),"Profit"+yValuesprofit,Toast.LENGTH_SHORT).show();
-//
-//                             Toast.makeText(getContext(),"Bar"+yValuesinventory,Toast.LENGTH_SHORT).show();
-
-
-
-
-
-
-                             LineDataSet set1 = new LineDataSet(yValues2sales,"Sales Data");
-                             LineDataSet set2 = new LineDataSet(yValuesprofit,"Profit Data");
-
-
-
-                             set1.setFillAlpha(500);
-                             set1.setColor(Color.parseColor("#1ea1e5"));
-                             set1.setLineWidth(3);
-                             set1.setValueTextSize(10);
-
-                             set2.setFillAlpha(500);
-                             set2.setColor(Color.parseColor("#2a86ab"));
-                             set2.setLineWidth(3);
-                             set2.setValueTextSize(10);
-
-
-
-                             ArrayList<ILineDataSet> dataSets = new ArrayList<>();
-                             dataSets.add(set1);
-
-
-                             ArrayList<ILineDataSet> dataset2 = new ArrayList<>();
-                             dataset2.add(set2);
-
-
-
-
-
-
-                             LineData data = new LineData(dataSets);
-                             lineChartsales.setData(data);
-                             lineChartsales.animateXY(3000, 3000);
-                             lineChartsales.invalidate();
-                             lineChartsales.setNoDataText("No Data Found");
-                             lineChartsales.getAxisRight().setEnabled(false);
-                             XAxis xAxis = lineChartsales.getXAxis();
-                             xAxis.setValueFormatter(new Myaxisvalueformatter(datesales));
-                             xAxis.setGranularity(1);
-                             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-
-                             LineData data2 = new LineData(dataset2);
-                             lineChartprofit.setData(data2);
-                             lineChartprofit.invalidate();
-                             lineChartsales.animateXY(3000, 3000);
-                             lineChartprofit.setNoDataText("No Profit Data");
-                             lineChartprofit.getAxisRight().setEnabled(false);
-                             XAxis xAxis1 = lineChartprofit.getXAxis();
-                             xAxis1.setValueFormatter(new Myaxisvalueformatter(dateprofit));
-                             xAxis1.setGranularity(1);
-                             xAxis1.setPosition(XAxis.XAxisPosition.BOTTOM);
+                             else {
+                                 Toast.makeText(getContext(), "No data found", Toast.LENGTH_SHORT).show();
+                             }
 
                          }
 

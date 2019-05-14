@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lic.Main.DataAdapters.Wholesale_Adapter;
@@ -40,6 +41,7 @@ public class Wholesale extends AppCompatActivity
     private Wholesale_Adapter wholesaleadapeter;
     ProgressBar progressBar;
     private List<Wholesale_Datamodel> wholesalemodel;
+    TextView textViewnodata;
     private String Pan;
     RecyclerView recyclerView;
 
@@ -58,6 +60,9 @@ public class Wholesale extends AppCompatActivity
 
         swipeRefreshLayout.setColorSchemeColors(R.color.bluelight);
         swipeRefreshLayout.setOnRefreshListener(this);
+
+        textViewnodata = findViewById(R.id.nodatwholesale);
+        textViewnodata.setVisibility(View.GONE);
 
 
         User user = SharedPreferenceManager.getmInstance(getApplicationContext()).getUser();
@@ -103,6 +108,7 @@ public class Wholesale extends AppCompatActivity
 
                 else {
                     recyclerView.setVisibility(View.GONE);
+                    textViewnodata.setVisibility(View.VISIBLE);
                     swipeRefreshLayout.setRefreshing(false);
                     progressBar.setVisibility(View.GONE);
                     Toast.makeText(Wholesale.this, "No data found", Toast.LENGTH_SHORT).show();

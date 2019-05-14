@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.lic.Main.Fragments.Import_Report_Fragment;
 import com.example.lic.Main.Fragments.InventoryReportFrag;
@@ -66,6 +67,7 @@ public class Report extends AppCompatActivity
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
+        Toast.makeText(this, "Please Select Date To Get Started", Toast.LENGTH_SHORT).show();
 
 
         buttonstartdate.setOnClickListener(new View.OnClickListener() {
