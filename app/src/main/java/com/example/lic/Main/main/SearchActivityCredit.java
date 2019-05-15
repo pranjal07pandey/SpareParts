@@ -13,10 +13,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lic.Main.DataAdapters.Credit_Adapter;
 import com.example.lic.Main.DataAdapters.Inventory_Adapter;
+import com.example.lic.Main.Datamodel.Credit_Datamodel;
 import com.example.lic.Main.Datamodel.Inventory_Model;
 import com.example.lic.Main.Utilities.RetrofitClient;
 import com.example.lic.Main.Utilities.SharedPreferenceManager;
@@ -28,61 +29,55 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchActivityInventory extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
-    Spinner spinner;
-    EditText searchingvaluetv;
-    Button buttonsearch;
+public class SearchActivityCredit extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Spinner spinnercredit;
+    EditText searchingvalueetcredit;
+    Button buttonsearchcredit;
     RecyclerView recyclerViewsearch;
-    private Inventory_Adapter inventoryAdapter;
+    private Credit_Adapter creditAdapter;
     String selected,pan,searchingclass,searchingvalue;
-    List<Inventory_Model> inventoryModelList;
+    List<Credit_Datamodel> creditDatamodelListe;
     RecyclerView recyclerViewsearcheddata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_inventory);
+        setContentView(R.layout.activity_search_credit);
 
-        searchingvaluetv = findViewById(R.id.edittextinventorysearchdata);
-        recyclerViewsearch = findViewById(R.id.recycleviewsearcheddata);
+        searchingvalueetcredit = findViewById(R.id.edittextcreditsearchdata);
+        recyclerViewsearch = findViewById(R.id.recycleviewsearcheddatacredit);
 
-
-        spinner = findViewById(R.id.searchbyinventoryspinner);
-
-
-        getSupportActionBar().setTitle("Search Inventory Items");
-
+        getSupportActionBar().setTitle("Search Credit Items");
+        spinnercredit= findViewById(R.id.searchbycreditspinner);
         final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
         upArrow.setColorFilter(getResources().getColor(R.color.Titlehome), PorterDuff.Mode.SRC_ATOP);
         getSupportActionBar().setHomeAsUpIndicator(upArrow);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        buttonsearch = findViewById(R.id.searchbuttoninventory);
+        buttonsearchcredit = findViewById(R.id.searchbuttoncredit);
 
         pan = SharedPreferenceManager.getmInstance(this).getUser().getUserid();
 
-        searchingclass = "inventory";
+        searchingclass = "credit";
 
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.Options, android.R.layout.simple_spinner_item);
+                R.array.Optionscredit, android.R.layout.simple_spinner_item);
 
 //set the spinners adapter to the previously created one.
-       spinner.setAdapter(adapter);
-       spinner.setOnItemSelectedListener(this);
+        spinnercredit.setAdapter(adapter);
+        spinnercredit.setOnItemSelectedListener(this);
 
-       buttonsearch.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               searchingvalue = searchingvaluetv.getText().toString();
+        buttonsearchcredit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchingvalue = searchingvalueetcredit.getText().toString();
 //               Toast.makeText(SearchActivityInventory.this, searchingvalue, Toast.LENGTH_SHORT).show();
-               callsearchingapi(pan,searchingvalue,selected,searchingclass);
+                callsearchingapi(pan,searchingvalue,selected,searchingclass);
 
-           }
-       });
+            }
+        });
 
 
 
@@ -93,17 +88,16 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
         Toast.makeText(this, pan+"+"+selected+"+"+searchingclass+"+"+searchingvalue, Toast.LENGTH_LONG).show();
 
-        Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getsearch(pan,searchingvalue,selected,searchingclass);
-
-        call.enqueue(new Callback<List<Inventory_Model>>() {
+        Call<List<Credit_Datamodel>> call = RetrofitClient.getmInstance().getApi().getsearchcredit(pan,searchingvalue,selected,searchingclass);
+        call.enqueue(new Callback<List<Credit_Datamodel>>() {
             @Override
-            public void onResponse(Call<List<Inventory_Model>> call, Response<List<Inventory_Model>> response) {
-                inventoryModelList = response.body();
+            public void onResponse(Call<List<Credit_Datamodel>> call, Response<List<Credit_Datamodel>> response) {
+                creditDatamodelListe = response.body();
 
                 if (response.body()!=null){
-                    inventoryAdapter = new Inventory_Adapter(inventoryModelList,getApplicationContext());
+                    creditAdapter = new Credit_Adapter(creditDatamodelListe,getApplicationContext());
                     recyclerViewsearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    recyclerViewsearch.setAdapter(inventoryAdapter);
+                    recyclerViewsearch.setAdapter(creditAdapter);
 
 
 
@@ -112,17 +106,18 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
                 else {
 
-                    Toast.makeText(SearchActivityInventory.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivityCredit.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
-            public void onFailure(Call<List<Inventory_Model>> call, Throwable t) {
-
-                Toast.makeText(SearchActivityInventory.this, "Please Check Your Connection and Try Again"+t, Toast.LENGTH_LONG).show();
+            public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
 
             }
         });
+
+
     }
 
 
@@ -131,9 +126,8 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
         switch (position) {
             case 0:
-                selected  = "code";
-                Toast.makeText(this, selected, Toast.LENGTH_SHORT).show();
-//                selected  = parent.getItemAtPosition(position).toString();
+
+                selected  = parent.getItemAtPosition(position).toString();
 
                 // Whatever you want to happen when the first item gets selected
                 break;
@@ -144,11 +138,7 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
                 // Whatever you want to happen when the second item gets selected
                 break;
-            case 2:
-                selected  = parent.getItemAtPosition(position).toString();
 
-                // Whatever you want to happen when the thrid item gets selected
-                break;
 
         }
 
@@ -160,6 +150,7 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
         selected = parent.getItemAtPosition(0).toString();
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -171,4 +162,6 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         dashboardList = new ArrayList<>();
         dashboardList.add(new Dashboard("Wholesale",R.drawable.plus));
         dashboardList.add(new Dashboard("Inventory",R.drawable.inventory));
@@ -98,7 +99,10 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
 
+
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        menuItem.setVisible(false);
         txtnavname = findViewById(R.id.txtcompanyname);
         txtuserdays = findViewById(R.id.textremainingdays);
         User user = SharedPreferenceManager.getmInstance(this).getUser();
@@ -113,7 +117,9 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
+
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {

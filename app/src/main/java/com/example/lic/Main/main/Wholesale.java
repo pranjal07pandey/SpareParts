@@ -157,6 +157,11 @@ public class Wholesale extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+
+        if (id == R.id.action_search){
+            Intent intent = new Intent(Wholesale.this,SearchActivityWholesale.class);
+            startActivity(intent);
+        }
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;

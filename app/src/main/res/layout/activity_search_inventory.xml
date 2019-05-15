@@ -6,10 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Main.main.SearchActivityInventory">
 
+    <RelativeLayout
 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/navbar2"
+        >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:background="@drawable/linearbackgrounf"
         android:orientation="horizontal"
         android:id="@+id/linearlayoutinventorysearch"
         android:weightSum="3"
@@ -17,20 +23,21 @@
 
         <Spinner
             android:id="@+id/searchbyinventoryspinner"
-            android:layout_width="110dp"
-            android:layout_height="50dp"
+
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
              android:background="@android:drawable/btn_dropdown"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:spinnerMode="dropdown"/>
 
         <EditText
             android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="5dp"
             android:layout_marginLeft="10dp"
-            android:id="@+id/textviewinventorysearchdata"
+            android:id="@+id/edittextinventorysearchdata"
             android:hint="T001"
             android:layout_marginRight="10dp"
             android:textSize="20sp"
@@ -44,21 +51,90 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="50dp"
+        android:background="@drawable/buttondesign"
         android:layout_below="@id/linearlayoutinventorysearch"
         android:layout_centerHorizontal="true"
         android:id="@+id/searchbuttoninventory"
         android:text="Search"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="7dp"
+        android:textColor="#ffff"
+        android:textSize="20sp"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5" />
+
+
+
 
 
 <android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
-    android:layout_below="@id/searchbuttoninventory"
+    android:id="@+id/recycleviewsearcheddata"
+    android:layout_below="@+id/linearlatou12"
     android:layout_height="match_parent">
 
 </android.support.v7.widget.RecyclerView>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearlatou12"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/kk"
+        android:weightSum="3">
+
+
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="25dp"
+            android:id="@+id/addresswholesale"
+            android:layout_margin="2dp"
+            android:textSize="18sp"
+            android:textColor="@color/background"
+            android:ellipsize="marquee"
+            android:textAlignment="center"
+
+            android:maxLength="10"
+            android:layout_weight="1"
+            android:layout_below="@+id/docscategory_title"
+            android:text="Product ID"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/wholesalename"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:text="Brand"
+            android:layout_margin="2dp"
+            android:ellipsize="marquee"
+            android:maxLength="20"
+            android:layout_weight="1"
+            android:textAlignment="center"
+
+            android:textColor="@color/background"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:id="@+id/wholesalephone"
+            android:textSize="18sp"
+            android:layout_margin="2dp"
+            android:textColor="@color/background"
+            android:ellipsize="marquee"
+            android:maxLength="10"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:text="Type"
+            android:textStyle="bold"/>
+
+
+    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
