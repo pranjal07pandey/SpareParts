@@ -160,7 +160,7 @@ public class Online_Undelievered extends AppCompatActivity
         txtnavname = findViewById(R.id.txtcompanyname);
         txtuserdays = findViewById(R.id.textremainingdays);
         User user = SharedPreferenceManager.getmInstance(this).getUser();
-        txtnavname.setText(user.getUserid());
+        txtnavname.setText(user.getCname());
         txtuserdays.setText("Logispark Inventory Control");
 
         return true;

@@ -92,7 +92,6 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
 
     private void callsearchingapi(String pan, String searchingvalue,String selected, String searchingclass) {
 
-        Toast.makeText(this, pan+"+"+selected+"+"+searchingclass+"+"+searchingvalue, Toast.LENGTH_LONG).show();
 
         Call<List<Credit_Datamodel>> call = RetrofitClient.getmInstance().getApi().getsearchcredit(pan,searchingvalue,selected,searchingclass);
         call.enqueue(new Callback<List<Credit_Datamodel>>() {
@@ -113,7 +112,7 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
 
                 else {
 
-                    Toast.makeText(SearchActivityCredit.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivityCredit.this, "No data "+response.body(), Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -122,7 +121,7 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
             public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
 
                 progressBar.setVisibility(View.GONE);
-                Toast.makeText(SearchActivityCredit.this, "No data"+t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchActivityCredit.this, "Please Connect To Internet And Try Again", Toast.LENGTH_SHORT).show();
 
 
             }
@@ -138,14 +137,14 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
         switch (position) {
             case 0:
 
-                selected  = parent.getItemAtPosition(position).toString();
+                selected  = "name";
 
                 // Whatever you want to happen when the first item gets selected
                 break;
             case 1:
 
 
-                selected  = parent.getItemAtPosition(position).toString();
+                selected  = "phone_no";
 
                 // Whatever you want to happen when the second item gets selected
                 break;

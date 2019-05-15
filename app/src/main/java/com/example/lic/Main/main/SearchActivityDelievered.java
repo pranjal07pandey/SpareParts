@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import retrofit2.Response;
 public class SearchActivityDelievered extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner spinnerdelievered;
+    ProgressBar progressBar;
     EditText searchingvalueetdelievered;
     Button buttonsearchdelievered;
     RecyclerView recyclerViewsearch;
@@ -47,8 +49,10 @@ public class SearchActivityDelievered extends AppCompatActivity implements Adapt
         setContentView(R.layout.activity_search_delievered);
 
 
-        searchingvalueetdelievered = findViewById(R.id.edittextcreditsearchdata);
-        recyclerViewsearch = findViewById(R.id.recycleviewsearcheddatacredit);
+        searchingvalueetdelievered = findViewById(R.id.edittextdelieveredsearchdata);
+        recyclerViewsearch = findViewById(R.id.recycleviewsearcheddatadelievered);
+
+        progressBar = findViewById(R.id.progressbarsearchdelievered);
 
         getSupportActionBar().setTitle("Search Delievered Items");
         spinnerdelievered= findViewById(R.id.searchbydelieveredspinner);
@@ -61,8 +65,9 @@ public class SearchActivityDelievered extends AppCompatActivity implements Adapt
 
         pan = SharedPreferenceManager.getmInstance(this).getUser().getUserid();
 
-        searchingclass = "delievered";
+        searchingclass = "delivered";
 
+        progressBar.setVisibility(View.GONE);
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -76,6 +81,7 @@ public class SearchActivityDelievered extends AppCompatActivity implements Adapt
             @Override
             public void onClick(View v) {
                 searchingvalue = searchingvalueetdelievered.getText().toString();
+                progressBar.setVisibility(View.VISIBLE);
 //               Toast.makeText(SearchActivityInventory.this, searchingvalue, Toast.LENGTH_SHORT).show();
                 callsearchingapi(pan,searchingvalue,selected,searchingclass);
 
@@ -89,7 +95,6 @@ public class SearchActivityDelievered extends AppCompatActivity implements Adapt
 
     private void callsearchingapi(String pan, String searchingvalue,String selected, String searchingclass) {
 
-        Toast.makeText(this, pan+"+"+selected+"+"+searchingclass+"+"+searchingvalue, Toast.LENGTH_LONG).show();
 
         Call<List<Delivered_Datamodel>> call = RetrofitClient.getmInstance().getApi().getsearchdelievered(pan,searchingvalue,selected,searchingclass);
 
@@ -99,6 +104,7 @@ public class SearchActivityDelievered extends AppCompatActivity implements Adapt
                 delivered_datamodels = response.body();
 
                 if (response.body()!=null){
+                    progressBar.setVisibility(View.GONE);
                    delivered_adapter = new Delivered_Adapter(delivered_datamodels,getApplicationContext());
                     recyclerViewsearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                     recyclerViewsearch.setAdapter(delivered_adapter);
@@ -110,12 +116,16 @@ public class SearchActivityDelievered extends AppCompatActivity implements Adapt
 
                 else {
 
-                    Toast.makeText(SearchActivityDelievered.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(SearchActivityDelievered.this, "No data", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Delivered_Datamodel>> call, Throwable t) {
+
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(SearchActivityDelievered.this, "Please Connect To Internet And Try Again", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -129,17 +139,35 @@ public class SearchActivityDelievered extends AppCompatActivity implements Adapt
         switch (position) {
             case 0:
 
-                selected  = parent.getItemAtPosition(position).toString();
+                selected  = "name";
 
                 // Whatever you want to happen when the first item gets selected
                 break;
             case 1:
 
 
-                selected  = parent.getItemAtPosition(position).toString();
+                selected  = "phoneNo";
 
                 // Whatever you want to happen when the second item gets selected
                 break;
+
+            case 2:
+
+
+                selected  = "Address";
+
+                // Whatever you want to happen when the second item gets selected
+                break;
+
+            case 3:
+
+
+                selected  = "delivery_date";
+
+                // Whatever you want to happen when the second item gets selected
+                break;
+
+
 
 
         }

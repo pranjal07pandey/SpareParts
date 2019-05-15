@@ -108,7 +108,6 @@ public class Login extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                progressDialog.dismiss();
 
                 User loginresponse = response.body();
 
@@ -171,7 +170,6 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                progressDialog.dismiss();
                 Toast.makeText(Login.this, "Error No Internet Connection"+t, Toast.LENGTH_LONG).show();
 
 
