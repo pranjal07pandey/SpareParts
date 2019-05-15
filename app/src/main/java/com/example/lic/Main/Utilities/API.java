@@ -13,6 +13,7 @@ import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Datamodel.Wholesale_Datamodel;
 import com.example.lic.Main.main.Credit;
 import com.example.lic.Main.main.Inventory;
+import com.example.lic.Main.main.Online_Delievered;
 import com.example.lic.Main.main.Report;
 
 import java.util.List;
@@ -73,9 +74,18 @@ public interface API {
     @GET("getUndelivered.php/")
     Call<List<Undelivered_Datamodel>> getundeliveredmode(@Query("PAN") String pan);
 
+    @GET("getSearchResult.php/")
+    Call<List<Inventory_Model>> getsearch(@Query("PAN") String pan,@Query("value")String value, @Query("field") String field, @Query("class") String selectedclass);
 
 
+    @GET("getSearchResult.php/")
+    Call<List<Wholesale_Datamodel>> getsearchwholesale(@Query("PAN") String pan,@Query("value")String value, @Query("field") String field, @Query("class") String selectedclass);
 
+      @GET("getSearchResult.php/")
+    Call<List<Credit_Datamodel>> getsearchcredit(@Query("PAN") String pan,@Query("value")String value, @Query("field") String field, @Query("class") String selectedclass);
+
+    @GET("getSearchResult.php/")
+    Call<List<Delivered_Datamodel>> getsearchdelievered(@Query("PAN") String pan, @Query("value")String value, @Query("field") String field, @Query("class") String selectedclass);
 
 
 

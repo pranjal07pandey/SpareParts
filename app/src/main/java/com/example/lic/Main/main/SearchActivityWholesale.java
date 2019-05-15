@@ -17,7 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lic.Main.DataAdapters.Inventory_Adapter;
+import com.example.lic.Main.DataAdapters.Wholesale_Adapter;
 import com.example.lic.Main.Datamodel.Inventory_Model;
+import com.example.lic.Main.Datamodel.Wholesale_Datamodel;
 import com.example.lic.Main.Utilities.RetrofitClient;
 import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
@@ -28,30 +30,32 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SearchActivityInventory extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
-    Spinner spinner;
-    EditText searchingvaluetv;
+public class SearchActivityWholesale extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    Spinner spinnerwholesale;
+    EditText searchingvalueet;
     Button buttonsearch;
     RecyclerView recyclerViewsearch;
-    private Inventory_Adapter inventoryAdapter;
+    private Wholesale_Adapter wholesale_adapter;
     String selected,pan,searchingclass,searchingvalue;
-    List<Inventory_Model> inventoryModelList;
+    List<Wholesale_Datamodel> wholesaleDatamodelList;
     RecyclerView recyclerViewsearcheddata;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_inventory);
+        setContentView(R.layout.activity_search_wholesale);
 
-        searchingvaluetv = findViewById(R.id.edittextinventorysearchdata);
-        recyclerViewsearch = findViewById(R.id.recycleviewsearcheddata);
-
-
-        spinner = findViewById(R.id.searchbyinventoryspinner);
-
+        searchingvalueet = findViewById(R.id.edittextwholesalesearchdata);
+        recyclerViewsearch = findViewById(R.id.recycleviewsearcheddatawholesale);
 
         getSupportActionBar().setTitle("Search Inventory Items");
+        spinnerwholesale = findViewById(R.id.searchbywholsesalespinner);
+
+        buttonsearch = findViewById(R.id.searchbuttonwholesale);
+
+        pan = SharedPreferenceManager.getmInstance(this).getUser().getUserid();
+
+        searchingclass = "wholesale";
+        getSupportActionBar().setTitle("Search Wholesale Items");
 
         final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
         upArrow.setColorFilter(getResources().getColor(R.color.Titlehome), PorterDuff.Mode.SRC_ATOP);
@@ -59,30 +63,22 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        buttonsearch = findViewById(R.id.searchbuttoninventory);
-
-        pan = SharedPreferenceManager.getmInstance(this).getUser().getUserid();
-
-        searchingclass = "inventory";
-
-
-
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.Options, android.R.layout.simple_spinner_item);
+                R.array.Optionswholesale, android.R.layout.simple_spinner_item);
 
 //set the spinners adapter to the previously created one.
-       spinner.setAdapter(adapter);
-       spinner.setOnItemSelectedListener(this);
+        spinnerwholesale.setAdapter(adapter);
+        spinnerwholesale.setOnItemSelectedListener(this);
 
-       buttonsearch.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               searchingvalue = searchingvaluetv.getText().toString();
+        buttonsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchingvalue = searchingvalueet.getText().toString();
 //               Toast.makeText(SearchActivityInventory.this, searchingvalue, Toast.LENGTH_SHORT).show();
-               callsearchingapi(pan,searchingvalue,selected,searchingclass);
+                callsearchingapi(pan,searchingvalue,selected,searchingclass);
 
-           }
-       });
+            }
+        });
 
 
 
@@ -93,36 +89,37 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
         Toast.makeText(this, pan+"+"+selected+"+"+searchingclass+"+"+searchingvalue, Toast.LENGTH_LONG).show();
 
-        Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getsearch(pan,searchingvalue,selected,searchingclass);
-
-        call.enqueue(new Callback<List<Inventory_Model>>() {
-            @Override
-            public void onResponse(Call<List<Inventory_Model>> call, Response<List<Inventory_Model>> response) {
-                inventoryModelList = response.body();
-
-                if (response.body()!=null){
-                    inventoryAdapter = new Inventory_Adapter(inventoryModelList,getApplicationContext());
-                    recyclerViewsearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                    recyclerViewsearch.setAdapter(inventoryAdapter);
+        Call<List<Wholesale_Datamodel>> call = RetrofitClient.getmInstance().getApi().getsearchwholesale(pan,searchingvalue,selected,searchingclass);
 
 
+      call.enqueue(new Callback<List<Wholesale_Datamodel>>() {
+          @Override
+          public void onResponse(Call<List<Wholesale_Datamodel>> call, Response<List<Wholesale_Datamodel>> response) {
+              wholesaleDatamodelList = response.body();
+
+              if (response.body()!=null){
+                  wholesale_adapter = new Wholesale_Adapter(wholesaleDatamodelList,getApplicationContext());
+                  recyclerViewsearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                  recyclerViewsearch.setAdapter(wholesale_adapter);
 
 
-                }
 
-                else {
 
-                    Toast.makeText(SearchActivityInventory.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
-                }
-            }
+              }
 
-            @Override
-            public void onFailure(Call<List<Inventory_Model>> call, Throwable t) {
+              else {
 
-                Toast.makeText(SearchActivityInventory.this, "Please Check Your Connection and Try Again"+t, Toast.LENGTH_LONG).show();
+                  Toast.makeText(SearchActivityWholesale.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
+              }
 
-            }
-        });
+          }
+
+          @Override
+          public void onFailure(Call<List<Wholesale_Datamodel>> call, Throwable t) {
+
+          }
+      });
+
     }
 
 
@@ -131,8 +128,8 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
         switch (position) {
             case 0:
-                selected  = "code";
-                Toast.makeText(this, selected, Toast.LENGTH_SHORT).show();
+                selected  = parent.getItemAtPosition(position).toString();
+
 //                selected  = parent.getItemAtPosition(position).toString();
 
                 // Whatever you want to happen when the first item gets selected
@@ -160,6 +157,7 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
         selected = parent.getItemAtPosition(0).toString();
 
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

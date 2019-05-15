@@ -8,7 +8,13 @@
     tools:context=".Main.main.Credit"
     >
 
+    <RelativeLayout
+        android:layout_marginTop="55dp"
 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/navbar2"
+        >
     <ProgressBar
         android:layout_width="wrap_content"
         android:id="@+id/pbarcredit"
@@ -23,7 +29,6 @@
         android:layout_height="30dp"
         android:orientation="horizontal"
         android:id="@+id/linearlatou"
-        android:layout_marginTop="55dp"
         android:background="@drawable/kk"
         android:weightSum="2"
         >
@@ -97,5 +102,5 @@
 
 </android.support.v4.widget.SwipeRefreshLayout>
 
-
+    </RelativeLayout>
 </RelativeLayout>

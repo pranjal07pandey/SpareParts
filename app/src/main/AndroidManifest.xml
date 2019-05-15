@@ -14,7 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.main.SearchActivityInventory"></activity>
+        <activity android:name=".Main.main.SearchActivityDelievered"></activity>
+        <activity android:name=".Main.main.SearchActivityCredit" />
+        <activity android:name=".Main.main.SearchActivityWholesale" />
+        <activity android:name=".Main.main.SearchActivityInventory" />
         <activity
             android:name=".Main.main.Online_Undelievered"
             android:label="@string/title_activity_online__undelievered"

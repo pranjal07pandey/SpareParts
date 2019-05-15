@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
         mydialog = new Dialog(MainActivity.this);
         mydialog.setContentView(R.layout.logout_popup);
         buttonYes= mydialog.findViewById(R.id.buttonYes);
@@ -115,7 +116,10 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
 
+
         getMenuInflater().inflate(R.menu.main, menu);
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        menuItem.setVisible(false);
         txtnavname = findViewById(R.id.txtcompanyname);
         txtuserdays = findViewById(R.id.textremainingdays);
         User user = SharedPreferenceManager.getmInstance(this).getUser();
@@ -132,6 +136,7 @@ public class MainActivity extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
+
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {

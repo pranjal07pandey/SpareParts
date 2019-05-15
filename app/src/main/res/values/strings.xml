@@ -34,11 +34,23 @@
     <string name="sp">SP:</string>
     <string name="cp">CP:</string>
     <string name="total">Total</string>
-    
+
     <string-array name="Options">
         <item>Product Id</item>
         <item>Brand</item>
         <item>Type</item>
+
+    </string-array>
+
+    <string-array name="Optionswholesale">
+        <item>Name</item>
+        <item>Contact</item>
+        <item>Address</item>
+    </string-array>
+
+    <string-array name="Optionscredit">
+        <item>Name</item>
+        <item>Address</item>
 
     </string-array>
 </resources>
