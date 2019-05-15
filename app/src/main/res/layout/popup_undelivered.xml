@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="350dp"
+    android:layout_height="200dp"
+    android:background="#37cece"
+    android:padding="5dp"
+    android:layout_gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linear1"
+
+        android:layout_gravity="center"
+
+        >
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#0c0b0c"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:text="Color: "
+
+            />
+
+        <TextView
+            android:id="@+id/undeliveredColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15dp"
+            android:text="black"
+            android:textAlignment="center"
+            android:maxLength="10"
+            android:ellipsize="marquee"
+            android:textColor="#0c0b0c"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linear2"
+        android:layout_gravity="center">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#0c0b0c"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:text="Sp: "
+
+
+            />
+
+        <TextView
+            android:id="@+id/undeliveredSp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15dp"
+            android:text="0"
+            android:textAlignment="center"
+            android:maxLength="10"
+            android:ellipsize="marquee"
+            android:textColor="#0c0b0c"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linear3"
+        android:layout_gravity="center">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#0c0b0c"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:text="Size: "
+
+            />
+
+        <TextView
+            android:id="@+id/undeliveredSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15dp"
+            android:text="32"
+            android:textAlignment="center"
+            android:maxLength="10"
+            android:ellipsize="marquee"
+            android:textColor="#0c0b0c"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/linear4"
+        android:layout_gravity="center">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="#0c0b0c"
+            android:layout_marginTop="15dp"
+            android:textSize="15sp"
+            android:text="Deliverd Date: "
+
+            />
+
+        <TextView
+            android:id="@+id/undeliveredDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="15dp"
+            android:text="2012-1-1"
+            android:textAlignment="center"
+            android:maxLength="10"
+            android:ellipsize="marquee"
+            android:textColor="#0c0b0c"
+            android:textSize="15sp"
+            />
+
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/buttonOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OK"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="350dp"
+
+            />
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
+
+

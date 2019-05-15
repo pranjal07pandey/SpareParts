@@ -1,6 +1,7 @@
 package com.example.lic.Main.main;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +42,11 @@ import retrofit2.Response;
 public class Online_Undelievered extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener {
 
+    Button buttonYes;
+    ImageButton buttonClose;
+    Dialog mydialog;
+
+
     private Undelivered_Adapter undelivered_adapter;
     private List<Undelivered_Datamodel> undeliverdmodel;
     ProgressBar progressBarundelievered;
@@ -56,6 +64,11 @@ public class Online_Undelievered extends AppCompatActivity
         setContentView(R.layout.activity_online__undelievered);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mydialog = new Dialog(Online_Undelievered.this);
+        mydialog.setContentView(R.layout.logout_popup);
+        buttonYes= mydialog.findViewById(R.id.buttonYes);
+        buttonClose = mydialog.findViewById(R.id.buttonClose);
 
         recyclerView = findViewById(R.id.recycleviewUndelivered);
         textViewnodata = findViewById(R.id.nodataundelievered);
@@ -153,15 +166,40 @@ public class Online_Undelievered extends AppCompatActivity
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            mydialog.show();
+
+            buttonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+                    Intent t= new Intent(Online_Undelievered.this,Login.class);
+                    Toast.makeText(Online_Undelievered.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+                    startActivity(t);
+
+                }
+            });
+
+            buttonClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mydialog.dismiss();
+                }
+            });
+
+
+
             return true;
         }
 

@@ -1,5 +1,7 @@
 package com.example.lic.Main.main;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -10,8 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,10 +31,15 @@ import com.example.lic.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.lic.R.layout.logout_popup;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     List<Dashboard> dashboardList;
+    Button buttonYes;
+    ImageButton buttonClose;
+    Dialog mydialog;
 
     private TextView txtnavname,txtuserdays;
     @Override
@@ -36,6 +48,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mydialog = new Dialog(MainActivity.this);
+        mydialog.setContentView(R.layout.logout_popup);
+        buttonYes= mydialog.findViewById(R.id.buttonYes);
+        buttonClose = mydialog.findViewById(R.id.buttonClose);
 
         dashboardList = new ArrayList<>();
         dashboardList.add(new Dashboard("Wholesale",R.drawable.plus));
@@ -113,17 +130,35 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-            //run dialog ko code
-            //if yes
-            SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
-            Intent t= new Intent(MainActivity.this,Login.class);
-            Toast.makeText(MainActivity.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
-            startActivity(t);
+            mydialog.show();
+
+            buttonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+                    Intent t= new Intent(MainActivity.this,Login.class);
+                    Toast.makeText(MainActivity.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+                    startActivity(t);
+
+                }
+            });
+
+            buttonClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mydialog.dismiss();
+                }
+            });
+
+
+
+
             return true;
         }
 

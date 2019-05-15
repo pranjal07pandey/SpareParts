@@ -1,6 +1,7 @@
 package com.example.lic.Main.main;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.content.Context;
@@ -20,6 +21,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -41,6 +44,12 @@ import retrofit2.Response;
 public class Inventory extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, SwipeRefreshLayout.OnRefreshListener {
 
+
+    Button buttonYes;
+    ImageButton buttonClose;
+    Dialog mydialog;
+
+
     SwipeRefreshLayout swipeRefreshLayout;
     private Inventory_Adapter inventory_adapter;
     ProgressBar progressBar;
@@ -59,6 +68,13 @@ public class Inventory extends AppCompatActivity
         setContentView(R.layout.activity_inventory);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
+        mydialog = new Dialog(Inventory.this);
+        mydialog.setContentView(R.layout.logout_popup);
+        buttonYes= mydialog.findViewById(R.id.buttonYes);
+        buttonClose = mydialog.findViewById(R.id.buttonClose);
 
         progressBar = findViewById(R.id.progressbarinventory);
         progressBar.setVisibility(View.VISIBLE);
@@ -181,22 +197,47 @@ public class Inventory extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            mydialog.show();
+
+            buttonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+                    Intent t= new Intent(Inventory.this,Login.class);
+                    Toast.makeText(Inventory.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+                    startActivity(t);
+
+                }
+            });
+
+            buttonClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mydialog.dismiss();
+                }
+            });
+
+
+
+
             return true;
         }
+
 
         if (id == R.id.action_search){
             Intent intent = new Intent(this,SearchActivityInventory.class);
             startActivity(intent);
         }
 
-
-
         return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

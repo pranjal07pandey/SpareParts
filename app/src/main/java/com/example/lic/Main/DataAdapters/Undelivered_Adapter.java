@@ -1,6 +1,7 @@
 package com.example.lic.Main.DataAdapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.lic.Main.Datamodel.Delivered_Datamodel;
 import com.example.lic.Main.Datamodel.Undelivered_Datamodel;
+import com.example.lic.Main.main.UndeliveredPopup;
 import com.example.lic.R;
 
 import java.text.BreakIterator;
@@ -20,6 +22,8 @@ public class Undelivered_Adapter extends RecyclerView.Adapter<Undelivered_Adapte
 
     private List<Undelivered_Datamodel> listundelivered;
     private Context context;
+    String sp, color, size, deliveredDate;
+
 
     public Undelivered_Adapter(List<Undelivered_Datamodel> listundelivered, Context context){
         this.listundelivered = listundelivered;
@@ -47,7 +51,30 @@ public class Undelivered_Adapter extends RecyclerView.Adapter<Undelivered_Adapte
         undeliveredviewholder.textViewcode.setText(listundelivered.get(i).getCode());
         undeliveredviewholder.textViewqunatity.setText(listundelivered.get(i).getQuantity());
         undeliveredviewholder.textViewaddress.setText(listundelivered.get(i).getAddress());
-        undeliveredviewholder.textViewprice.setText(listundelivered.get(i).getContact());
+        undeliveredviewholder.textViewcontact.setText(listundelivered.get(i).getContact());
+
+
+        sp = String.valueOf(listundelivered.get(i).getSp());
+        color = String.valueOf(listundelivered.get(i).getColor());
+        size = String.valueOf(listundelivered.get(i).getSize());
+        deliveredDate = String.valueOf(listundelivered.get(i).getDelivery_date());
+
+        undeliveredviewholder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, UndeliveredPopup.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("Sp",sp);
+                intent.putExtra("Color", color);
+                intent.putExtra("Size", size);
+                intent.putExtra("Delivered Date",deliveredDate);
+                context.startActivity(intent);
+            }
+        });
+
+
+
+
 
 
 
@@ -59,7 +86,7 @@ public class Undelivered_Adapter extends RecyclerView.Adapter<Undelivered_Adapte
     }
 
     public class Undeliveredviewholder extends RecyclerView.ViewHolder {
-        private TextView textViewname, textViewcode, textViewqunatity, textViewaddress, textViewprice;
+        private TextView textViewname, textViewcode, textViewqunatity, textViewaddress, textViewcontact;
 
         CardView cardView;
 
@@ -70,7 +97,7 @@ public class Undelivered_Adapter extends RecyclerView.Adapter<Undelivered_Adapte
             textViewaddress = itemView.findViewById(R.id.undeliveredaddress);
             textViewcode = itemView.findViewById(R.id.undeliveredcode);
             textViewqunatity = itemView.findViewById(R.id.undeliveredquantity);
-            textViewprice = itemView.findViewById(R.id.undeliveredprice);
+            textViewcontact = itemView.findViewById(R.id.undeliveredcontact);
 
             cardView = itemView.findViewById(R.id.cardviewUndelivered);
 

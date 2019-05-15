@@ -1,6 +1,7 @@
 package com.example.lic.Main.main;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -16,6 +17,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,11 @@ import retrofit2.Response;
 public class Online_Delievered extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,SwipeRefreshLayout.OnRefreshListener {
 
+    Button buttonYes;
+    ImageButton buttonClose;
+    Dialog mydialog;
+
+
     private Delivered_Adapter delivered_adapter;
     ProgressBar progressBar;
     TextView textViewnodata;
@@ -52,6 +60,11 @@ public class Online_Delievered extends AppCompatActivity
         setContentView(R.layout.activity_online);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mydialog = new Dialog(Online_Delievered.this);
+        mydialog.setContentView(R.layout.logout_popup);
+        buttonYes= mydialog.findViewById(R.id.buttonYes);
+        buttonClose = mydialog.findViewById(R.id.buttonClose);
 
         progressBar = findViewById(R.id.progress_circularonline);
         progressBar.setVisibility(View.VISIBLE);
@@ -145,22 +158,40 @@ public class Online_Delievered extends AppCompatActivity
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 
-            SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
-            Intent t= new Intent(Online_Delievered.this,Login.class);
-            Toast.makeText(Online_Delievered.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
-            startActivity(t);
-            return true;
+            mydialog.show();
 
+            buttonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+                    Intent t= new Intent(Online_Delievered.this,Login.class);
+                    Toast.makeText(Online_Delievered.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+                    startActivity(t);
+
+                }
+            });
+
+            buttonClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mydialog.dismiss();
+                }
+            });
+
+
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

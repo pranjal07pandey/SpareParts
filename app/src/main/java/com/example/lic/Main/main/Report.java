@@ -1,6 +1,7 @@
 package com.example.lic.Main.main;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ import com.example.lic.Main.Fragments.Import_Report_Fragment;
 import com.example.lic.Main.Fragments.InventoryReportFrag;
 import com.example.lic.Main.Fragments.Profitreportfragment;
 import com.example.lic.Main.Fragments.twomonthsreportfragment;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 import com.example.lic.Main.Fragments.SalesReportFragment;
 
@@ -31,6 +34,12 @@ import java.util.Calendar;
 
 public class Report extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    Button buttonYes;
+    ImageButton buttonClose;
+    Dialog mydialog;
+
+
     Button button,button2,button3,button4,buttonstartdate,buttonenddate;
     LinearLayout linerlayout;
     FragmentTransaction fragmentTransaction;
@@ -48,6 +57,9 @@ public class Report extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
         setContentView(R.layout.activity_report);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,6 +73,12 @@ public class Report extends AppCompatActivity
         startbuttonvalue1 = buttonstartdate.getText().toString();
         endbuttovalue2 = buttonenddate.getText().toString();
         linerlayout.setVisibility(View.GONE);
+
+
+        mydialog = new Dialog(Report.this);
+        mydialog.setContentView(R.layout.logout_popup);
+        buttonYes= mydialog.findViewById(R.id.buttonYes);
+        buttonClose = mydialog.findViewById(R.id.buttonClose);
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragmentplace,new Profitreportfragment());
@@ -281,16 +299,40 @@ public class Report extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            mydialog.show();
+
+            buttonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+                    Intent t= new Intent(Report.this,Login.class);
+                    Toast.makeText(Report.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+                    startActivity(t);
+
+                }
+            });
+
+            buttonClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mydialog.dismiss();
+                }
+            });
+
+
+
+
             return true;
         }
 

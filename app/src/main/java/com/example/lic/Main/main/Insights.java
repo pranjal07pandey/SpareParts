@@ -1,5 +1,6 @@
 package com.example.lic.Main.main;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,13 +16,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.lic.Main.Fragments.sixmonthsreportfragment;
+import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
 import com.example.lic.Main.Fragments.twomonthsreportfragment;
 
 public class Insights extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+
+    Button buttonYes;
+    ImageButton buttonClose;
+    Dialog mydialog;
+
 
     Fragment fragment;
     public static Bundle myBundle = new Bundle();
@@ -45,6 +55,12 @@ public class Insights extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        mydialog = new Dialog(Insights.this);
+        mydialog.setContentView(R.layout.logout_popup);
+        buttonYes= mydialog.findViewById(R.id.buttonYes);
+        buttonClose = mydialog.findViewById(R.id.buttonClose);
 
         sixmonthbutton = findViewById(R.id.twomonthsbutton);
         twomonthsbutton = findViewById(R.id.sixmonthsbutton);
@@ -93,10 +109,33 @@ public class Insights extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            mydialog.show();
+
+            buttonYes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+                    Intent t= new Intent(Insights.this,Login.class);
+                    Toast.makeText(Insights.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
+                    startActivity(t);
+
+                }
+            });
+
+            buttonClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mydialog.dismiss();
+                }
+            });
+
+
             return true;
         }
 

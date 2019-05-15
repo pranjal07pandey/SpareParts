@@ -75,6 +75,19 @@
         <activity
             android:name=".Main.main.TransparentActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
+        <activity android:name=".Main.main.LogoutPopup" />
+
+        <activity
+            android:name=".Main.main.DeliveredPopup"
+            android:theme="@style/AppTheme.CustomTheme1" />
+
+        <activity
+            android:name=".Main.main.UndeliveredPopup"
+            android:theme="@style/AppTheme.CustomTheme1"
+            />
+        />
+
+
     </application>
 
 </manifest>
