@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,6 +36,7 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
     Button buttonsearchcredit;
     RecyclerView recyclerViewsearch;
     private Credit_Adapter creditAdapter;
+    ProgressBar progressBar;
     String selected,pan,searchingclass,searchingvalue;
     List<Credit_Datamodel> creditDatamodelListe;
     RecyclerView recyclerViewsearcheddata;
@@ -46,6 +48,9 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
 
         searchingvalueetcredit = findViewById(R.id.edittextcreditsearchdata);
         recyclerViewsearch = findViewById(R.id.recycleviewsearcheddatacredit);
+
+        progressBar = findViewById(R.id.progressbarsearchcredit);
+        progressBar.setVisibility(View.GONE);
 
         getSupportActionBar().setTitle("Search Credit Items");
         spinnercredit= findViewById(R.id.searchbycreditspinner);
@@ -72,6 +77,7 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
         buttonsearchcredit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressBar.setVisibility(View.VISIBLE);
                 searchingvalue = searchingvalueetcredit.getText().toString();
 //               Toast.makeText(SearchActivityInventory.this, searchingvalue, Toast.LENGTH_SHORT).show();
                 callsearchingapi(pan,searchingvalue,selected,searchingclass);
@@ -93,6 +99,7 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
             @Override
             public void onResponse(Call<List<Credit_Datamodel>> call, Response<List<Credit_Datamodel>> response) {
                 creditDatamodelListe = response.body();
+                progressBar.setVisibility(View.GONE);
 
                 if (response.body()!=null){
                     creditAdapter = new Credit_Adapter(creditDatamodelListe,getApplicationContext());
@@ -113,6 +120,10 @@ public class SearchActivityCredit extends AppCompatActivity implements AdapterVi
 
             @Override
             public void onFailure(Call<List<Credit_Datamodel>> call, Throwable t) {
+
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(SearchActivityCredit.this, "No data"+t, Toast.LENGTH_SHORT).show();
+
 
             }
         });

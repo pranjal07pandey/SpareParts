@@ -137,7 +137,6 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
         switch (position) {
             case 0:
                 selected  = "code";
-                Toast.makeText(this, selected, Toast.LENGTH_SHORT).show();
 //                selected  = parent.getItemAtPosition(position).toString();
 
                 // Whatever you want to happen when the first item gets selected
