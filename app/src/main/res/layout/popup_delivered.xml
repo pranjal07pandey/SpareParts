@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="350dp"
-    android:layout_height="200dp"
-    android:background="#37cece"
+    android:layout_height="match_parent"
+    android:background="#42b7e5"
     android:padding="5dp"
     android:layout_gravity="center">
 
@@ -159,21 +159,28 @@
     </LinearLayout>
 
 
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        >
 
         <Button
-            android:id="@+id/buttonOk"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OK"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@drawable/buttondesign"
             android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="350dp"
-
+            android:id="@+id/buttonOk"
+            android:text="OK"
+            android:layout_marginTop="7dp"
+            android:textColor="#ffff"
+            android:textSize="20sp"
+            android:shadowDx="0"
+            android:shadowDy="0"
+            android:shadowRadius="5"
+            android:gravity="center"
             />
+
+
 
 
     </RelativeLayout>

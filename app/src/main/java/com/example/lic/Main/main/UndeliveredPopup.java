@@ -47,7 +47,7 @@ public class UndeliveredPopup extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.85), (int) (height * 0.4));
+        getWindow().setLayout((int) (width * 0.85), (int) (height * 0.35));
 
         color = findViewById(R.id.undeliveredColor);
         sellingprice = findViewById(R.id.undeliveredSp);

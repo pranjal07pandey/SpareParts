@@ -47,7 +47,7 @@ public class DeliveredPopup  extends Activity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int) (width * 0.85), (int) (height * 0.4));
+        getWindow().setLayout((int) (width * 0.85), (int) (height * 0.35));
 
         color = findViewById(R.id.deliveredColor);
         sellingprice = findViewById(R.id.deliveredSp);
