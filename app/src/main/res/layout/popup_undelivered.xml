@@ -26,7 +26,7 @@
             android:textAlignment="center"
             android:textColor="#0c0b0c"
             android:layout_marginTop="15dp"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:text="Color: "
 
             />
@@ -42,7 +42,7 @@
             android:maxLength="10"
             android:ellipsize="marquee"
             android:textColor="#0c0b0c"
-            android:textSize="15sp"
+            android:textSize="16sp"
             />
 
     </LinearLayout>
@@ -62,7 +62,7 @@
             android:textAlignment="center"
             android:textColor="#0c0b0c"
             android:layout_marginTop="15dp"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:text="Sp: "
 
 
@@ -79,7 +79,7 @@
             android:maxLength="10"
             android:ellipsize="marquee"
             android:textColor="#0c0b0c"
-            android:textSize="15sp"
+            android:textSize="16sp"
             />
 
     </LinearLayout>
@@ -100,7 +100,7 @@
             android:textAlignment="center"
             android:textColor="#0c0b0c"
             android:layout_marginTop="15dp"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:text="Size: "
 
             />
@@ -116,7 +116,7 @@
             android:maxLength="10"
             android:ellipsize="marquee"
             android:textColor="#0c0b0c"
-            android:textSize="15sp"
+            android:textSize="16sp"
             />
 
     </LinearLayout>
@@ -137,7 +137,7 @@
             android:textAlignment="center"
             android:textColor="#0c0b0c"
             android:layout_marginTop="15dp"
-            android:textSize="15sp"
+            android:textSize="16sp"
             android:text="Deliverd Date: "
 
             />
@@ -153,7 +153,7 @@
             android:maxLength="10"
             android:ellipsize="marquee"
             android:textColor="#0c0b0c"
-            android:textSize="15sp"
+            android:textSize="16sp"
             />
 
     </LinearLayout>
@@ -163,7 +163,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         >
 
         <Button
