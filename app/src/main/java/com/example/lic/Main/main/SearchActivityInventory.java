@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
     Spinner spinner;
     EditText searchingvaluetv;
+    ProgressBar progressBar;
     Button buttonsearch;
     RecyclerView recyclerViewsearch;
     private Inventory_Adapter inventoryAdapter;
@@ -47,7 +49,8 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
         searchingvaluetv = findViewById(R.id.edittextinventorysearchdata);
         recyclerViewsearch = findViewById(R.id.recycleviewsearcheddata);
 
-
+        progressBar = findViewById(R.id.progressbarsearchinventory);
+        progressBar.setVisibility(View.GONE);
         spinner = findViewById(R.id.searchbyinventoryspinner);
 
 
@@ -78,6 +81,7 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
            @Override
            public void onClick(View v) {
                searchingvalue = searchingvaluetv.getText().toString();
+               progressBar.setVisibility(View.VISIBLE);
 //               Toast.makeText(SearchActivityInventory.this, searchingvalue, Toast.LENGTH_SHORT).show();
                callsearchingapi(pan,searchingvalue,selected,searchingclass);
 
@@ -91,7 +95,6 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
 
     private void callsearchingapi(String pan, String searchingvalue,String selected, String searchingclass) {
 
-        Toast.makeText(this, pan+"+"+selected+"+"+searchingclass+"+"+searchingvalue, Toast.LENGTH_LONG).show();
 
         Call<List<Inventory_Model>> call = RetrofitClient.getmInstance().getApi().getsearch(pan,searchingvalue,selected,searchingclass);
 
@@ -99,6 +102,7 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
             @Override
             public void onResponse(Call<List<Inventory_Model>> call, Response<List<Inventory_Model>> response) {
                 inventoryModelList = response.body();
+                progressBar.setVisibility(View.GONE);
 
                 if (response.body()!=null){
                     inventoryAdapter = new Inventory_Adapter(inventoryModelList,getApplicationContext());
@@ -111,6 +115,7 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
                 }
 
                 else {
+                    progressBar.setVisibility(View.GONE);
 
                     Toast.makeText(SearchActivityInventory.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
                 }

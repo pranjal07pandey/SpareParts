@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +35,7 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
     Spinner spinnerwholesale;
     EditText searchingvalueet;
     Button buttonsearch;
+    ProgressBar progressBar;
     RecyclerView recyclerViewsearch;
     private Wholesale_Adapter wholesale_adapter;
     String selected,pan,searchingclass,searchingvalue;
@@ -51,10 +53,11 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
         spinnerwholesale = findViewById(R.id.searchbywholsesalespinner);
 
         buttonsearch = findViewById(R.id.searchbuttonwholesale);
-
+        progressBar = findViewById(R.id.progressbarsearchwholesale);
+        progressBar.setVisibility(View.GONE);
         pan = SharedPreferenceManager.getmInstance(this).getUser().getUserid();
 
-        searchingclass = "wholesale";
+        searchingclass = "wholesaler";
         getSupportActionBar().setTitle("Search Wholesale Items");
 
         final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_material);
@@ -76,6 +79,7 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
                 searchingvalue = searchingvalueet.getText().toString();
 //               Toast.makeText(SearchActivityInventory.this, searchingvalue, Toast.LENGTH_SHORT).show();
                 callsearchingapi(pan,searchingvalue,selected,searchingclass);
+                progressBar.setVisibility(View.VISIBLE);
 
             }
         });
@@ -87,7 +91,6 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
 
     private void callsearchingapi(String pan, String searchingvalue,String selected, String searchingclass) {
 
-        Toast.makeText(this, pan+"+"+selected+"+"+searchingclass+"+"+searchingvalue, Toast.LENGTH_LONG).show();
 
         Call<List<Wholesale_Datamodel>> call = RetrofitClient.getmInstance().getApi().getsearchwholesale(pan,searchingvalue,selected,searchingclass);
 
@@ -95,6 +98,7 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
       call.enqueue(new Callback<List<Wholesale_Datamodel>>() {
           @Override
           public void onResponse(Call<List<Wholesale_Datamodel>> call, Response<List<Wholesale_Datamodel>> response) {
+              progressBar.setVisibility(View.GONE);
               wholesaleDatamodelList = response.body();
 
               if (response.body()!=null){
@@ -116,6 +120,9 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
 
           @Override
           public void onFailure(Call<List<Wholesale_Datamodel>> call, Throwable t) {
+              progressBar.setVisibility(View.GONE);
+
+              Toast.makeText(SearchActivityWholesale.this, "No data"+t, Toast.LENGTH_SHORT).show();
 
           }
       });

@@ -167,6 +167,11 @@ public class Online_Delievered extends AppCompatActivity
 
         int id = item.getItemId();
 
+        if (id == R.id.action_search){
+            Intent intent = new Intent(Online_Delievered.this,SearchActivityDelievered.class);
+            startActivity(intent);
+        }
+
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
 

@@ -1,6 +1,7 @@
 package com.example.lic.Main.main;
 
 import android.app.ActionBar;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -31,6 +32,7 @@ public class Login extends AppCompatActivity {
 
     private EditText editViewuserid;
     private EditText editViewpassword;
+    ProgressDialog progressDialog;
     private TextView textViewregister;
     private Button button;
 
@@ -106,6 +108,7 @@ public class Login extends AppCompatActivity {
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                progressDialog.dismiss();
 
                 User loginresponse = response.body();
 
@@ -168,6 +171,7 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                progressDialog.dismiss();
                 Toast.makeText(Login.this, "Error No Internet Connection"+t, Toast.LENGTH_LONG).show();
 
 

@@ -43,14 +43,24 @@
     </string-array>
 
     <string-array name="Optionswholesale">
-        <item>Name</item>
-        <item>Contact</item>
-        <item>Address</item>
+        <item>name</item>
+        <item>contactNo</item>
+        <item>address</item>
     </string-array>
 
     <string-array name="Optionscredit">
         <item>Name</item>
         <item>Address</item>
+
+    </string-array>
+
+    <string-array name="Optionsdelievered">
+        <item>Name</item>
+        <item>Pcode</item>
+        <item>Address</item>
+        <item>Quantity</item>
+        <item>Price</item>
+
 
     </string-array>
 </resources>
