@@ -86,9 +86,9 @@
         android:id="@+id/nodatwholesale"
         android:textSize="16sp"
         android:layout_margin="2dp"
-        android:textColor="@color/background"
+        android:textColor="@color/Nodata"
         android:ellipsize="marquee"
-        android:maxLength="20"
+
         android:layout_marginTop="100dp"
         android:layout_below="@id/linearlatou"
         android:textAlignment="center"

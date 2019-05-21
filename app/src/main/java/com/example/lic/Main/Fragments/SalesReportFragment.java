@@ -98,6 +98,8 @@ public class SalesReportFragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<List<Reportdata>> call, Throwable t) {
+                    textViewnodata.setText("Please Connect To Internet And Try Again");
+                    textViewnodata.setVisibility(View.VISIBLE);
                     Toast.makeText(getContext(),"Error"+t,Toast.LENGTH_SHORT).show();
                     progressBar.setVisibility(View.GONE);
 

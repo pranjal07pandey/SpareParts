@@ -134,6 +134,8 @@ public class Online_Undelievered extends AppCompatActivity
             public void onFailure(Call<List<Undelivered_Datamodel>> call, Throwable t) {
                 progressBarundelievered.setVisibility(View.GONE);
                 swipeRefreshLayoutonlineundelievered.setRefreshing(false);
+                textViewnodata.setText("Please Connect To Internet and Try Again");
+                textViewnodata.setVisibility(View.VISIBLE);
 
                 Toast.makeText(Online_Undelievered.this, "Please Connect To Internet And Try Again", Toast.LENGTH_SHORT).show();
 
@@ -174,6 +176,11 @@ public class Online_Undelievered extends AppCompatActivity
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
+
+        if (id == R.id.action_search){
+            Intent intent = new Intent(Online_Undelievered.this,SearchActivityUndelievered.class);
+            startActivity(intent);
+        }
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {

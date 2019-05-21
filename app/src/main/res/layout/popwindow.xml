@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="match_parent"
-    android:background="#42b7e5"
+    android:background="@color/background"
     android:padding="5dp"
     android:layout_gravity="center">
 
@@ -14,8 +14,7 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:id="@+id/linear3"
-
-        android:layout_gravity="center"
+android:layout_marginLeft="25dp"
 
         >
 
@@ -24,9 +23,13 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textAlignment="center"
-    android:textColor="#0c0b0c"
-    android:layout_marginTop="15dp"
-    android:textSize="20sp"
+    android:textColor="@color/Titlehome"
+        android:fontFamily="@font/robot"
+    android:layout_marginTop="20dp"
+        android:textStyle="bold"
+    android:textSize="25sp"
+
+        android:textAllCaps="true"
     android:text="Advance: "
 
 
@@ -37,13 +40,17 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="2dp"
-    android:layout_marginTop="15dp"
+    android:layout_marginTop="20dp"
     android:text="0"
     android:textAlignment="center"
-    android:maxLength="10"
+        android:textAllCaps="true"
+        android:fontFamily="@font/robot"
+
+
+        android:maxLength="10"
     android:ellipsize="marquee"
-    android:textColor="#0c0b0c"
-    android:textSize="20sp"
+    android:textColor="@color/Titlehome"
+    android:textSize="25sp"
     />
 
     </LinearLayout>
@@ -53,17 +60,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginLeft="25dp"
+
         android:id="@+id/linear4"
-        android:layout_gravity="center">
+       >
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#0c0b0c"
+            android:textColor="@color/Titlehome"
+            android:fontFamily="@font/robot"
+
             android:layout_marginTop="15dp"
-            android:textSize="20sp"
+            android:textSize="25sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             android:text="Sp: "
 
 
@@ -71,6 +84,10 @@
 
         <TextView
             android:id="@+id/sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:fontFamily="@font/robot"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="2dp"
@@ -79,8 +96,8 @@
             android:textAlignment="center"
             android:maxLength="10"
             android:ellipsize="marquee"
-            android:textColor="#0c0b0c"
-            android:textSize="20sp"
+            android:textColor="@color/Titlehome"
+            android:textSize="25sp"
             />
 
     </LinearLayout>
@@ -88,10 +105,11 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp">
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="20dp">
 
     <Button
-        android:layout_width="120dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
         android:background="@drawable/buttondesign"
         android:layout_centerHorizontal="true"
@@ -99,9 +117,10 @@
         android:text="OK"
         android:layout_marginTop="7dp"
         android:textColor="#ffff"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:shadowDx="0"
         android:shadowDy="0"
+        android:fontFamily="@font/robot"
         android:shadowRadius="5"
         android:gravity="center"
         />

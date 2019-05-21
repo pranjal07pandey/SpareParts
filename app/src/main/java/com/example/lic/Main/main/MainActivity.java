@@ -144,9 +144,9 @@ public class MainActivity extends AppCompatActivity
             mydialog.show();
 
             buttonYes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
+                        @Override
+                        public void onClick(View v) {
+                            SharedPreferenceManager.getmInstance(getApplicationContext()).clear();
                     Intent t= new Intent(MainActivity.this,Login.class);
                     Toast.makeText(MainActivity.this,"Logout Sucessful",Toast.LENGTH_SHORT).show();
                     startActivity(t);

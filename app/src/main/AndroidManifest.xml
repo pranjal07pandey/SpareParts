@@ -3,6 +3,7 @@
     package="com.example.lic">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Main.main.SearchActivityDelievered"></activity>
+        <activity android:name=".Main.main.TransparentActivityforinsights"
+            android:theme="@style/Theme.AppCompat.Translucent" ></activity>
+        <activity
+            android:name=".Main.main.Transparentactivity2"
+            android:theme="@style/Theme.AppCompat.Translucent" />
+        <activity android:name=".Main.main.SearchActivityUndelievered" />
+        <activity android:name=".Main.main.SearchActivityDelievered" />
         <activity android:name=".Main.main.SearchActivityCredit" />
         <activity android:name=".Main.main.SearchActivityWholesale" />
         <activity android:name=".Main.main.SearchActivityInventory" />
@@ -79,18 +86,12 @@
             android:name=".Main.main.TransparentActivity"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity android:name=".Main.main.LogoutPopup" />
-
         <activity
             android:name=".Main.main.DeliveredPopup"
             android:theme="@style/AppTheme.CustomTheme1" />
-
         <activity
             android:name=".Main.main.UndeliveredPopup"
-            android:theme="@style/AppTheme.CustomTheme1"
-            />
-        />
-
-
+            android:theme="@style/AppTheme.CustomTheme1" />
     </application>
 
 </manifest>

@@ -42,7 +42,7 @@ public class Credit_Adapter extends RecyclerView.Adapter<Credit_Adapter.Creditvi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Credit_Adapter.Creditviewholder creditviewholder, final int i) {
+    public void onBindViewHolder(@NonNull final Credit_Adapter.Creditviewholder creditviewholder, final int i) {
 
         creditviewholder.textViewname.setText(listcredit.get(i).getName());
         creditviewholder.textViewcontact.setText(listcredit.get(i).getContact());
@@ -56,8 +56,8 @@ public class Credit_Adapter extends RecyclerView.Adapter<Credit_Adapter.Creditvi
 
                 Intent intent = new Intent(context,Pop.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("Advance",advance);
-                intent.putExtra("Sp",sp);
+                intent.putExtra("Advance",listcredit.get(creditviewholder.getAdapterPosition()).getAdvance());
+                intent.putExtra("Sp",listcredit.get(creditviewholder.getAdapterPosition()).getSp());
                 context.startActivity(intent);
 
 

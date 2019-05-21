@@ -85,7 +85,7 @@ public class Report extends AppCompatActivity
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
-        Toast.makeText(this, "Please Select Date To Get Started", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Please Select Date To Get Started", Toast.LENGTH_LONG).show();
 
 
         buttonstartdate.setOnClickListener(new View.OnClickListener() {

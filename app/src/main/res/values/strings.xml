@@ -43,9 +43,9 @@
     </string-array>
 
     <string-array name="Optionswholesale">
-        <item>name</item>
-        <item>contactNo</item>
-        <item>address</item>
+        <item>Name</item>
+        <item>Contact</item>
+        <item>Address</item>
     </string-array>
 
     <string-array name="Optionscredit">

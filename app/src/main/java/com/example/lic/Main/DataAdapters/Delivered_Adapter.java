@@ -43,7 +43,7 @@ public class Delivered_Adapter extends RecyclerView.Adapter<Delivered_Adapter.De
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Delivered_Adapter.Deliveredviewholder deliveredviewholder, final int i) {
+    public void onBindViewHolder(@NonNull final Delivered_Adapter.Deliveredviewholder deliveredviewholder, final int i) {
 
         deliveredviewholder.textViewname.setText(listdelivered.get(i).getName());
         deliveredviewholder.textViewcode.setText(listdelivered.get(i).getCode());
@@ -62,10 +62,10 @@ public class Delivered_Adapter extends RecyclerView.Adapter<Delivered_Adapter.De
             public void onClick(View v) {
                 Intent intent = new Intent(context, DeliveredPopup.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("Sp",sp);
-                intent.putExtra("Color", color);
-                intent.putExtra("Size", size);
-                intent.putExtra("Delivered Date",deliveredDate);
+                intent.putExtra("Sp",listdelivered.get(deliveredviewholder.getAdapterPosition()).getSp());
+                intent.putExtra("Color", listdelivered.get(deliveredviewholder.getAdapterPosition()).getColor());
+                intent.putExtra("Size",listdelivered.get(deliveredviewholder.getAdapterPosition()).getSize());
+                intent.putExtra("Delivered Date",listdelivered.get(deliveredviewholder.getAdapterPosition()).getDelivery_date());
                 context.startActivity(intent);
             }
         });

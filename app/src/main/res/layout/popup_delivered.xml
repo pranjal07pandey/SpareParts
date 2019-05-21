@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="350dp"
     android:layout_height="match_parent"
-    android:background="#42b7e5"
+    android:background="@color/background"
     android:padding="5dp"
     android:layout_gravity="center">
 
@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linear1"
+        android:layout_marginLeft="20dp"
 
-        android:layout_gravity="center"
+
 
         >
 
@@ -24,10 +25,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#0c0b0c"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            android:fontFamily="@font/robot"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             android:layout_marginTop="15dp"
-            android:textSize="16sp"
-            android:text="Color: "
+            android:text="Color : "
 
             />
 
@@ -40,9 +44,10 @@
             android:text="black"
             android:textAlignment="center"
             android:maxLength="10"
+            android:fontFamily="@font/robot"
             android:ellipsize="marquee"
-            android:textColor="#0c0b0c"
-            android:textSize="16sp"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
             />
 
     </LinearLayout>
@@ -53,17 +58,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linear2"
-        android:layout_gravity="center">
+        android:layout_marginLeft="20dp">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#0c0b0c"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            android:fontFamily="@font/robot"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             android:layout_marginTop="15dp"
-            android:textSize="16sp"
-            android:text="Sp: "
+
+            android:text="Sp : "
 
 
             />
@@ -77,9 +86,11 @@
             android:text="0"
             android:textAlignment="center"
             android:maxLength="10"
+            android:fontFamily="@font/robot"
             android:ellipsize="marquee"
-            android:textColor="#0c0b0c"
-            android:textSize="16sp"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+
             />
 
     </LinearLayout>
@@ -91,17 +102,22 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linear3"
-        android:layout_gravity="center">
+        android:layout_marginLeft="20dp">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#0c0b0c"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            android:fontFamily="@font/robot"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+
             android:layout_marginTop="15dp"
-            android:textSize="16sp"
-            android:text="Size: "
+
+            android:text="Size : "
 
             />
 
@@ -114,9 +130,11 @@
             android:text="32"
             android:textAlignment="center"
             android:maxLength="10"
+            android:fontFamily="@font/robot"
             android:ellipsize="marquee"
-            android:textColor="#0c0b0c"
-            android:textSize="16sp"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+
             />
 
     </LinearLayout>
@@ -128,17 +146,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/linear4"
-        android:layout_gravity="center">
+        android:layout_marginLeft="20dp">
 
         <TextView
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textColor="#0c0b0c"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
+            android:fontFamily="@font/robot"
+            android:textAllCaps="true"
+            android:textStyle="bold"
             android:layout_marginTop="15dp"
-            android:textSize="16sp"
-            android:text="Deliverd Date: "
+            android:text="Deliverd Date : "
 
             />
 
@@ -151,12 +172,15 @@
             android:text="2012-1-1"
             android:textAlignment="center"
             android:maxLength="10"
+
+            android:fontFamily="@font/robot"
             android:ellipsize="marquee"
-            android:textColor="#0c0b0c"
-            android:textSize="16sp"
+            android:textColor="@color/Titlehome"
+            android:textSize="20sp"
             />
 
     </LinearLayout>
+
 
 
     <RelativeLayout

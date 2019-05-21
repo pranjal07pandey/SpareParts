@@ -43,6 +43,9 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Logging In");
+        progressDialog.setMessage("Please wait while we log you in");
 
 
 
@@ -63,6 +66,7 @@ public class Login extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 userlogin();
             }
         });
@@ -110,7 +114,7 @@ public class Login extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
 
                 User loginresponse = response.body();
-
+                progressDialog.dismiss();
 //
                 if (loginresponse.getError() == 1){
 
@@ -147,7 +151,17 @@ public class Login extends AppCompatActivity {
 
                     editViewpassword.setError("Account Not Activated");
                     editViewuserid.setError("Check Your Email");
-                    Toast.makeText(Login.this, "Account not active ",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Login.this, "Account not active please check your mail ",Toast.LENGTH_LONG).show();
+
+                    return;
+
+                }
+
+                else if(loginresponse.getError()==5) {
+
+                    editViewpassword.setError("Account Not Configured");
+                    editViewuserid.setError("Check Your Email");
+                    Toast.makeText(Login.this, "Account configuration in progress please try again later ",Toast.LENGTH_LONG).show();
 
                     return;
 
@@ -155,7 +169,6 @@ public class Login extends AppCompatActivity {
 
                 else if(loginresponse != null || loginresponse.getError()==0){
                     SharedPreferenceManager.getmInstance(Login.this).saveuser(loginresponse);
-                    Toast.makeText(Login.this,loginresponse.getUserid()+loginresponse.getCname(),Toast.LENGTH_LONG).show();
 
 
                     Intent intent = new Intent(Login.this,MainActivity.class);
@@ -170,6 +183,7 @@ public class Login extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                progressDialog.dismiss();
                 Toast.makeText(Login.this, "Error No Internet Connection"+t, Toast.LENGTH_LONG).show();
 
 

@@ -60,28 +60,28 @@
 
             </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:id="@+id/relativelayoutgraphbar"
-        android:layout_below="@+id/relativelayoutgraphprofit">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="500dp"-->
+        <!--android:id="@+id/relativelayoutgraphbar"-->
+        <!--android:layout_below="@+id/relativelayoutgraphprofit">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Inventory Graph"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/textviewbar"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Inventory Graph"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:id="@+id/textviewbar"/>-->
 
 
-        <com.github.mikephil.charting.charts.BarChart
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:id="@+id/chartinventory">
+        <!--<com.github.mikephil.charting.charts.BarChart-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="500dp"-->
+            <!--android:id="@+id/chartinventory">-->
 
-        </com.github.mikephil.charting.charts.BarChart>
+        <!--</com.github.mikephil.charting.charts.BarChart>-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 </RelativeLayout>
 
 </ScrollView>

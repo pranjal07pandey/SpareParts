@@ -134,6 +134,7 @@ public class Profitreportfragment extends Fragment {
 
                 @Override
                 public void onFailure(Call<Totaldata> call, Throwable t) {
+                    Toast.makeText(getContext(),"Error Getting total "+t,Toast.LENGTH_LONG).show();
 
                 }
             });

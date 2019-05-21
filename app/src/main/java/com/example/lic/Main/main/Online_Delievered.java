@@ -133,6 +133,8 @@ public class Online_Delievered extends AppCompatActivity
             public void onFailure(Call<List<Delivered_Datamodel>> call, Throwable t) {
 
                 progressBar.setVisibility(View.GONE);
+                textViewnodata.setText("Please Connect To Internet and Try Again");
+                textViewnodata.setVisibility(View.VISIBLE);
                 swipeRefreshLayoutonlinedelievered.setRefreshing(false);
                 Toast.makeText(Online_Delievered.this, "Please Connect To Internet And Try Again", Toast.LENGTH_SHORT).show();
 

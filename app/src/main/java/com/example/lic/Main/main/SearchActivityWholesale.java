@@ -113,7 +113,7 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
 
               else {
 
-                  Toast.makeText(SearchActivityWholesale.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
+                  Toast.makeText(SearchActivityWholesale.this, "No data", Toast.LENGTH_SHORT).show();
               }
 
           }
@@ -135,7 +135,7 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
 
         switch (position) {
             case 0:
-                selected  = parent.getItemAtPosition(position).toString();
+                selected  = "name";
 
 //                selected  = parent.getItemAtPosition(position).toString();
 
@@ -144,12 +144,12 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
             case 1:
 
 
-                selected  = parent.getItemAtPosition(position).toString();
+                selected  = "contactNo";
 
                 // Whatever you want to happen when the second item gets selected
                 break;
             case 2:
-                selected  = parent.getItemAtPosition(position).toString();
+                selected  = "address";
 
                 // Whatever you want to happen when the thrid item gets selected
                 break;

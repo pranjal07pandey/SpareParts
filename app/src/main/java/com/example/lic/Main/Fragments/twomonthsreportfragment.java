@@ -58,7 +58,7 @@ public class twomonthsreportfragment extends Fragment {
 
         lineChartsales = v.findViewById(R.id.mylinegraph1);
         lineChartprofit = v.findViewById(R.id.mylinegraph2);
-        barChart = v.findViewById(R.id.chartinventory);
+//        barChart = v.findViewById(R.id.chartinventory);
 
 
         User user = SharedPreferenceManager.getmInstance(getContext()).getUser();

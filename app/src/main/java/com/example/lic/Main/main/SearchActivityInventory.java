@@ -117,14 +117,14 @@ public class SearchActivityInventory extends AppCompatActivity implements Adapte
                 else {
                     progressBar.setVisibility(View.GONE);
 
-                    Toast.makeText(SearchActivityInventory.this, "No data"+response.body(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivityInventory.this, "No Data Found", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Inventory_Model>> call, Throwable t) {
 
-                Toast.makeText(SearchActivityInventory.this, "Please Check Your Connection and Try Again"+t, Toast.LENGTH_LONG).show();
+                Toast.makeText(SearchActivityInventory.this, "Please Check Your Connection and Try Again", Toast.LENGTH_LONG).show();
 
             }
         });

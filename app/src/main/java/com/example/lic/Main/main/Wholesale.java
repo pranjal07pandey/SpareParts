@@ -139,6 +139,8 @@ public class Wholesale extends AppCompatActivity
 
                 swipeRefreshLayout.setRefreshing(false);
                 progressBar.setVisibility(View.GONE);
+                textViewnodata.setText("Please Connect To Internet And Try Again");
+                textViewnodata.setVisibility(View.VISIBLE);
                 Toast.makeText(Wholesale.this,"Please Check Your Internet Connection and Try Again",Toast.LENGTH_LONG).show();
 
             }

@@ -87,6 +87,8 @@ public interface API {
     @GET("getSearchResult.php/")
     Call<List<Delivered_Datamodel>> getsearchdelievered(@Query("PAN") String pan, @Query("value")String value, @Query("field") String field, @Query("class") String selectedclass);
 
+    @GET("getSearchResult.php/")
+    Call<List<Undelivered_Datamodel>> getsearchundelievered(@Query("PAN") String pan, @Query("value")String value, @Query("field") String field, @Query("class") String selectedclass);
 
 
 

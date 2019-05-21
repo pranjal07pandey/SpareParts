@@ -126,6 +126,9 @@ public class Import_Report_Fragment extends Fragment {
                 @Override
                 public void onFailure(Call<Totaldata> call, Throwable t) {
 
+                    textViewnodata.setText("Please Connect To Internet And Try Again");
+                    textViewnodata.setVisibility(View.VISIBLE);
+
                 }
             });
 

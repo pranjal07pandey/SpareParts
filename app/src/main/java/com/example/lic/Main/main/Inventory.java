@@ -150,8 +150,8 @@ public class Inventory extends AppCompatActivity
                 Toast.makeText(Inventory.this,"Please Connect To Internet And Try Again",Toast.LENGTH_LONG).show();
                 progressBar.setVisibility(View.GONE);
                 recyclerView.setVisibility(View.GONE);
-                textViewnodata.setVisibility(View.VISIBLE);
                 textViewnodata.setText("Please Connect To Internet And Try Again");
+                textViewnodata.setVisibility(View.VISIBLE);
                 swipeRefreshLayout.setRefreshing(false);
 
 
