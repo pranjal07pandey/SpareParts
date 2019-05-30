@@ -43,6 +43,7 @@ public class Wholesale extends AppCompatActivity
     ImageButton buttonClose;
     Dialog mydialog;
 
+    TextView txtnavname,txtuserdays;
 
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -164,6 +165,12 @@ public class Wholesale extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        txtnavname = findViewById(R.id.txtcompanyname);
+        txtuserdays = findViewById(R.id.textremainingdays);
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        txtnavname.setText(user.getCname());
+        txtuserdays.setText("Logispark Inventory Control");
+
         return true;
     }
 

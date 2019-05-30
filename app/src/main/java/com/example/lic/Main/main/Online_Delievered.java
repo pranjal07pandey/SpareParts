@@ -42,7 +42,7 @@ public class Online_Delievered extends AppCompatActivity
     Button buttonYes;
     ImageButton buttonClose;
     Dialog mydialog;
-
+    TextView txtnavname,txtuserdays;
 
     private Delivered_Adapter delivered_adapter;
     ProgressBar progressBar;
@@ -157,6 +157,12 @@ public class Online_Delievered extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        txtnavname = findViewById(R.id.txtcompanyname);
+        txtuserdays = findViewById(R.id.textremainingdays);
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        txtnavname.setText(user.getCname());
+        txtuserdays.setText("Logispark Inventory Control");
+
         return true;
     }
 

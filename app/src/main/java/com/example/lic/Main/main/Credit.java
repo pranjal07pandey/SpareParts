@@ -41,7 +41,7 @@ public class Credit extends AppCompatActivity
     private Credit_Adapter creditadapter;
     ProgressBar progressBarcredit;
     SwipeRefreshLayout swipeRefreshLayoutcredit;
-    TextView textViewnodata;
+    TextView textViewnodata,txtnavname,txtuserdays;
     String pan;
     private List<Credit_Datamodel> creditmodel;
     RecyclerView recyclerView;
@@ -151,6 +151,11 @@ public class Credit extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        txtnavname = findViewById(R.id.txtcompanyname);
+        txtuserdays = findViewById(R.id.textremainingdays);
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        txtnavname.setText(user.getCname());
+        txtuserdays.setText("Logispark Inventory Control");
         return true;
     }
 

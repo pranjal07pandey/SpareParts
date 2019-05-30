@@ -17,8 +17,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lic.Main.Datamodel.User;
 import com.example.lic.Main.Fragments.sixmonthsreportfragment;
 import com.example.lic.Main.Utilities.SharedPreferenceManager;
 import com.example.lic.R;
@@ -31,7 +33,7 @@ public class Insights extends AppCompatActivity
     Button buttonYes;
     ImageButton buttonClose;
     Dialog mydialog;
-
+    TextView txtnavname,txtuserdays;
 
     Fragment fragment;
     public static Bundle myBundle = new Bundle();
@@ -105,6 +107,13 @@ public class Insights extends AppCompatActivity
         getMenuInflater().inflate(R.menu.main, menu);
         MenuItem menuItem = menu.findItem(R.id.action_search);
         menuItem.setVisible(false);
+
+
+        txtnavname = findViewById(R.id.txtcompanyname);
+        txtuserdays = findViewById(R.id.textremainingdays);
+        User user = SharedPreferenceManager.getmInstance(this).getUser();
+        txtnavname.setText(user.getCname());
+        txtuserdays.setText("Logispark Inventory Control");
         return true;
     }
 

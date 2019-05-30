@@ -106,9 +106,6 @@ public class SearchActivityWholesale extends AppCompatActivity implements Adapte
                   recyclerViewsearch.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                   recyclerViewsearch.setAdapter(wholesale_adapter);
 
-
-
-
               }
 
               else {
