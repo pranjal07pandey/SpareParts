@@ -38,7 +38,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main.main.Inventory_Secong" />
         <activity android:name=".Main.InventoryList" />
         <activity
             android:name=".Main.main.Credit"
@@ -92,6 +91,9 @@
         <activity
             android:name=".Main.main.UndeliveredPopup"
             android:theme="@style/AppTheme.CustomTheme1" />
+
+        <activity android:name=".Main.main.InventoryPopup"
+                  android:theme="@style/AppTheme.CustomTheme1" />
     </application>
 
 </manifest>

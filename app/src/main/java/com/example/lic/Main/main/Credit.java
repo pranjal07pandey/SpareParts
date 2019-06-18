@@ -231,11 +231,11 @@ public class Credit extends AppCompatActivity
                 Intent intent2 = new Intent(Credit.this,Report.class);
                 startActivity(intent2);
                 break;
-
-            case R.id.nav_Online:
-                Intent intent3 = new Intent(Credit.this, TransparentActivity.class);
-                startActivity(intent3);
-                break;
+//
+//            case R.id.nav_Online:
+//                Intent intent3 = new Intent(Credit.this, TransparentActivity.class);
+//                startActivity(intent3);
+//                break;
 
             case R.id.nav_Insights:
                 Intent intent4 = new Intent(Credit.this,Insights.class);

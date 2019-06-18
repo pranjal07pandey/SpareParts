@@ -21,15 +21,15 @@ tools:context=".Main.Fragments.Import_Report_Fragment">
         android:orientation="horizontal"
         android:id="@+id/linearlatou"
         android:background="@drawable/jjj"
-        android:weightSum="8">
+        android:weightSum="6">
 
 
 
         <TextView
-            android:id="@+id/inventory_datereport"
+            android:id="@+id/inventory_name"
             android:layout_width="120dp"
             android:layout_height="20dp"
-            android:text="Date"
+            android:text="Name"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
             android:maxLength="10"
@@ -51,8 +51,7 @@ tools:context=".Main.Fragments.Import_Report_Fragment">
             android:textAlignment="center"
             android:maxLength="10"
             android:layout_weight="1"
-            android:layout_below="@+id/docscategory_title"
-            android:text="Code"
+            android:text="PId"
             android:textStyle="normal"/>
 
         <TextView
@@ -63,19 +62,19 @@ tools:context=".Main.Fragments.Import_Report_Fragment">
             android:layout_margin="2dp"
             android:textColor="@color/background"
             android:ellipsize="marquee"
-            android:maxLength="5"
+            android:maxLength="10"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:text="Brand"
+            android:text="Quantity"
             android:textStyle="normal"/>
 
 
 
         <TextView
-            android:id="@+id/inventory_report_type"
+            android:id="@+id/inventory_report_cp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:text="Type"
+            android:text="Cp"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
             android:maxLength="10"
@@ -86,10 +85,10 @@ tools:context=".Main.Fragments.Import_Report_Fragment">
             android:textStyle="normal" />
 
         <TextView
-            android:id="@+id/inventory_reportwholsale"
+            android:id="@+id/inventory_mp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:text="Wholesale"
+            android:text="Mp"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
             android:maxLength="10"
@@ -100,43 +99,16 @@ tools:context=".Main.Fragments.Import_Report_Fragment">
             android:textStyle="normal" />
 
         <TextView
-            android:id="@+id/Import_report_color"
+            android:id="@+id/Import_report_Wholesaler"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:text="Color"
+            android:text="Wholesaler"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
-            android:maxLength="10"
+            android:maxLength="15"
             android:layout_weight="1"
             android:textAlignment="center"
 
-            android:textColor="@color/background"
-            android:textSize="15sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/inventory_report_size"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="Size"
-            android:layout_margin="2dp"
-            android:ellipsize="marquee"
-            android:maxLength="10"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/background"
-            android:textSize="15sp"
-            android:textStyle="normal" />
-        <TextView
-            android:id="@+id/inventory_report_quantity"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="Qty"
-            android:layout_margin="2dp"
-            android:ellipsize="marquee"
-            android:maxLength="10"
-            android:layout_weight="1"
-            android:textAlignment="center"
             android:textColor="@color/background"
             android:textSize="15sp"
             android:textStyle="normal" />

@@ -18,8 +18,8 @@ public class SalesReportAdapter extends RecyclerView.Adapter<SalesReportAdapter.
 
     private List<Reportdata> reportdatalist;
     private Context mcontext;
-    Integer quantity,tid,sp,profit;
-    String quantitystring,tidstring,pidstring,spstring,profitstring,date,date2;
+    Integer quantity,tid,sp,profit,cp;
+    String quantitystring,tidstring,pidstring,spstring,cpstring,date,date2,profitstring;
 
     public SalesReportAdapter(List<Reportdata> reportdatalist, Context mcontext) {
         this.reportdatalist = reportdatalist;
@@ -46,23 +46,27 @@ public class SalesReportAdapter extends RecyclerView.Adapter<SalesReportAdapter.
         profit = reportdatalist.get(i).getProfit();
         profitstring = String.valueOf(profit);
 
-        tid = reportdatalist.get(i).getTid();
+
+        tid = reportdatalist.get(i).getTransaction_id();
         tidstring = String.valueOf(tid);
 
-        pidstring = reportdatalist.get(i).getPid();
+        pidstring = reportdatalist.get(i).getProduct_id();
 
         sp = reportdatalist.get(i).getSp();
         spstring = String.valueOf(sp);
 
+        cp = reportdatalist.get(i).getCp();
+        cpstring = String.valueOf(cp);
+
         date = reportdata.getDate();
         date2 = date.substring(date.length()-8);
         myreportviewholder.textViewdate.setText(date2);
-        myreportviewholder.textViewtransaction.setText(tidstring);
+        myreportviewholder.textViewtransactionId.setText(tidstring);
         myreportviewholder.textViewquantity.setText(quantitystring);
-        myreportviewholder.textViewcode.setText(pidstring);
-        myreportviewholder.textViewcostprice.setText(Integer.toString(reportdata.getCp()));
+        myreportviewholder.textViewcustomerName.setText(reportdatalist.get(i).getCustomer_name());
+        myreportviewholder.textViewcostprice.setText(cpstring);
         myreportviewholder.textViewsellingprice.setText(spstring);
-
+        myreportviewholder.textViewName.setText(reportdatalist.get(i).getName());
 
 
     }
@@ -75,18 +79,21 @@ public class SalesReportAdapter extends RecyclerView.Adapter<SalesReportAdapter.
     public class Myreportviewholder extends RecyclerView.ViewHolder {
 
         private CardView cardView;
-        private TextView textViewdate,textViewtransaction,textViewcode,textViewquantity,textViewcostprice,textViewsellingprice,textViewprofit;
+        private TextView textViewdate,textViewtransactionId,textViewcustomerName,textViewquantity,textViewcostprice,textViewsellingprice,textViewName;
 
 
         public Myreportviewholder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardviewreport);
-            textViewdate = itemView.findViewById(R.id.date);
-            textViewtransaction = itemView.findViewById(R.id.report_transactionid);
-            textViewcode = itemView.findViewById(R.id.report_code);
-            textViewquantity = itemView.findViewById(R.id.report_quantity);
-            textViewcostprice = itemView.findViewById(R.id.report_costprice);
-            textViewsellingprice = itemView.findViewById(R.id.report_sellingprice);
+
+            textViewdate = itemView.findViewById(R.id.sales_report_date);
+            textViewtransactionId = itemView.findViewById(R.id.sales_report_tid);
+            textViewcustomerName = itemView.findViewById(R.id.sales_report_custname);
+            textViewquantity = itemView.findViewById(R.id.sales_report_quantity);
+            textViewcostprice = itemView.findViewById(R.id.sales_report_costprice);
+            textViewsellingprice = itemView.findViewById(R.id.sales_report_sellingprice);
+            textViewName = itemView.findViewById(R.id.sales_report_name);
+
         }
     }
 }

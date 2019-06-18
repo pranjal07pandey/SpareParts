@@ -93,11 +93,11 @@ public class Return extends AppCompatActivity
                 Intent intent2 = new Intent(Return.this, Report.class);
                 startActivity(intent2);
                 break;
-
-            case R.id.nav_Online:
-                Intent intent3 = new Intent(Return.this, TransparentActivity.class);
-                startActivity(intent3);
-                break;
+//
+//            case R.id.nav_Online:
+//                Intent intent3 = new Intent(Return.this, TransparentActivity.class);
+//                startActivity(intent3);
+//                break;
 
             case R.id.nav_Insights:
                 Intent intent4 = new Intent(Return.this, Insights.class);

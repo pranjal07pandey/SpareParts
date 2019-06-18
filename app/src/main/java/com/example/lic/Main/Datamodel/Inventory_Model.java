@@ -4,83 +4,45 @@ import com.google.gson.annotations.SerializedName;
 
 public class Inventory_Model {
 
-    @SerializedName("code")
-    private String productID;
-    private int id;
-    private String date;
-    private String type;
-    @SerializedName("cp")
-    private int costprice;
-    @SerializedName("mp")
-    private int markedprice;
-    private String brand;
-    private String category;
-    private String wholesaler;
-    private String color;
-    private String size;
-    @SerializedName("quantity")
+
+    private String name;
+    private String product_id;
     private int quantity;
+    private int cp;
+    private int mp;
+    private String wholesaler;
 
-    public Inventory_Model(String productID, int id, String date, String type, int costprice, int markedprice, String brand, String category, String wholesaler, String color, String size, int quantity) {
-        this.productID = productID;
-        this.id = id;
-        this.date = date;
-        this.type = type;
-        this.costprice = costprice;
-        this.markedprice = markedprice;
-        this.brand = brand;
-        this.category = category;
-        this.wholesaler = wholesaler;
-        this.color = color;
-        this.size = size;
+
+    public Inventory_Model(String name, String product_id, int quantity, int cp, int mp, String wholesaler) {
+        this.name = name;
+        this.product_id = product_id;
         this.quantity = quantity;
+        this.cp = cp;
+        this.mp = mp;
+        this.wholesaler = wholesaler;
     }
 
-    public String getProductID() {
-        return productID;
+    public String getName() {
+        return name;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public int getCostprice() {
-        return costprice;
-    }
-
-    public int getMarkedprice() {
-        return markedprice;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getWholesaler() {
-        return wholesaler;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public String getSize() {
-        return size;
+    public String getProduct_id() {
+        return product_id;
     }
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public int getCp() {
+        return cp;
+    }
+
+    public int getMp() {
+        return mp;
+    }
+
+    public String getWholesaler() {
+        return wholesaler;
     }
 }

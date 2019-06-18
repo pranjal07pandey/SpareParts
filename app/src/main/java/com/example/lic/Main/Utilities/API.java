@@ -27,11 +27,11 @@ import retrofit2.http.Query;
 
 public interface API {
 
-    @GET("getDistinctProducts")
+    @GET("getAllInventory.php/")
     Call<List<Inventory_Model>> getInventoryitems(@Query("PAN") String pan);
 
-    @GET("getAllInventory.php/")
-    Call<List<Inventory_Model>> getspecificdata(@Query("id") int id,@Query("PAN") String pan);
+//    @GET("getAllInventory.php/")
+//    Call<List<Inventory_Model>> getspecificdata(@Query("id") int id,@Query("PAN") String pan);
 
     @FormUrlEncoded
     @POST("userLogin.php/")

@@ -17,12 +17,12 @@
         android:orientation="horizontal"
         android:id="@+id/linearlatou"
         android:background="@drawable/jjj"
-        android:weightSum="8">
+        android:weightSum="7">
 
 
 
         <TextView
-            android:id="@+id/inventory_datereport"
+            android:id="@+id/inventory_report_date"
             android:layout_width="120dp"
             android:layout_height="20dp"
             android:text="Date"
@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:id="@+id/inventory_report_code"
+            android:id="@+id/inventory_report_name"
             android:layout_margin="2dp"
             android:textSize="15sp"
             android:textColor="@color/background"
@@ -47,14 +47,13 @@
             android:textAlignment="center"
             android:maxLength="10"
             android:layout_weight="1"
-            android:layout_below="@+id/docscategory_title"
-            android:text="Code"
+            android:text="Name"
             android:textStyle="normal"/>
 
         <TextView
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:id="@+id/inventory_report_brand"
+            android:id="@+id/inventory_report_pid"
             android:textSize="15sp"
             android:layout_margin="2dp"
             android:textColor="@color/background"
@@ -62,16 +61,16 @@
             android:maxLength="5"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:text="Brand"
+            android:text="P Id"
             android:textStyle="normal"/>
 
 
 
         <TextView
-            android:id="@+id/inventory_report_type"
+            android:id="@+id/inventory_report_wholsaler"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:text="Type"
+            android:text="Wholesaler"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
             android:maxLength="10"
@@ -82,24 +81,10 @@
             android:textStyle="normal" />
 
         <TextView
-            android:id="@+id/inventory_reportwholsale"
+            android:id="@+id/inventory_report_cp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:text="Wholesale"
-            android:layout_margin="2dp"
-            android:ellipsize="marquee"
-            android:maxLength="10"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:textColor="@color/background"
-            android:textSize="15sp"
-            android:textStyle="normal" />
-
-        <TextView
-            android:id="@+id/inventory_report_color"
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:text="Color"
+            android:text="Cp"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
             android:maxLength="10"
@@ -111,10 +96,10 @@
             android:textStyle="normal" />
 
         <TextView
-            android:id="@+id/inventory_report_size"
+            android:id="@+id/inventory_report_mp"
             android:layout_width="100dp"
             android:layout_height="20dp"
-            android:text="Size"
+            android:text="Mp"
             android:layout_margin="2dp"
             android:ellipsize="marquee"
             android:maxLength="10"

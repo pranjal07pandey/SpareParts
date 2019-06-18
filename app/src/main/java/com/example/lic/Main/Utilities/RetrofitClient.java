@@ -7,7 +7,7 @@ public class RetrofitClient {
 
     private static final String BaseURL = "http://afs.com.np/afs_billing/api/";
     private static final String BaseURLlocal = "http://192.168.10.101/antique_fashion_store/api/";
-    private static final String BaseUrlfinal = "https://logisparktech.com/lic/api/";
+    private static final String BaseUrlfinal = "https://logisparktech.com/spare-parts/api/";
 
 
     private static RetrofitClient mInstance;

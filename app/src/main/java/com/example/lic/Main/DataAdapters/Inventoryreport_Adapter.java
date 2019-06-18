@@ -47,14 +47,13 @@ public class Inventoryreport_Adapter extends RecyclerView.Adapter<Inventoryrepor
         date2 = date.substring(date.length()-8);
 
         myinventoryviewholder.textViewdate.setText(date2);
-        myinventoryviewholder.textViewcode.setText(reportdatalist.get(i).getPid());
+        myinventoryviewholder.textViewproductId.setText(reportdatalist.get(i).getProduct_id());
         myinventoryviewholder.textViewquantity.setText(String.valueOf(reportdatalist.get(i).getQuantity()));
-        myinventoryviewholder.textViewcode.setText(reportdatalist.get(i).getPid());
-        myinventoryviewholder.textViewbrand.setText(reportdatalist.get(i).getBrand());
-        myinventoryviewholder.textViewsize.setText(reportdatalist.get(i).getSize());
-        myinventoryviewholder.textViewcolor.setText(reportdatalist.get(i).getColor());
-        myinventoryviewholder.textViewwholesale.setText(reportdatalist.get(i).getWholeseller());
-        myinventoryviewholder.textviewtype.setText(reportdatalist.get(i).getType());
+        myinventoryviewholder.textViewwholesaler.setText(reportdatalist.get(i).getWholesaler());
+        myinventoryviewholder.textViewname.setText(reportdatalist.get(i).getName());
+        myinventoryviewholder.textViewCp.setText(String.valueOf(reportdatalist.get(i).getCp()));
+        myinventoryviewholder.textViewMp.setText(String.valueOf(reportdatalist.get(i).getMp()));
+
 
     }
 
@@ -65,21 +64,19 @@ public class Inventoryreport_Adapter extends RecyclerView.Adapter<Inventoryrepor
 
     public class Myinventoryviewholder extends RecyclerView.ViewHolder {
         private CardView cardView;
-        private TextView textViewdate,textViewcode,textViewquantity,textViewcolor,textViewsize,textViewwholesale,textViewbrand,textviewtype;
+        private TextView textViewdate,textViewproductId,textViewquantity,textViewwholesaler,textViewname,textViewCp,textViewMp;
 
         public Myinventoryviewholder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardviewreportinvenntory);
-            textViewcode = itemView.findViewById(R.id.inventory_report_code);
-            textViewdate = itemView.findViewById(R.id.inventory_datereport);
-            textViewcolor = itemView.findViewById(R.id.inventory_report_color);
-            textViewquantity = itemView.findViewById(R.id.inventory_report_quantity);
-            textViewsize = itemView.findViewById(R.id.inventory_report_size);
-            textViewwholesale = itemView.findViewById(R.id.inventory_reportwholsale);
-            textViewbrand = itemView.findViewById(R.id.inventory_report_brand);
-            textViewwholesale = itemView.findViewById(R.id.inventory_reportwholsale);
-            textviewtype = itemView.findViewById(R.id.inventory_report_type);
 
+            textViewproductId = itemView.findViewById(R.id.inventory_report_pid);
+            textViewdate = itemView.findViewById(R.id.inventory_report_date);
+            textViewquantity = itemView.findViewById(R.id.inventory_report_quantity);
+            textViewwholesaler = itemView.findViewById(R.id.inventory_report_wholsaler);
+            textViewname = itemView.findViewById(R.id.inventory_report_name);
+            textViewCp = itemView.findViewById(R.id.inventory_report_cp);
+            textViewMp = itemView.findViewById(R.id.inventory_report_mp);
 
         }
     }

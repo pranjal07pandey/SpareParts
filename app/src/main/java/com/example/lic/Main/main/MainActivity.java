@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity
         dashboardList.add(new Dashboard("Wholesale",R.drawable.plus));
         dashboardList.add(new Dashboard("Inventory",R.drawable.inventory));
         dashboardList.add(new Dashboard("Report",R.drawable.doc));
-        dashboardList.add(new Dashboard("Online",R.drawable.globe));
+//        dashboardList.add(new Dashboard("Online",R.drawable.globe));
         dashboardList.add(new Dashboard("Insights",R.drawable.graph));
 //        dashboardList.add(new Dashboard("Daily Sales",R.drawable.cash));
 //        dashboardList.add(new Dashboard("Return",R.drawable.ret));
@@ -198,10 +198,10 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent2);
                 break;
 
-            case R.id.nav_Online:
-                Intent intent3 = new Intent(MainActivity.this, TransparentActivity.class);
-                startActivity(intent3);
-                break;
+//            case R.id.nav_Online:
+//                Intent intent3 = new Intent(MainActivity.this, TransparentActivity.class);
+//                startActivity(intent3);
+//                break;
 
             case R.id.nav_Insights:
                 Intent intent4 = new Intent(MainActivity.this,Insights.class);

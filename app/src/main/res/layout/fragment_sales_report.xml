@@ -22,8 +22,6 @@
 
 
 
-
-
             <TextView
                 android:id="@+id/date"
                 android:layout_width="100dp"
@@ -34,7 +32,6 @@
                 android:maxLength="10"
                 android:layout_weight="1"
                 android:textAlignment="center"
-
                 android:textColor="@color/background"
                 android:textSize="15sp"
                 android:textStyle="normal" />
@@ -65,20 +62,19 @@
                 android:maxLength="10"
                 android:layout_weight="1"
                 android:layout_below="@+id/docscategory_title"
-                android:text="Code"
+                android:text="CustomerName"
                 android:textStyle="normal"/>
 
             <TextView
-                android:id="@+id/report_quantity"
+                android:id="@+id/report_name"
                 android:layout_width="100dp"
                 android:layout_height="20dp"
-                android:text="Qty"
+                android:text="Name"
                 android:layout_margin="2dp"
                 android:ellipsize="marquee"
                 android:maxLength="10"
                 android:layout_weight="1"
                 android:textAlignment="center"
-
                 android:textColor="@color/background"
                 android:textSize="15sp"
                 android:textStyle="normal" />
@@ -87,13 +83,12 @@
                 android:id="@+id/report_costprice"
                 android:layout_width="100dp"
                 android:layout_height="20dp"
-                android:text="Cost Price"
+                android:text="Cp"
                 android:layout_margin="2dp"
                 android:ellipsize="marquee"
                 android:maxLength="10"
                 android:layout_weight="1"
                 android:textAlignment="center"
-
                 android:textColor="@color/background"
                 android:textSize="15sp"
                 android:textStyle="normal" />
@@ -102,17 +97,30 @@
                 android:id="@+id/report_sellingprice"
                 android:layout_width="100dp"
                 android:layout_height="20dp"
-                android:text="Selling Price"
+                android:text="Sp"
                 android:layout_margin="2dp"
                 android:ellipsize="marquee"
                 android:maxLength="10"
                 android:layout_weight="1"
                 android:textAlignment="center"
-
                 android:textColor="@color/background"
                 android:textSize="15sp"
                 android:textStyle="normal" />
 
+
+            <TextView
+                android:id="@+id/report_quantity"
+                android:layout_width="100dp"
+                android:layout_height="20dp"
+                android:text="Quantity"
+                android:layout_margin="2dp"
+                android:ellipsize="marquee"
+                android:maxLength="10"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="normal" />
 
         </LinearLayout>
 

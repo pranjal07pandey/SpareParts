@@ -70,7 +70,6 @@ public class Inventory extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
-
         mydialog = new Dialog(Inventory.this);
         mydialog.setContentView(R.layout.logout_popup);
         buttonYes= mydialog.findViewById(R.id.buttonYes);
@@ -90,7 +89,6 @@ public class Inventory extends AppCompatActivity
 
         User user = SharedPreferenceManager.getmInstance(this).getUser();
         Pan = String.valueOf(user.getUserid());
-
 
 
 
@@ -137,8 +135,6 @@ public class Inventory extends AppCompatActivity
                     Toast.makeText(Inventory.this, "No data found", Toast.LENGTH_SHORT).show();
 
                 }
-
-
 
 
 
@@ -265,11 +261,11 @@ public class Inventory extends AppCompatActivity
                 Intent intent2 = new Intent(Inventory.this,Report.class);
                 startActivity(intent2);
                 break;
-
-            case R.id.nav_Online:
-                Intent intent3 = new Intent(Inventory.this, TransparentActivity.class);
-                startActivity(intent3);
-                break;
+//
+//            case R.id.nav_Online:
+//                Intent intent3 = new Intent(Inventory.this, TransparentActivity.class);
+//                startActivity(intent3);
+//                break;
 
             case R.id.nav_Insights:
                 Intent intent4 = new Intent(Inventory.this,Insights.class);

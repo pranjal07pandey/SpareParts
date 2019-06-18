@@ -47,9 +47,9 @@ public class Reportdataadapter extends RecyclerView.Adapter<Reportdataadapter.My
 
         profit = reportdatalist.get(i).getProfit();
         profitstring = String.valueOf(profit);
-        tid = reportdatalist.get(i).getTid();
+        tid = reportdatalist.get(i).getTransaction_id();
         tidstring = String.valueOf(tid);
-        pidstring = reportdatalist.get(i).getPid();
+        pidstring = reportdatalist.get(i).getProduct_id();
         sp = reportdatalist.get(i).getSp();
         spstring = String.valueOf(sp);
 

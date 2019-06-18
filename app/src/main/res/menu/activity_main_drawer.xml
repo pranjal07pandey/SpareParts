@@ -30,10 +30,10 @@
             android:icon="@drawable/credit1"
             android:title="Credit" />
 
-        <item
-            android:id="@+id/nav_Online"
-            android:icon="@drawable/baseline_public"
-            android:title="Online" />
+        <!--<item-->
+            <!--android:id="@+id/nav_Online"-->
+            <!--android:icon="@drawable/baseline_public"-->
+            <!--android:title="Online" />-->
     </group>
 
     <item android:title="Visualize">
