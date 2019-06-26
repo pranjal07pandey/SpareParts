@@ -43,10 +43,9 @@ public class Inventoryreport_Adapter extends RecyclerView.Adapter<Inventoryrepor
 
 
 
-        date = reportdatalist.get(i).getDate();
-        date2 = date.substring(date.length()-8);
 
-        myinventoryviewholder.textViewdate.setText(date2);
+
+        myinventoryviewholder.textViewdate.setText(reportdatalist.get(i).getDate());
         myinventoryviewholder.textViewproductId.setText(reportdatalist.get(i).getProduct_id());
         myinventoryviewholder.textViewquantity.setText(String.valueOf(reportdatalist.get(i).getQuantity()));
         myinventoryviewholder.textViewwholesaler.setText(reportdatalist.get(i).getWholesaler());
